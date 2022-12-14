@@ -14,5 +14,4 @@ class degreephotoModel extends Model
     public function product(){
         return $this->belongsTo(productModel::class);
     }
-    
 }
