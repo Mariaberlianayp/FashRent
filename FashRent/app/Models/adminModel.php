@@ -14,12 +14,9 @@ class adminModel extends Model
     public function product(){
         return $this->hasMany(productModel::class);
     }
-<<<<<<< HEAD
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-=======
->>>>>>> 600e4ef (Model + migrate, kecuali entity room sama message)
     
 }
