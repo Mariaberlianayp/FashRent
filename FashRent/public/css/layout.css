@@ -1,0 +1,65 @@
+body{
+    background-color: #FCFBFF;
+}
+.navbar-collapse{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+#navbar-content{
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #533d9e;
+    text-align: center;
+}
+nav .navbar-nav li a{
+    color: white !important;
+}
+.navbar-nav li{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.navbar-nav .fav, .navbar-nav .chat{
+    color: #FBB80F;
+    font-size: x-large;
+}
+.navbar-nav .search{
+    margin-top: 5px;
+    width: 450px;
+    height: auto;
+}
+.navbar-nav .search form, .navbar-nav .search input, .navbar-nav .search button{
+    border-radius: 20px;
+    background-color: #DFCEFB;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer{
+    padding: 30px 0px;
+    background-color: #EFE6FD;
+    border-radius: 50px 50px 0px 0px;
+}
+.footer .about img{
+    width: 130px;
+    height: auto;
+}
+.footer .layanan_pelanggan{
+    margin-left: 40px;
+}
+.footer .layanan_pelanggan h6{
+    font-weight: bold;
+}
+.footer .layanan_pelanggan ul{
+    list-style-type: none;
+}
+.footer .layanan_pelanggan a{
+    color: black;
+}
+.footer .layanan_pelanggan a:hover{
+    color: #533d9e;
+}
+.footer img{
+    width: 270px;
+    height: auto;
+}
