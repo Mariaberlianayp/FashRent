@@ -1,0 +1,43 @@
+.slideCard{
+    margin:auto; 
+    width: 1300px ;
+    padding: 20px;
+    background-color: #EFE6FD;
+    border-radius: 0px 0px 50px 50px;
+    border-color: white;
+    border-style: solid;
+    box-shadow: 0px 30px 90px rgba(83, 61, 158, 0.3);
+}
+.bannerSlide{
+    height: 325px ;
+    width: 1250px ;
+    margin:auto; 
+}
+.bannerSlide img{
+    height: 325px ;
+    width: 1250px ;
+    object-fit: cover;
+    border-radius: 0px 0px 50px 50px;
+    
+}
+
+.kategori h4{
+    margin-left: 40px;
+    margin-top: 20px;
+    font-weight: bolder;
+    color: #533D9E;
+}
+
+.cardKategori{
+    margin: 20px;
+    width: 150px;
+    height: auto;
+    background-color: #EFE6FD;
+    border-radius: 20px;
+    border-color: white;
+    border-style: solid;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+}
+.cardKategori img{
+    width: 125px;
+}
