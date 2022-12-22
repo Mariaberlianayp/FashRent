@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('message',function(Blueprint $table){
+            $table->bigIncrements('message_id');
+            $table->foreignid('room_id')->references('room_id')->on('room')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('Message');
+            $table->date('Message_Time');
+            $table->string('Message_Status');
+        });
     }
 
     /**
