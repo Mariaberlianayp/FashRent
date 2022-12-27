@@ -15,4 +15,8 @@ class renterModel extends Model
     public function productfeedback(){
         return $this->hasMany(productfeedbackModel::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

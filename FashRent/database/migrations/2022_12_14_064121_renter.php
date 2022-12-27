@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('renter',function(Blueprint $table){
             $table->id('renter_id');
+            $table->foreignid('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('renter_name');
             $table->string('renter_phonenumber');
-            $table->string('renter_email');
-            $table->string('renter_password');
             $table->string('renter_photoprofile');
             $table->string('renter_status');
         });
