@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('admin',function(Blueprint $table){
             $table->id('admin_id');
+<<<<<<< HEAD
             $table->foreignid('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('admin_name');
+=======
+            $table->string('admin_name');
+            $table->string('admin_password');
+>>>>>>> 600e4ef (Model + migrate, kecuali entity room sama message)
         });
     }
 

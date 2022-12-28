@@ -15,8 +15,11 @@ class renterModel extends Model
     public function productfeedback(){
         return $this->hasMany(productfeedbackModel::class);
     }
+<<<<<<< HEAD
 
     public function user(){
         return $this->belongsTo(User::class);
     }
+=======
+>>>>>>> 600e4ef (Model + migrate, kecuali entity room sama message)
 }
