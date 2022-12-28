@@ -42,7 +42,7 @@ class HomeController extends Controller
         return view('auth.afterRegister');
     }
 
-    public function showProfil($id)
+    public function editProfile($id)
     {
         if(Auth::user()->User_Priority == 3){
             $data = renterModel::where('renter.id','=',Auth::user()->id)
@@ -53,9 +53,20 @@ class HomeController extends Controller
             ->get();
         }
 
-
-
         return view('profil',['data'=>$data]);
+    }
+    public function profileDetail($id)
+    {
+        if(Auth::user()->User_Priority == 3){
+            $data = renterModel::where('renter.id','=',Auth::user()->id)
+            ->get();
+        }
+        else{
+            $data = shopModel::where('shop.id','=',Auth::user()->id)
+            ->get();
+        }
+
+        return view('profileDetail',['data'=>$data]);
     }
 
     public function updateProfile(Request $request)

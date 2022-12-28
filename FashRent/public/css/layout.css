@@ -15,12 +15,12 @@ body a:hover{
     background-color: #FBB80F;
 }
 .navbar-collapse{
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 #navbar-content{
-    padding: 10px 20px;
+    padding: 5px 15px;
     border-radius: 50px;
     background-color: #533d9e;
     text-align: center;
@@ -50,35 +50,20 @@ nav .navbar-nav li a{
 }
 
 .footer{
-    padding: 30px 0px;
+    padding: 10px 0px;
     background-color: #EFE6FD;
     border-radius: 50px 50px 0px 0px;
 }
 .footer .about img{
-    width: 130px;
+    width: 150px;
     height: auto;
 }
-.footer .layanan_pelanggan{
-    margin-left: 40px;
-}
-.footer .layanan_pelanggan h6{
-    font-weight: bold;
-}
-.footer .layanan_pelanggan ul{
-    list-style-type: none;
-}
-.footer .layanan_pelanggan a{
-    color: black;
-}
-.footer .layanan_pelanggan a:hover{
-    color: #533d9e;
-}
+
 .footer img{
     max-width: 270px;
     height: auto;
     width: 100%;
 }
-
 @media (max-width: 500px) {
     #navbar-content{
         width: 300px;

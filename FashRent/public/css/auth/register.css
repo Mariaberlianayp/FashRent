@@ -1,0 +1,50 @@
+.register
+{
+    margin: 20px;
+}
+.cardRegister{
+    background-color: #533d9e;
+    color: white;
+    border-radius: 40px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.cardRegister .cardHeader{
+    text-align: left;
+    padding: 10px 50px;
+    font-size: smaller;
+}
+
+.cardRegister .cardHeader a{
+    color: white;
+    text-decoration: underline;
+}
+.cardRegister .cardHeader a:hover{
+    color: #3BAFDA;
+}
+.cardRegister .cardHeader h2{
+    font-weight: 800;
+}
+.cardRegister .cardBody{
+    text-align: left;
+    padding: 0px 50px;
+}
+.input-group-text
+{
+    color: black;
+    font-size: larger;
+    background-color: white;
+}
+.form-control
+{
+    color: black;
+    background-color: white;
+    border: opx solid white;
+}
+.cardRegister button{
+    margin-left: 20px;
+    background-image: linear-gradient(to right, #FBB80F , #FB640F);
+    border: 0.5px solid white;
+    color: #251769;
+    font-weight: 700;
+}
