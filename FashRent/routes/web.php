@@ -46,3 +46,4 @@ Route::get('/deletephoto/{id}', [App\Http\Controllers\shopController::class, 'de
 
 Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
 
+Route::get('/productDetail/{id}', [App\Http\Controllers\HomeController::class, 'productDetail']);

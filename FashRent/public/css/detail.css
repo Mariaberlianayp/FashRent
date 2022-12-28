@@ -1,0 +1,46 @@
+.judul h3{
+    margin-left: 50px;
+    color: #533d9e;
+}
+.judul i{
+    margin-left: 20px;
+    font-size: xx-large;
+
+}
+.rotation img{
+    max-width: 400px;
+    height: auto;
+}
+.isiatas{
+    display: flex;
+    justify-content: space-around;
+}
+.data{
+    color: #533d9e;
+}
+.card{
+    background-color: #DFCEFB;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+}
+.card img{
+    max-width: 100px;
+}
+.card button{
+    background-color: #533d9e;
+    color: white;
+}
+.card button a{
+    color: white;
+}
+.isibawah
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.detailProduk{
+    margin: 20px 100px;
+    padding: 10px;
+}
