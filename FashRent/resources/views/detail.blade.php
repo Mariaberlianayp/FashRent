@@ -57,9 +57,7 @@
             </div>
         </div>
     </div>
-
 </div>
-
 <div class="card detailProduk">
         <h2>Detail Produk</h2>
         <div class="isibawah">
@@ -73,7 +71,6 @@
                 <p>{{$product->product_size}}</p>
             </div>
         </div>
-
 </div>
 <div class="card detailProduk">
     <h2>Deskripsi Produk</h2>
@@ -104,7 +101,5 @@
         @endforeach
     </div>
 </div>
-
 <script src="{{url('js/360deg.js')}}"></script>
 @endsection
-

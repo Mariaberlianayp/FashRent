@@ -5,8 +5,7 @@
 <div class="container text-center">
     <div class="judul row d-flex">
         <div class="col-3">
-            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
-
+            <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="col-sm-9  text-left">
             <h3>ADD 360° IMAGE</h3>
@@ -21,10 +20,10 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active firstPage">
+      <div class="carousel-item active">
         <h3>Procedure for Entering Products 360° View</h3>
         <div class="container">
-            <div class="row">
+            <div class="d-flex justify-content-center">
               <div class="detail">
                 <p>The 360° feature can attract consumers' attention because the product image display will look more realistic.</p>
                 <p>Slide to know how to Input photo <i class="fa-solid fa-arrow-right"></i></p>
@@ -83,12 +82,13 @@
 
 <div class="SubmitImage">
     <div class="card submitCard">
+        @if ($data->product_status == 0)
         <form method="POST" action="/add360photo" enctype="multipart/form-data">
             @csrf
 
             <input type="text" hidden name="product_id" value="{{$id}}">
             <div class="row mb-3">
-                <label for="iamges" class="col-md-4 col-form-label text-md-end">Input 360&#176 Image:</label>
+                <label for="images" class="col-form-label ">Input 360&#176 Image:</label>
                 <div class="col">
                     <input type="file" name="images[]" value="" class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" multiple onchange="image_select()">
                     @error('images')
@@ -106,14 +106,23 @@
             </div>
         </div>
 
-            <div class="row ">
-                <div class="col button">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Submit Image') }}
-                    </button>
-                </div>
+        <div class="row ">
+            <div class="col button">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Submit Image') }}
+                </button>
             </div>
+        </div>
         </form>
+        @elseif ($data->product_status == 3)
+            <div class="alert alert-danger">
+                360 image is rejected, please read the documentation or contact us!
+            </div>
+        @else
+            <div class="alert alert-danger">
+                Waiting for verification!
+            </div>
+        @endif
     </div>
 
 </div>

@@ -16,13 +16,11 @@ class searchController extends Controller
     public function categorySearch($id){
 
         $data = DB::table('product')->where('product.category_id',$id)->get();
-
         $shops = shopModel::all();
-
         $photos = productimageModel::all();
-
-
-        return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos]);
+        $categoryName = categoryModel::where('category_id',$id)->first();
+        $productfeedback = productfeedbackModel::all();
+        return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos, 'categoryName' => $categoryName,'productfeedback'=>$productfeedback]);
     }
 
     public function productSearch(Request $request){

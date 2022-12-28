@@ -46,7 +46,7 @@ Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editPro
 
 Route::get('/productDetail/{id}', [App\Http\Controllers\shopController::class, 'productDetail']);
 
-Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch']);
+Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch'])->name('allCategory');
 
 Route::get('/detailtoko/{id}', [App\Http\Controllers\shopController::class, 'showDetailToko']);
 

@@ -1,0 +1,40 @@
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+    margin-bottom: 30px;
+}
+.judul h4{
+    color: #533D9E;
+    margin-bottom: 30px;
+}
+.judul i{
+    font-size: xx-large;
+}
+.cardProduk .card{
+    background-color: #EFE6FD;
+    border-radius: 20px;
+    border-color: white;
+    border-style: solid;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    margin: 10px;
+    max-width: 200px;
+    height: 350px;
+}
+.cardProduk img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px 20px 0px 0px;
+    object-fit: cover;
+}
+.cardProduk .card-title{
+    font-size: 14px;
+}
+.cardProduk .price{
+    font-weight: 600;
+    font-size: 16px;
+}
+.cardProduk .city{
+    font-size: 13px;
+    color: #533D9E;
+    margin-bottom: -5px;
+}

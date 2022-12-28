@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('product_color');
             $table->string('product_size');
             $table->string('product_stock');
+            //0 = shop belum input 360 image, 1 = shop sudah input belum di accept admin, 2 = image sudah di acc admin, 3 = image di reject admin
             $table->string('product_status')->default(0);
             $table->string('product_thumbnail')->nullable();
         });

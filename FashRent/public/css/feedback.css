@@ -1,3 +1,13 @@
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+    margin-bottom: 30px;
+}
+
+.judul i{
+    font-size: xx-large;
+}
+
 *{
     margin: 0;
     padding: 0;

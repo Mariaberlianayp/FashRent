@@ -5,7 +5,7 @@
 <div class="container text-center">
     <div class="judul row d-flex">
         <div class="col-3">
-            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i></a>
 
         </div>
         <div class="col-sm-9  text-left">
@@ -16,9 +16,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="judul d-flex text-center">
-                <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i>Back to Manage Catalog</a>
-            </div>
             <div class="card">
                 <div class="card-body">
                         <form method="POST" action="/editproduk" enctype="multipart/form-data">

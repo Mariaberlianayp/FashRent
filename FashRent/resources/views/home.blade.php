@@ -107,9 +107,6 @@
                     <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
                 </div>
               </div>
-              <div class="bawah">
-
-              </div>
             </div>
             @endforeach
           </div>
