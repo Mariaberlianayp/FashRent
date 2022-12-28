@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -74,43 +74,50 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     {{-- Font --}}
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:wght@400,600,700' rel='stylesheet'>
+    
     <title>Fashrent</title>
     
   </head>
   <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div id="navbar-content">
-                    <ul class="navbar-nav mr-auto justify-content-center">
-                        <li>
-                            <a href="#"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
-                        </li>
-                        <li class="search">
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Cari Produk..." aria-label="Search">
-                                <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </form>
-                        </li>
-                        <li class="fav"><i class="fa-solid fa-heart"></i></li>
-                        <li class="chat"><i class="fa-solid fa-comment"></i></li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::is('')?'active':''}}" href="#">Masuk </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::is('')?'active':''}}" href="#">Daftar</a>
-                        </li>
-                    </ul>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div id="navbar-content">
+                        <ul class="navbar-nav mr-auto justify-content-center">
+                            <li>
+                                <a href="#"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
+                            </li>
+                            <li class="search">
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Cari Produk..." aria-label="Search">
+                                    <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </li>
+                            <li class="fav"><i class="fa-solid fa-heart"></i></li>
+                            <li class="chat"><i class="fa-solid fa-comment"></i></li>
+                            <li class="nav-item">
+                                <a class="nav-link {{Request::is('')?'active':''}}" href="#">Masuk </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{Request::is('')?'active':''}}" href="#">Daftar</a>
+                            </li>
+                        </ul>
+                    </div>
+                
                 </div>
-                
-                
             </div>
         </nav>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 420eb9844efc2014366b18518bb3a9f2097ae7a8
         <main class="py-4">
             @yield('content')
         </main>
@@ -164,13 +171,10 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-
+    
 </body>
 </html>
 >>>>>>> 7aee6e19a0c2287595ded3514acfe8a4943aa654

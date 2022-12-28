@@ -15,7 +15,7 @@ return new class extends Migration
     {
         
         Schema::create('product_feedback',function(Blueprint $table){
-            $table->id('feedback_id');
+            $table->bigIncrements('feedback_id');
             $table->foreignid('renter_id')->references('renter_id')->on('renter')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignid('product_id')->references('product_id')->on('product')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('rating_stars');

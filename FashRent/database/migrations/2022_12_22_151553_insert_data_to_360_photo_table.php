@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category',function(Blueprint $table){
-            $table->bigIncrements('category_id');
-            $table->string('category_name');
-            $table->string('category_image');
-        });
+        DB::table('360_photo')->insert([
+            ['product_id' => 1, 'photo360' => 'kebaya1.jpg'],
+            ['product_id' => 2, 'photo360' => 'kebaya1.jpg'],
+            ['product_id' => 3, 'photo360' => 'kebaya1.jpg'],
+            
+        ]);
     }
 
     /**
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('360_photo',function(Blueprint $table){
-            $table->id('phpto_id');
+            $table->bigIncrements('photo_id');
             $table->foreignid('product_id')->references('product_id')->on('product')->onUpdate('cascade')->onDelete('cascade');
             $table->string('photo360');
         });

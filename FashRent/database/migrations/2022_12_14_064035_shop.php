@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('shop',function(Blueprint $table){
+<<<<<<< HEAD
             $table->id('shop_id');
             $table->foreignid('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+=======
+            $table->bigIncrements('shop_id');
+>>>>>>> 420eb9844efc2014366b18518bb3a9f2097ae7a8
             $table->string('shop_ownername');
             $table->string('shop_shopname');
             $table->string('shop_address');
