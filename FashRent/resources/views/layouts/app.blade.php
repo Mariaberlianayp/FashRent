@@ -7,16 +7,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Fashrent</title>
-    
-  </head>
-  <body>
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#533d9e">
-    <a class="navbar-brand" href="#"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
