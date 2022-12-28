@@ -65,7 +65,7 @@
             @endif
                 </div>
                 <div class="button">
-                    <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
+                    <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
                 </div>
             </div>
             </div>

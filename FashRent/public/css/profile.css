@@ -13,9 +13,9 @@
     display: flex;
     justify-content: space-evenly;
 }
-img{
-    max-width: 200px;
-    height: auto;
+.dataProfile img{
+    width: 200px;
+    height: fit-content;
 }
 .buttonEdit button
 {

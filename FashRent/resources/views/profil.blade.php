@@ -27,9 +27,9 @@
                         {{-- Renter --}}
                         @if(Auth::user()->User_Priority == 3)
                         <div class="imageProfile">
-                            <img width="200px" height="300px" src="{{Storage::url($d->renter_photoprofile)}}" class="card-img-top" alt="...">
+                            <img src="{{Storage::url($d->renter_photoprofile)}}" class="card-img-top" alt="...">
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-3 ">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Change Photo:') }}</label>
                             <div class="col">
                                 <input type="file" name="image" value="" class="form-control @error('image') is-invalid @enderror" autofocus>
@@ -87,7 +87,7 @@
                         {{-- toko --}}
                         @if(Auth::user()->User_Priority == 2)
                             <div class="imageProfile">
-                                <img width="200px" height="300px" src="{{Storage::url($d->shop_photoprofile)}}" class="card-img-top" alt="...">
+                                <img src="{{Storage::url($d->shop_photoprofile)}}" class="card-img-top" alt="...">
                             </div>
                             <div class="row mb-3">
 
