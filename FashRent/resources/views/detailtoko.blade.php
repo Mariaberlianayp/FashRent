@@ -57,6 +57,10 @@
                 <p hidden>{{$count=$count+1}}</p>
               @endforeach
               <i data-star="{{$stars/$count}}"></i>
+                @php
+                    $stars=0;
+                    $count=0;
+                @endphp
               @else
               <i data-star="0"></i>
               @endif

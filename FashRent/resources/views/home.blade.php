@@ -66,7 +66,42 @@
                     <h6>{{$u->name}}</h6>
                     @endforeach
                   <p>{{$shop->shop_city}}</p>
-                  <i data-star="4.5"></i>
+                    @php
+                        $count_avg=0;
+                        $total_stars=0;
+                    @endphp
+                  @foreach($products->where('shop_id',$shop->shop_id) as $product)
+                  @if (count($productfeedback->where('product_id',$product->product_id))>0)
+                  @php
+                    $stars=0;
+                    $count=0;
+                  @endphp
+                  @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+                    <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+                    <p hidden>{{$count=$count+1}}</p>
+                  @endforeach
+                  @php
+                      $stars_now = $stars/$count;
+                      $total_stars = $stars_now+$total_stars;
+                      $count_avg++;
+                        $stars=0;
+                        $count=0;
+                  @endphp
+                  @else
+                  @php
+                    $stars_now = 0;
+                    $total_stars = $stars_now+$total_stars;
+                    $count_avg++;
+                 @endphp
+                @endif
+
+                  @endforeach
+                  @if ($count_avg ==0)
+                  <i data-star="0"></i>
+                  @else
+                  <i data-star="{{$total_stars/$count_avg}}"></i>
+                  @endif
+
                 </div>
                 <div class="button">
                     <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
@@ -94,11 +129,19 @@
                     <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
                     <p class="city">{{$shop->shop_city}}</p>
                     @if (count($productfeedback->where('product_id',$product->product_id))>0)
+                    @php
+                        $stars=0;
+                        $count=0;
+                    @endphp
                     @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
                       <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
                       <p hidden>{{$count=$count+1}}</p>
                     @endforeach
                     <i data-star="{{$stars/$count}}"></i>
+                    @php
+                        $stars=0;
+                        $count=0;
+                    @endphp
                     @else
                     <i data-star="0"></i>
                     @endif
@@ -157,58 +200,109 @@
         </div>
     </div>
     <div class="toko">
-      <div class="tokoJudul">
-        <h4>TOKO</h4>
-        <a href="/allshop"><p>Lihat Semua</p></a>
-      </div>
-      <div class="listToko">
-        @foreach($shops->take(6) as $shop)
-        <div class="cardToko">
-          <div class="atas">
-            <div class="image">
-              <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
-            </div>
-            <div class="keterangan">
-                    @foreach ($users->where('id',$shop->id) as $u)
-                    <h6>{{$u->name}}</h6>
-                    @endforeach
-              <p>{{$shop->shop_city}}</p>
-              <i data-star="4.5"></i>
-            </div>
-            <div class="button">
-                <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
-            </div>
-          </div>
-          <div class="bawah">
-
-          </div>
+        <div class="tokoJudul">
+          <h4>SHOP</h4>
+          <a href="/allshop"><p>View all</p></a>
         </div>
-        @endforeach
+        <div class="listToko">
+          @foreach($shops->take(6) as $shop)
+          <div class="cardToko">
+            <div class="atas">
+              <div class="image">
+                <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
+              </div>
+              <div class="keterangan">
+                  @foreach ($users->where('id',$shop->id) as $u)
+                  <h6>{{$u->name}}</h6>
+                  @endforeach
+                <p>{{$shop->shop_city}}</p>
+                  @php
+                      $count_avg=0;
+                      $total_stars=0;
+                  @endphp
+                @foreach($products->where('shop_id',$shop->shop_id) as $product)
+                @if (count($productfeedback->where('product_id',$product->product_id))>0)
+                @php
+                  $stars=0;
+                  $count=0;
+                @endphp
+                @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+                  <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+                  <p hidden>{{$count=$count+1}}</p>
+                @endforeach
+                @php
+                    $stars_now = $stars/$count;
+                    $total_stars = $stars_now+$total_stars;
+                    $count_avg++;
+                      $stars=0;
+                      $count=0;
+                @endphp
+                @else
+                @php
+                  $stars_now = 0;
+                  $total_stars = $stars_now+$total_stars;
+                  $count_avg++;
+               @endphp
+              @endif
+
+                @endforeach
+                @if ($count_avg ==0)
+                <i data-star="0"></i>
+                @else
+                <i data-star="{{$total_stars/$count_avg}}"></i>
+                @endif
+
+              </div>
+              <div class="button">
+                  <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
+              </div>
+            </div>
+            <div class="bawah">
+
+            </div>
+          </div>
+          @endforeach
+        </div>
+
       </div>
 
-    </div>
-
-    <div class="produk">
-      <h4>PRODUK</h4>
-      <div class="listProduk row justify-content-center">
-        @foreach($products as $product)
-        <div class="col-md-3">
-          <div class="cardProduk">
-            <div class="card" style="width: 18rem;">
-                    <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
-              <div class="card-body">
-                <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
-                <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
-                <p class="city">{{$shop->shop_city}}</p>
-                <i data-star="4.5"></i>
+      <div class="produk">
+        <h4>PRODUCT</h4>
+        <div class="listProduk row justify-content-center">
+          @foreach($products as $product)
+          <div class="col-md-3">
+            <div class="cardProduk">
+              <div class="card" style="width: 18rem;">
+                      <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
+                <div class="card-body">
+                  <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
+                  <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
+                  <p class="city">{{$shop->shop_city}}</p>
+                  @if (count($productfeedback->where('product_id',$product->product_id))>0)
+                  @php
+                      $stars=0;
+                      $count=0;
+                  @endphp
+                  @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+                    <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+                    <p hidden>{{$count=$count+1}}</p>
+                  @endforeach
+                  <i data-star="{{$stars/$count}}"></i>
+                  @php
+                      $stars=0;
+                      $count=0;
+                  @endphp
+                  @else
+                  <i data-star="0"></i>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        @endforeach
+          @endforeach
 
+        </div>
       </div>
-    </div>
     @endif
 
     @if (Auth::check())

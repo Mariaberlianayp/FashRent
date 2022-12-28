@@ -48,7 +48,23 @@
             <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
             <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
             <p class="city">{{$shop->shop_city}}</p>
-            <i data-star="4.5"></i>
+            @if (count($productfeedback->where('product_id',$product->product_id))>0)
+            @php
+                $stars=0;
+                $count=0;
+            @endphp
+            @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+              <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+              <p hidden>{{$count=$count+1}}</p>
+            @endforeach
+            <i data-star="{{$stars/$count}}"></i>
+            @php
+                $stars=0;
+                $count=0;
+            @endphp
+            @else
+            <i data-star="0"></i>
+            @endif
           </div>
           @endforeach
         </div>

@@ -31,8 +31,8 @@
                         <a href="/productdelete/{{$d->product_id}}" class="btn btn-danger mt-auto">Delete</a>
                         <a href="/productedit/{{$d->product_id}}" class="btn btn-primary mt-1">Edit</a>
                     </div>
-                    @if($d->product_status == 0)
-                    <a href="/product/360photo/{{$d->product_id}}" class="btn360 btn btn-primary mt-auto">Add 360° View</a>
+                    @if($d->product_status == 0 || $d->product_status == 3)
+                        <a href="/product/360photo/{{$d->product_id}}" class="btn360 btn btn-primary mt-auto">Add 360° View</a>
                     @endif
             </div>
 

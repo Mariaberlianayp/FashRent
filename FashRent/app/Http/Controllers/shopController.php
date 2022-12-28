@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\categoryModel;
 use App\Models\degreephotoModel;
+use App\Models\productfeedbackModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
 use App\Models\shopModel;
@@ -329,8 +330,10 @@ class shopController extends Controller
 
         $shops = shopModel::all();
         $users = User::all();
+        $products = productModel::all();
+        $productfeedback = productfeedbackModel::all();
 
-        return view('allshop',['shops'=>$shops,'users'=>$users]);
+        return view('allshop',['shops'=>$shops,'users'=>$users,'products'=>$products,'productfeedback'=>$productfeedback]);
     }
 
     public function add360photo(Request $request){

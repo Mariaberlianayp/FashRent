@@ -37,7 +37,7 @@
 
 <div class="toko">
     <div class="tokoJudul">
-      <h4>TOKO</h4>
+      <h4>SHOP</h4>
     </div>
     <div class="listToko">
       @foreach($shops->take(6) as $shop)
@@ -47,15 +47,53 @@
             <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
           </div>
           <div class="keterangan">
-                @foreach ($users->where('id',$shop->id) as $u)
-                <h6>{{$u->name}}</h6>
-                @endforeach
+              @foreach ($users->where('id',$shop->id) as $u)
+              <h6>{{$u->name}}</h6>
+              @endforeach
             <p>{{$shop->shop_city}}</p>
-            <i data-star="4.5"></i>
+              @php
+                  $count_avg=0;
+                  $total_stars=0;
+              @endphp
+            @foreach($products->where('shop_id',$shop->shop_id) as $product)
+            @if (count($productfeedback->where('product_id',$product->product_id))>0)
+            @php
+              $stars=0;
+              $count=0;
+            @endphp
+            @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+              <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+              <p hidden>{{$count=$count+1}}</p>
+            @endforeach
+            @php
+                $stars_now = $stars/$count;
+                $total_stars = $stars_now+$total_stars;
+                $count_avg++;
+                  $stars=0;
+                  $count=0;
+            @endphp
+            @else
+            @php
+              $stars_now = 0;
+              $total_stars = $stars_now+$total_stars;
+              $count_avg++;
+           @endphp
+          @endif
+
+            @endforeach
+            @if ($count_avg ==0)
+            <i data-star="0"></i>
+            @else
+            <i data-star="{{$total_stars/$count_avg}}"></i>
+            @endif
+
           </div>
           <div class="button">
-              <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
+              <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
           </div>
+        </div>
+        <div class="bawah">
+
         </div>
       </div>
       @endforeach
