@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<<<<<<< HEAD
 
 @section('content')
 <div class="container">
@@ -22,7 +21,6 @@
     </div>
 </div>
 @endsection
-=======
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 @section('content')
@@ -68,4 +66,3 @@
 
 
 @endsection
->>>>>>> 7aee6e19a0c2287595ded3514acfe8a4943aa654
