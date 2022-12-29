@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+
         $this->middleware('auth');
 
 
@@ -28,6 +28,17 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+    {
+        // $categories = categoryModel::all();
+        // $shops = shopModel::all();
+        // $products = productModel::all();
+        // $photos = degreephotoModel::all();
+        // return view('home', compact('categories', 'shops', 'products', 'photos'));
+
+        return view('home');
+    }
+
+    public function afterRegister()
     {
         // $categories = categoryModel::all();
         // $shops = shopModel::all();

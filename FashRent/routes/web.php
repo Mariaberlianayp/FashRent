@@ -29,4 +29,4 @@ Route::get('/register', function () {
 
 Auth::routes();
 
-Route::get('/afterRegister', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/afterRegister', [App\Http\Controllers\HomeController::class, 'afterRegister']);
