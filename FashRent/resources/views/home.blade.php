@@ -130,9 +130,6 @@
 </div>
 
 
-<<<<<<< HEAD
 
 @endsection
-=======
-@endsection
->>>>>>> 420eb9844efc2014366b18518bb3a9f2097ae7a8
+

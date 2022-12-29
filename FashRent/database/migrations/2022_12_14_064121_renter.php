@@ -14,12 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('renter',function(Blueprint $table){
-<<<<<<< HEAD
-            $table->id('renter_id');
-            $table->foreignid('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-=======
+//          $table->id('renter_id');
             $table->bigIncrements('renter_id');
->>>>>>> 420eb9844efc2014366b18518bb3a9f2097ae7a8
+            $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('renter_name');
             $table->string('renter_phonenumber');
             $table->string('renter_photoprofile');

@@ -13,7 +13,7 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <title>Fashrent</title>
-    
+
   </head>
   <body>
     <div id="app">
@@ -39,16 +39,24 @@
                             <a class="nav-link {{Request::is('')?'active':''}}" href="#">Profil </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{Request::is('')?'active':''}}" href="#">Keluar</a>
+                            <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('Keluar') }}
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         </li>
                     </ul>
                 </div>
-                
-                
+
+
             </div>
         </nav>
 
-    
+
         <main class="py-4">
             @yield('content')
         </main>
@@ -88,9 +96,9 @@
                   <div class="col">
                     <img src="{{url('images/footerIllustration.png')}}" alt="">
                   </div>
-            
+
               </div>
-              
+
         </div>
 
     </div>
