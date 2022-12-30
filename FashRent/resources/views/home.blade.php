@@ -1,29 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
-@section('content')
 
 <div class="slideCard align-middle">
     <div id="carouselExampleIndicators" class="carousel slide bannerSlide" data-bs-ride="true">
@@ -53,10 +32,11 @@
     </button>
   </div>
 </div>
+
 <div class="kategori">
     <h4>KATEGORI</h4>
     <div class="container text-center">
-      @foreach($categories as $category)
+      {{-- @foreach($categories as $category)
       <div class="cardKategori">
         <div class="image">
           <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
@@ -65,7 +45,7 @@
           <a class="" href=""><h6>{{$category->category_name}}</h6></a>
         </div>
       </div>
-      @endforeach
+      @endforeach --}}
     </div>
 </div>
 <div class="toko">
@@ -74,7 +54,7 @@
     <a href=""><p>Lihat Semua</p></a>
   </div>
   <div class="listToko">
-    @foreach($shops->take(6) as $shop)
+    {{-- @foreach($shops->take(6) as $shop)
     <div class="cardToko">
       <div class="atas">
         <div class="image">
@@ -97,7 +77,7 @@
         @endforeach
       </div>
     </div>
-    @endforeach
+    @endforeach --}}
   </div>
 
 </div>
@@ -105,7 +85,7 @@
 <div class="produk">
   <h4>PRODUK</h4>
   <div class="listProduk row justify-content-center">
-    @foreach($products as $product)
+    {{-- @foreach($products as $product)
     <div class="col-md-3">
       <div class="cardProduk">
         <div class="card" style="width: 18rem;">
@@ -113,7 +93,7 @@
               @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
                 <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$product->product_name}}/{{$photo->photo360}}" alt="">
               @endforeach
-            
+
           <div class="card-body">
             <p class="card-title">{{Str::limit($product->product_name, 35)}}</p>
             <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
@@ -124,8 +104,8 @@
         </div>
       </div>
     </div>
-    @endforeach
-    
+    @endforeach --}}
+
   </div>
 </div>
 

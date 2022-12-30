@@ -29,6 +29,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('User_Priority')->default('0');
+            $table->integer('User_Status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

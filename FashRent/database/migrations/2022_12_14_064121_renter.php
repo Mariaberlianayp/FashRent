@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('renter_name');
             $table->string('renter_phonenumber');
             $table->string('renter_photoprofile');
-            $table->string('renter_status');
         });
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('shop',function(Blueprint $table){
            // $table->id('shop_id');
             $table->bigIncrements('shop_id');
-            $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');  
+            $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('shop_ownername');
             $table->string('shop_shopname');
             $table->string('shop_address');
@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('shop_city');
             $table->string('shop_description');
             $table->string('shop_photoprofile');
-            $table->string('shop_status');
         });
     }
 

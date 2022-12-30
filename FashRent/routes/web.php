@@ -14,19 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.afterLogin');
-});
-
-Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('cek');
 
 Auth::routes();
 
 Route::get('/afterRegister', [App\Http\Controllers\HomeController::class, 'afterRegister']);
+
+Route::post('/inputAfterRegister', [App\Http\Controllers\afterRegisterController::class, 'inputAfterRegister']);
+
+Route::get('/profil/{id}', [App\Http\Controllers\HomeController::class, 'showProfil'])->middleware('cek');
