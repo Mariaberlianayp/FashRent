@@ -173,6 +173,7 @@ class shopController extends Controller
 
         $cek_img =DB::table('product')->where('product.product_id',$request['product_id'])->first();
 
+
         if(!$cek_img->product_thumbnail){
             foreach($request->file('images') as $imageFile){
 
@@ -185,21 +186,37 @@ class shopController extends Controller
 
                 break;
             }
+
+            DB::table('product')->where('product.product_id',$request['product_id'])->update([
+                'shop_id' => $shop_id_now->shop_id,
+                'category_id' => $validated['kategori'],
+                'product_name' => $validated['namaproduk'],
+                'product_description' => $validated['deskripsi'],
+                'product_rentprice' => $validated['sewahari'],
+                'product_deposito' => $validated['deposito'],
+                'product_gender' => $validated['gender'],
+                'product_color' => $validated['warna'],
+                'product_size' => $validated['ukuran'],
+                'product_stock' => $validated['qty'],
+                'product_thumbnail' => $thumbnail,
+            ]);
+        }
+        else{
+            DB::table('product')->where('product.product_id',$request['product_id'])->update([
+                'shop_id' => $shop_id_now->shop_id,
+                'category_id' => $validated['kategori'],
+                'product_name' => $validated['namaproduk'],
+                'product_description' => $validated['deskripsi'],
+                'product_rentprice' => $validated['sewahari'],
+                'product_deposito' => $validated['deposito'],
+                'product_gender' => $validated['gender'],
+                'product_color' => $validated['warna'],
+                'product_size' => $validated['ukuran'],
+                'product_stock' => $validated['qty'],
+            ]);
         }
 
-        DB::table('product')->where('product.product_id',$request['product_id'])->update([
-            'shop_id' => $shop_id_now->shop_id,
-            'category_id' => $validated['kategori'],
-            'product_name' => $validated['namaproduk'],
-            'product_description' => $validated['deskripsi'],
-            'product_rentprice' => $validated['sewahari'],
-            'product_deposito' => $validated['deposito'],
-            'product_gender' => $validated['gender'],
-            'product_color' => $validated['warna'],
-            'product_size' => $validated['ukuran'],
-            'product_stock' => $validated['qty'],
-            'product_thumbnail' => $thumbnail,
-        ]);
+
 
         $product_id_now=$request['product_id'];
 
@@ -227,6 +244,13 @@ class shopController extends Controller
     public function deletePhoto($id){
 
     $get_id = DB::table('product_image')->where('product_image.photo_id',$id)->first();
+<<<<<<< HEAD
+=======
+
+    if(count(DB::table('product_image')->where('product_image.product_id',$get_id->product_id)->get())==1){
+        return redirect()->back()->with('delfoto2','Minimal mempunyai satu foto product');
+       }
+>>>>>>> 76a1a0f (Commit)
 
     if(count(DB::table('product_image')->where('product_image.product_id',$get_id->product_id)->get())==1){
         return redirect()->back()->with('delfoto2','Minimal mempunyai satu foto product');
@@ -249,6 +273,7 @@ class shopController extends Controller
     DB::table('product')->where('product.product_id',$get_id->product_id)->update([
         'product_thumbnail' => $thumbnail,
     ]);
+
 
         return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
 

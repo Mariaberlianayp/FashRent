@@ -42,7 +42,7 @@
                     @foreach ($data as $d)
                         <div class="col p-3">
                             <div class="card h-100">
-                                <img width="100px" height="200px" src="{{Storage::url($d->product_thumbnail)}}" class="card-img-top" alt="...">
+                                <img width="100px" height="200px" src="{{Storage::url($d->product_thumbnail)}}" class="card-img-top" alt="Gambar Tidak Tersedia">
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title">{{$d->product_name}}</h5>
                                         <p class="card-text">{{$d->product_description}}</p>

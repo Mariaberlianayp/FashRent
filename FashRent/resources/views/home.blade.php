@@ -119,9 +119,8 @@
     <div class="col-md-3">
       <div class="cardProduk">
         <div class="card" style="width: 18rem;">
-          @foreach($shops->where('shop_id' , $product->shop_id)->take(1) as $shop)
-              @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
                 <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
+<<<<<<< HEAD
               @endforeach
             </div>
         </div>
@@ -222,8 +221,14 @@
             <div class="title">
               <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
             </div>
+=======
+          <div class="card-body">
+            <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
+            <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
+            <p class="city">{{$shop->shop_city}}</p>
+            <i data-star="4.5"></i>
+>>>>>>> 76a1a0f (Commit)
           </div>
-          @endforeach
         </div>
     </div>
     <div class="toko">
