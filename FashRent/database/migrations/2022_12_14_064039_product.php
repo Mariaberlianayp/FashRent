@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('product_size');
             $table->string('product_stock');
             $table->string('product_status')->default(0);
-            $table->string('product_thumbnail')->nullable();
+            $table->string('product_thumbnail');
         });
     }
 
