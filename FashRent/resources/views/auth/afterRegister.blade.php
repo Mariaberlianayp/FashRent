@@ -123,7 +123,7 @@
                     <div class="row mb-3">
                         <label for="address" class="col-md-4 col-form-label text-md-end">Alamat Toko</label>
                         <div class="col-md-6">
-                          <textarea id="address" name="textarea" cols="40" rows="5" class="form-control @error('address') is-invalid @enderror" required></textarea>
+                          <textarea id="address" name="address" cols="40" rows="5" class="form-control @error('address') is-invalid @enderror" required></textarea>
 
                           @error('address')
                           <span class="invalid-feedback" role="alert">
@@ -149,7 +149,7 @@
                     <div class="row mb-3">
                         <label for="kota" class="col-md-4 col-form-label text-md-end">Kota</label>
                         <div class="col-md-6">
-                          <select id="kota" name="select" class="custom-select @error('kota') is-invalid @enderror" required="required">
+                          <select id="kota" name="kota" class="custom-select" required="required">
                             <option value="timur">Jakarta Timur</option>
                             <option value="pusat">Jakarta Pusat</option>
                             <option value="barat">Jakarta Barat</option>
@@ -157,18 +157,13 @@
                             <option value="utara">Jakarta Utara</option>
                           </select>
 
-                          @error('kota')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                        @enderror
                         </div>
                       </div>
 
                       <div class="row mb-3">
                         <label for="deskripsi" class="col-md-4 col-form-label text-md-end">Deskripsi</label>
                         <div class="col-md-6">
-                          <textarea id="deskripsi" name="textarea" cols="40" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required></textarea>
+                          <textarea id="deskripsi" name="deskripsi" cols="40" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required></textarea>
 
                           @error('deskripsi')
                           <span class="invalid-feedback" role="alert">

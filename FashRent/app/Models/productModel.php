@@ -22,4 +22,8 @@ class productModel extends Model
     public function productfeedback(){
         return $this->hasMany(productfeedbackModel::class);
     }
+
+    public function productImage(){
+        return $this->hasMany(productimageModel::class);
+    }
 }

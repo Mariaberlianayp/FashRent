@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoryModel;
+use App\Models\productimageModel;
+use App\Models\productModel;
+use App\Models\shopModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,9 +15,24 @@ use Illuminate\Support\Facades\Storage;
 class afterRegisterController extends Controller
 {
 
-    public function inputAfterRegister(Request $request)
+    public function index()
     {
 
+        $categories = categoryModel::all();
+
+        $shops = shopModel::all();
+
+        $products = productModel::all();
+
+        $photos = productimageModel::all();
+
+
+        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos]);
+    }
+
+    public function inputAfterRegister(Request $request)
+    {
+        // dd($request);
         $role = Auth::user()->User_Priority;
         if($role === 3){
             $validated = $request->validate([
@@ -27,12 +46,13 @@ class afterRegisterController extends Controller
                 'namapemilik' => ['required','string','min:3'],
                 'namatoko' => ['required','string'],
                 'address' => ['required','string'],
-                'kota' => ['required','string'],
-                'deskripsi' => ['required','deskripsi','min:30'],
+                'deskripsi' => ['required','string','min:30'],
                 'NoTelepon' => ['required','numeric','min:10'],
                 'image' => ['required', 'file', 'image'],
             ]);
         }
+
+
 
 
 
@@ -59,9 +79,10 @@ class afterRegisterController extends Controller
             DB::table('shop')->insert([
                 'id' =>Auth::user()->id,
                 'shop_ownername' => $validated['namapemilik'],
+                'shop_address' => $validated['address'],
                 'shop_shopname' => $validated['namatoko'],
                 'shop_phonenumber' => $validated['NoTelepon'],
-                'shop_city' => $validated['kota'],
+                'shop_city' => $request['kota'],
                 'shop_description' => $validated['deskripsi'],
                 'shop_photoprofile' => $imagePath,
             ]);
@@ -73,6 +94,6 @@ class afterRegisterController extends Controller
         ]);
 
 
-        return redirect('/home');
+        return redirect('/');
     }
 }

@@ -26,7 +26,7 @@
                 <div id="navbar-content">
                     <ul class="navbar-nav mr-auto justify-content-center">
                         <li>
-                            <a href="/home"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
+                            <a href="/"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
                         </li>
                         <li class="search">
                             @if (Auth::check())

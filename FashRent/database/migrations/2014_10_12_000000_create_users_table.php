@@ -30,7 +30,6 @@ return new class extends Migration
             $table->string('password');
             $table->integer('User_Priority')->default('0');
             $table->integer('User_Status')->default('0');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -36,16 +36,16 @@
 <div class="kategori">
     <h4>KATEGORI</h4>
     <div class="container text-center">
-      {{-- @foreach($categories as $category)
+      @foreach($categories as $category)
       <div class="cardKategori">
         <div class="image">
           <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
         </div>
         <div class="title">
-          <a class="" href=""><h6>{{$category->category_name}}</h6></a>
+          <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
         </div>
       </div>
-      @endforeach --}}
+      @endforeach
     </div>
 </div>
 <div class="toko">
@@ -54,7 +54,7 @@
     <a href=""><p>Lihat Semua</p></a>
   </div>
   <div class="listToko">
-    {{-- @foreach($shops->take(6) as $shop)
+    @foreach($shops->take(6) as $shop)
     <div class="cardToko">
       <div class="atas">
         <div class="image">
@@ -77,7 +77,7 @@
         @endforeach
       </div>
     </div>
-    @endforeach --}}
+    @endforeach
   </div>
 
 </div>
@@ -85,7 +85,7 @@
 <div class="produk">
   <h4>PRODUK</h4>
   <div class="listProduk row justify-content-center">
-    {{-- @foreach($products as $product)
+    @foreach($products as $product)
     <div class="col-md-3">
       <div class="cardProduk">
         <div class="card" style="width: 18rem;">
@@ -104,7 +104,7 @@
         </div>
       </div>
     </div>
-    @endforeach --}}
+    @endforeach
 
   </div>
 </div>
