@@ -150,11 +150,11 @@
                         <label for="kota" class="col-md-4 col-form-label text-md-end">Kota</label>
                         <div class="col-md-6">
                           <select id="kota" name="kota" class="custom-select" required="required">
-                            <option value="timur">Jakarta Timur</option>
-                            <option value="pusat">Jakarta Pusat</option>
-                            <option value="barat">Jakarta Barat</option>
-                            <option value="selatan">Jakarta Selatan</option>
-                            <option value="utara">Jakarta Utara</option>
+                            <option value="Jakarta Timur">Jakarta Timur</option>
+                            <option value="Jakarta Pusat">Jakarta Pusat</option>
+                            <option value="Jakarta Barat">Jakarta Barat</option>
+                            <option value="Jakarta Selatan">Jakarta Selatan</option>
+                            <option value="Jakarta Utara">Jakarta Utara</option>
                           </select>
 
                         </div>

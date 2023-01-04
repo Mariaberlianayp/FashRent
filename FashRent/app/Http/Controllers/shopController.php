@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\categoryModel;
+use App\Models\productimageModel;
 use App\Models\productModel;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\Cache\Store;
@@ -189,11 +190,24 @@ class shopController extends Controller
     public function deletePhoto($id){
 
 
-        $images = DB::table('product_image')->where('product_image.photo_id',$id)->delete();
+       DB::table('product_image')->where('product_image.photo_id',$id)->delete();
 
 
         return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
 
     }
+
+    public function showDetailToko($id){
+
+
+        $shop = DB::table('shop')->where('shop.shop_id',$id)->first();
+
+        $photos = productimageModel::all();
+
+        $products = DB::table('product')->where('product.shop_id',$id)->get();
+
+        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products]);
+
+     }
 
 }

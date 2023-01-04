@@ -33,54 +33,7 @@
   </div>
 </div>
 
-<div class="kategori">
-    <h4>KATEGORI</h4>
-    <div class="container text-center">
-      @foreach($categories as $category)
-      <div class="cardKategori">
-        <div class="image">
-          <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
-        </div>
-        <div class="title">
-          <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
-        </div>
-      </div>
-      @endforeach
-    </div>
-</div>
-<div class="toko">
-  <div class="tokoJudul">
-    <h4>TOKO</h4>
-    <a href=""><p>Lihat Semua</p></a>
-  </div>
-  <div class="listToko">
-    @foreach($shops->take(6) as $shop)
-    <div class="cardToko">
-      <div class="atas">
-        <div class="image">
-          <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$shop->shop_photoprofile}}" alt="">
-        </div>
-        <div class="keterangan">
-          <h6>{{$shop->shop_shopname}}</h6>
-          <p>{{$shop->shop_city}}</p>
-          <i data-star="4.5"></i>
-        </div>
-        <div class="button">
-            <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
-        </div>
-      </div>
-      <div class="bawah">
-        @foreach($products->where('shop_id' , $shop->shop_id)->take(3) as $dataProducts)
-          @foreach($photos->where('product_id' , $dataProducts->product_id)->take(1) as $photo)
-            <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$dataProducts->product_name}}/{{$photo->photo360}}" alt="">
-          @endforeach
-        @endforeach
-      </div>
-    </div>
-    @endforeach
-  </div>
 
-</div>
 
 <div class="produk">
   <h4>PRODUK</h4>
