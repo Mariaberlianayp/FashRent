@@ -58,7 +58,7 @@
     <div class="cardToko">
       <div class="atas">
         <div class="image">
-          <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$shop->shop_photoprofile}}" alt="">
+          <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
         </div>
         <div class="keterangan">
           <h6>{{$shop->shop_shopname}}</h6>
@@ -91,7 +91,7 @@
         <div class="card" style="width: 18rem;">
           @foreach($shops->where('shop_id' , $product->shop_id)->take(1) as $shop)
               @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
-                <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$product->product_name}}/{{$photo->photo360}}" alt="">
+                <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
               @endforeach
 
           <div class="card-body">

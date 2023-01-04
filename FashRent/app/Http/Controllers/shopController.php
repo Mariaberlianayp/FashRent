@@ -55,6 +55,20 @@ class shopController extends Controller
         $shop_id_now=DB::table('shop')->where('shop.id',Auth::user()->id)
         ->first();
 
+
+
+        foreach($request->file('images') as $imageFile){
+
+
+            $imageName = time().'_'.$imageFile->getClientOriginalName();
+            Storage::putFileAs('public/images',$imageFile, $imageName);
+            $imagePath = 'images/'.$imageName;
+
+            $thumbnail=$imagePath;
+
+            break;
+        }
+
         DB::table('product')->insert([
             'shop_id' => $shop_id_now->shop_id,
             'category_id' => $validated['kategori'],
@@ -66,6 +80,7 @@ class shopController extends Controller
             'product_color' => $validated['warna'],
             'product_size' => $validated['ukuran'],
             'product_stock' => $validated['qty'],
+            'product_thumbnail' => $thumbnail,
         ]);
 
         $product_id_now=DB::table('product')->latest('product_id')->first();
@@ -73,6 +88,7 @@ class shopController extends Controller
 
 
         foreach($request->file('images') as $imageFile){
+
 
             $imageName = time().'_'.$imageFile->getClientOriginalName();
             Storage::putFileAs('public/images',$imageFile, $imageName);
@@ -84,6 +100,9 @@ class shopController extends Controller
             ]);
 
         }
+
+
+
 
         return redirect('/addproduk')->with('add','Berhasil Menambahkan Produk!');
     }
@@ -131,6 +150,7 @@ class shopController extends Controller
                 'images' =>['required'],
                 'images.*' => ['file','image'],
             ]);
+
         }
         else{
             $validated = $request->validate([
@@ -151,6 +171,22 @@ class shopController extends Controller
         $shop_id_now=DB::table('shop')->where('shop.id',Auth::user()->id)
         ->first();
 
+        $cek_img =DB::table('product')->where('product.product_id',$request['product_id'])->first();
+
+        if(!$cek_img->product_thumbnail){
+            foreach($request->file('images') as $imageFile){
+
+
+                $imageName = time().'_'.$imageFile->getClientOriginalName();
+                Storage::putFileAs('public/images',$imageFile, $imageName);
+                $imagePath = 'images/'.$imageName;
+
+                $thumbnail=$imagePath;
+
+                break;
+            }
+        }
+
         DB::table('product')->where('product.product_id',$request['product_id'])->update([
             'shop_id' => $shop_id_now->shop_id,
             'category_id' => $validated['kategori'],
@@ -162,6 +198,7 @@ class shopController extends Controller
             'product_color' => $validated['warna'],
             'product_size' => $validated['ukuran'],
             'product_stock' => $validated['qty'],
+            'product_thumbnail' => $thumbnail,
         ]);
 
         $product_id_now=$request['product_id'];
