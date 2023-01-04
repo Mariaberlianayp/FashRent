@@ -60,7 +60,7 @@
     </div>
     <div class="kontak">
         <div class="card">
-            <img class="rounded mx-auto d-block" src="{{url('images/Product/img36.jpg')}}">
+            <img class="rounded mx-auto d-block" src="{{Storage::url($toko->shop_photoprofile)}}">
             <h4>{{$toko->shop_shopname}}</h4>
             <div class="kota d-flex justify-content-center">
                 <i class="fa-solid fa-location-dot"></i>
@@ -98,7 +98,7 @@
 <div class="card detailProduk">
     <h2>Penilaian Produk</h2>
     <div class="isibawah">
-       
+
     </div>
 </div>
 

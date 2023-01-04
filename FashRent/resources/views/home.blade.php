@@ -89,18 +89,13 @@
     <div class="col-md-3">
       <div class="cardProduk">
         <div class="card" style="width: 18rem;">
-          @foreach($shops->where('shop_id' , $product->shop_id)->take(1) as $shop)
-              @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
                 <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
-              @endforeach
-
           <div class="card-body">
             <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
             <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
             <p class="city">{{$shop->shop_city}}</p>
             <i data-star="4.5"></i>
           </div>
-          @endforeach
         </div>
       </div>
     </div>

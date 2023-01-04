@@ -9,7 +9,7 @@
 <div class="isiatas">
     <div class="kontak d-flex justify-content-between" style="width: 80%">
         <div class="card">
-            <img class="rounded mx-auto d-block" src="{{url('images/Product/img36.jpg')}}">
+            <img class="rounded mx-auto d-block" src="{{Storage::url($toko->shop_photoprofile)}}">
             <h4>{{$toko->shop_shopname}}</h4>
             <div class="kota d-flex justify-content-center">
                 <i class="fa-solid fa-location-dot"></i>
@@ -38,7 +38,7 @@
           <div class="card" style="width: 18rem;">
 
                 @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
-                  <img src="{{url('images/toko')}}/{{$toko->shop_shopname}}/{{$product->product_name}}/{{$photo->photo360}}" alt="">
+                  <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
                 @endforeach
 
             <div class="card-body">

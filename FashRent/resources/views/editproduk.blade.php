@@ -47,6 +47,11 @@
                                         {!! \Session::get('delfoto') !!}
                                     </div>
                                 @endif
+                                @if (\Session::has('delfoto2'))
+                                <div class="alert alert-danger">
+                                    {!! \Session::get('delfoto2') !!}
+                                </div>
+                                @endif
                             </div>
                     </div>
 
@@ -126,11 +131,11 @@
                             <div class="col-md-6">
                               <select id="gender" name="gender" class="custom-select" required="required">
                                 @if ($data->product_gender == 1)
-                                <option value="1" selected>Pria</option>
-                                <option value="2">Wanita</option>
+                                <option value="Pria" selected>Pria</option>
+                                <option value="Wanita">Wanita</option>
                                 @else
-                                <option value="1">Pria</option>
-                                <option value="2" selected>Wanita</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita" selected>Wanita</option>
                                 @endif
                               </select>
                             </div>

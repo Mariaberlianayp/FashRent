@@ -107,8 +107,8 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
                             <div class="col-md-6">
                               <select id="gender" name="gender" class="custom-select" required="required">
-                                <option value="1">Pria</option>
-                                <option value="2">Wanita</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita">Wanita</option>
                               </select>
                             </div>
                           </div>
