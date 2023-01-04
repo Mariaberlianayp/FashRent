@@ -12,6 +12,9 @@
      <script src="https://kit.fontawesome.com/c8ad5c3f4e.js" crossorigin="anonymous"></script>
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    {{-- font --}}
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    
     <title>Fashrent</title>
 
   </head>

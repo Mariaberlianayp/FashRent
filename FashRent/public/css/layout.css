@@ -5,6 +5,11 @@ body{
 }
 body a{
     text-decoration: none;
+    color: black;
+}
+body a:hover{
+    text-decoration: none;
+    color: #533d9e;
 }
 .navbar-toggler{
     background-color: #FBB80F;
@@ -92,7 +97,7 @@ nav .navbar-nav li a{
     position: relative;
     unicode-bidi: bidi-override;
   }
-  [data-star]::before { 
+  [data-star]::before {
     display:block;
     content: '★★★★★';
     color: #ddd;
@@ -108,7 +113,7 @@ nav .navbar-nav li a{
     overflow:hidden;
     height:100%;
   }
-  
+
   [data-star^="0.1"]::after,[data-star^=".1"]::after{width:2%}
   [data-star^="0.2"]::after,[data-star^=".2"]::after{width:4%}
   [data-star^="0.3"]::after,[data-star^=".3"]::after{width:6%}

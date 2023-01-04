@@ -42,3 +42,4 @@ Route::get('/productdelete/{id}', [App\Http\Controllers\shopController::class, '
 
 Route::get('/productedit/{id}', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
 
+Route::get('/productDetail/{id}', [App\Http\Controllers\HomeController::class, 'productDetail']);
