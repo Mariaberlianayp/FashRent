@@ -68,7 +68,6 @@ class RegisterController extends Controller
 
         $role = $data['User_Priority'];
 
-        // dd($role);
 
         if ($role == "2"){
             return User::create([

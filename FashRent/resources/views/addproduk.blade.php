@@ -17,7 +17,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Upload Foto') }}</label>
+                            <label for="iamges" class="col-md-4 col-form-label text-md-end">{{ __('Upload Foto') }}</label>
                             <div class="col-md-6">
                                 <input type="file" name="images[]" value="" class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" multiple onchange="image_select()">
                                 @error('images')
@@ -107,8 +107,8 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
                             <div class="col-md-6">
                               <select id="gender" name="gender" class="custom-select" required="required">
-                                <option value="1">Pria</option>
-                                <option value="2">Wanita</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita">Wanita</option>
                               </select>
                             </div>
                           </div>
@@ -130,7 +130,7 @@
                         <div class="row mb-3">
                             <label for="ukuran" class="col-md-4 col-form-label text-md-end">Ukuran</label>
                             <div class="col-md-6">
-                              <textarea id="ukuran" name="ukuran" cols="40" rows="5" class="form-control @error('ukuran') is-invalid @enderror" required></textarea>
+                              <textarea id="ukuran" name="ukuran" cols="40" rows="5" class="form-control @error('ukuran') is-invalid @enderror" required placeholder="Contoh:&#10;Lingkar dada: 100cm&#10;Panjang tangan: 50cm&#10;Panjang bagian depan dan belakang: 70"></textarea>
 
                               @error('ukuran')
                               <span class="invalid-feedback" role="alert">

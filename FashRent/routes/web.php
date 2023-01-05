@@ -13,12 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
 
 Route::get('/', [App\Http\Controllers\afterRegisterController::class, 'index']);
-
 
 Auth::routes();
 
@@ -42,6 +38,14 @@ Route::post('/addproduk', [App\Http\Controllers\shopController::class, 'addProdu
 
 Route::get('/productdelete/{id}', [App\Http\Controllers\shopController::class, 'deleteProduct'])->middleware('cek');
 
-Route::get('/productedit/{id}', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
+Route::get('/productedit/{id}', [App\Http\Controllers\shopController::class, 'showeditProduct'])->middleware('cek');
+
+Route::get('/deletephoto/{id}', [App\Http\Controllers\shopController::class, 'deletePhoto'])->middleware('cek');
+
+Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
 
 Route::get('/productDetail/{id}', [App\Http\Controllers\HomeController::class, 'productDetail']);
+
+Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch']);
+
+Route::get('/detailtoko/{id}', [App\Http\Controllers\shopController::class, 'showDetailToko']);

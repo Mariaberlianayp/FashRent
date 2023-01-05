@@ -64,6 +64,32 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="kota" class="col-md-4 col-form-label text-md-end">Kota</label>
+                        <div class="col-md-6">
+                          <select id="kota" name="kota" class="custom-select" required="required">
+                            <option value="Jakarta Timur">Jakarta Timur</option>
+                            <option value="Jakarta Pusat">Jakarta Pusat</option>
+                            <option value="Jakarta Barat">Jakarta Barat</option>
+                            <option value="Jakarta Selatan">Jakarta Selatan</option>
+                            <option value="Jakarta Utara">Jakarta Utara</option>
+                          </select>
+
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label for="deskripsi" class="col-md-4 col-form-label text-md-end">Deskripsi</label>
+                        <div class="col-md-6">
+                          <textarea id="deskripsi" name="deskripsi" cols="40" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required></textarea>
+
+                          @error('deskripsi')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                        </div>
+                      </div>
 
                     <div class="row mb-3">
 

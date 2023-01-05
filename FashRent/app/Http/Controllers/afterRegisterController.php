@@ -32,7 +32,7 @@ class afterRegisterController extends Controller
 
     public function inputAfterRegister(Request $request)
     {
-        // dd($request);
+
         $role = Auth::user()->User_Priority;
         if($role === 3){
             $validated = $request->validate([
@@ -51,9 +51,6 @@ class afterRegisterController extends Controller
                 'image' => ['required', 'file', 'image'],
             ]);
         }
-
-
-
 
 
 
