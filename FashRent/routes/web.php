@@ -26,7 +26,9 @@ Route::get('/afterRegister', [App\Http\Controllers\HomeController::class, 'after
 
 Route::post('/inputAfterRegister', [App\Http\Controllers\afterRegisterController::class, 'inputAfterRegister']);
 
-Route::get('/profil/{id}', [App\Http\Controllers\HomeController::class, 'showProfil'])->middleware('cek');
+
+Route::get('/profileDetail/{id}', [App\Http\Controllers\HomeController::class, 'profileDetail'])->middleware('cek');
+Route::get('/profil/{id}', [App\Http\Controllers\HomeController::class, 'editProfile'])->middleware('cek');
 
 Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->middleware('cek');
 

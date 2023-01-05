@@ -13,8 +13,8 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     {{-- font --}}
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    
+    <link href='https://fonts.googleapis.com/css?family=Poppins:wght@400,700,800&display=swap' rel='stylesheet'>
+
     <title>Fashrent</title>
 
   </head>
@@ -35,10 +35,9 @@
                             @if (Auth::check())
                                 @if (!Auth::user()->User_Status == 0)
                                     <form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Cari Produk..." aria-label="Search">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search">
                                         <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
-                                    <li class="fav"><i class="fa-solid fa-heart"></i></li>
                                     <li class="chat"><i class="fa-solid fa-comment"></i></li>
                                 @endif
                             @endif
@@ -46,20 +45,20 @@
                         @guest
                             @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                         @if(Auth::check())
                             @if(!Auth::user()->User_Status == 0)
                             <li class="nav-item">
-                                <a class="nav-link" href="/profil/{{Auth::user()->id}}">Profil</a>
+                                <a class="nav-link" href="/profileDetail/{{Auth::user()->id}}">Profile</a>
                             </li>
                             @endif
                         @endif
@@ -67,7 +66,7 @@
                             <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                             {{ __('Keluar') }}
+                             {{ __('Logout') }}
                          </a>
 
                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -89,41 +88,16 @@
 
         <div class="footer shadow-sm ">
             <div class="container ">
-                <div class="row ">
-                  <div class="col about">
-                        <div class="row ">
-                            <div class="col">
-                                <img src="{{url('images/LogoDark.png')}}" alt="">
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col">
-                                <p>Platform penyewaan produk fashion dan membantu toko menampilkan katalog dengan menarik</p>
-                            </div>
-                        </div>
+                <div class="row g-0">
+                    <div class="col-sm-6 col-md-8 about">
+                        <img src="{{url('images/LogoDark.png')}}" alt="">
+                        <p class="text">Fashion product rental platform and helps stores display catalogs in an attractive way</p>
                     </div>
-                  <div class="col layanan_pelanggan">
-                    <div class="row ">
-                        <div class="col">
-                            <h6>Layanan Pelanggan</h6>
-                        </div>
+                    <div class="col-6 col-md-4">
+                        <img src="{{url('images/footerIllustration.png')}}" alt="">
                     </div>
-                    <div class="row ">
-                        <div class="col">
-                            <ul>
-                                <li><a href="">Bantuan</a> </li>
-                                <li><a href="">Hubungi Kami</a></li>
-                                <li><a href="">Syarat dan Ketentuan</a></li>
-                                <li><a href="">FAQ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <img src="{{url('images/footerIllustration.png')}}" alt="">
-                  </div>
-
-              </div>
+                </div>
+            </div>
 
         </div>
 
