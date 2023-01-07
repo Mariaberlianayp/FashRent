@@ -171,10 +171,8 @@ class shopController extends Controller
         $shop_id_now=DB::table('shop')->where('shop.id',Auth::user()->id)
         ->first();
 
-        $cek_img =DB::table('product')->where('product.product_id',$request['product_id'])->first();
 
 
-        if(!$cek_img->product_thumbnail){
             foreach($request->file('images') as $imageFile){
 
 
@@ -200,21 +198,7 @@ class shopController extends Controller
                 'product_stock' => $validated['qty'],
                 'product_thumbnail' => $thumbnail,
             ]);
-        }
-        else{
-            DB::table('product')->where('product.product_id',$request['product_id'])->update([
-                'shop_id' => $shop_id_now->shop_id,
-                'category_id' => $validated['kategori'],
-                'product_name' => $validated['namaproduk'],
-                'product_description' => $validated['deskripsi'],
-                'product_rentprice' => $validated['sewahari'],
-                'product_deposito' => $validated['deposito'],
-                'product_gender' => $validated['gender'],
-                'product_color' => $validated['warna'],
-                'product_size' => $validated['ukuran'],
-                'product_stock' => $validated['qty'],
-            ]);
-        }
+
 
 
 
@@ -260,8 +244,11 @@ class shopController extends Controller
 
 
 
+<<<<<<< HEAD
         return redirect()->back()->with('delfoto','Photo Deleted Successfully!');
 <<<<<<< HEAD
+=======
+>>>>>>> 444bb87 (Commit all changes)
         DB::table('product_image')->where('product_image.photo_id',$id)->delete();
 
         foreach($data_now as $img){
@@ -275,7 +262,10 @@ class shopController extends Controller
         'product_thumbnail' => $thumbnail,
     ]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 444bb87 (Commit all changes)
         return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
 =======
 >>>>>>> 908a190 (Profile & add 360 UI)
@@ -296,6 +286,7 @@ class shopController extends Controller
      }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
      public function view360photo($id){
 
         $id_product=$id;
@@ -307,6 +298,17 @@ class shopController extends Controller
 
         return view('add360image');
 >>>>>>> 908a190 (Profile & add 360 UI)
+=======
+     public function view360photo($id){
+
+
+        $id_product=$id;
+
+
+
+        return view('degreephoto',['id'=>$id_product]);
+
+>>>>>>> 444bb87 (Commit all changes)
      }
 
 }

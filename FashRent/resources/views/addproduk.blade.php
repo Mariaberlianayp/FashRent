@@ -187,9 +187,12 @@
     </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         </script>
 >>>>>>> 908a190 (Profile & add 360 UI)
+=======
+>>>>>>> 444bb87 (Commit all changes)
 </div>
 @endsection
