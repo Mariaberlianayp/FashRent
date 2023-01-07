@@ -30,7 +30,7 @@ Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'upd
 
 Route::post('/profile/editpassword', [App\Http\Controllers\HomeController::class, 'editPassword'])->middleware('cek');
 
-Route::get('/shop/produk/{id}', [App\Http\Controllers\shopController::class, 'showKelola'])->middleware('cek');
+Route::get('/shop/produk', [App\Http\Controllers\shopController::class, 'showKelola'])->middleware('cek');
 
 Route::get('/addproduk', [App\Http\Controllers\shopController::class, 'showTambahProduk'])->middleware('cek');
 
@@ -44,7 +44,7 @@ Route::get('/deletephoto/{id}', [App\Http\Controllers\shopController::class, 'de
 
 Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
 
-Route::get('/productDetail/{id}', [App\Http\Controllers\HomeController::class, 'productDetail']);
+Route::get('/productDetail/{id}', [App\Http\Controllers\shopController::class, 'productDetail']);
 
 Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch']);
 
@@ -52,4 +52,12 @@ Route::get('/detailtoko/{id}', [App\Http\Controllers\shopController::class, 'sho
 
 Route::get('/product/360photo/{id}',[App\Http\Controllers\shopController::class,'view360photo']);
 
-Route::get('/allshop',[App\Http\Controllers\HomeController::class,'viewAllShop']);
+Route::get('/allshop',[App\Http\Controllers\shopController::class,'viewAllShop']);
+
+Route::post('/add360photo', [App\Http\Controllers\shopController::class, 'add360photo'])->middleware('cek');
+
+Route::get('/verif/acc/{id}',[App\Http\Controllers\adminController::class,'accept']);
+
+Route::get('/verif/dec/{id}',[App\Http\Controllers\adminController::class,'decline']);
+
+Route::get('/feedback/{id}',[App\Http\Controllers\shopController::class,'viewfeedback']);

@@ -200,18 +200,4 @@ class HomeController extends Controller
         return redirect('/profil/{id}')->with('update_password','Password Berhasil Berubah!');
     }
 
-    public function productDetail($id)
-    {
-        $product = productModel::where('product_id', $id)->first();
-        $toko = shopModel::where('shop_id', $product->shop_id)->first();
-        $category = categoryModel::where('category_id', $product->category_id)->first();
-        return view('detail', compact('product', 'toko','category'));
-    }
-
-    public function viewAllShop(){
-
-        $shops = shopModel::all();
-
-        return view('allshop',['shops'=>$shops]);
-    }
 }

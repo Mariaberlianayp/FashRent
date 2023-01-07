@@ -25,14 +25,19 @@ class afterRegisterController extends Controller
 
         $products = productModel::all();
 
+        $degreephoto=null;
+
+        $counter =1;
+
         if(Auth::check()){
             if(Auth::user()->User_Priority == 1){
-                $shops = degreephotoModel::join('product','360_photo.product_id','=','product.product_id')
-                ->join('shop','shop.shop_id','=','product.shop_id')
-                ->select('360_photo.photo_id','360_photo.product_id','360_photo.photo360','shop.shop_id','shop.shop_shopname')
-                ->get();
+                $shops = productModel::join('shop','shop.shop_id','=','product.shop_id')
+                ->where('product.product_status',1)
+                ->select('product.product_id','shop.shop_id','shop.shop_shopname')
+                ->paginate(6);
 
-                // dd($shops);
+                $degreephoto=degreephotoModel::all();
+
             }
 
         }
@@ -41,7 +46,7 @@ class afterRegisterController extends Controller
         $photos = productimageModel::all();
 
 
-        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos]);
+        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter]);
     }
 
     public function inputAfterRegister(Request $request)

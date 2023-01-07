@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\categoryModel;
+use App\Models\degreephotoModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
+use App\Models\shopModel;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -15,9 +17,11 @@ use Illuminate\Support\Facades\Storage;
 class shopController extends Controller
 {
 
-    public function showKelola($id)
+    public function showKelola()
     {
-            $data = productModel::where('product.shop_id','=',$id)
+        $shop_now = DB::table('shop')->where('shop.id',Auth::user()->id)->first();
+
+            $data = productModel::where('product.shop_id','=',$shop_now->shop_id)
             ->paginate(6);
 
         return view('kelolaproduk',['data'=>$data]);
@@ -104,7 +108,7 @@ class shopController extends Controller
 
 
 
-        return redirect('/addproduk')->with('add','Berhasil Menambahkan Produk!');
+        return redirect('/shop/produk')->with('add','Berhasil Menambahkan Produk!');
     }
 
 
@@ -221,7 +225,7 @@ class shopController extends Controller
         }
 
 
-        return redirect()->back()->with('edit','Berhasil Merubah Data Produk!');
+        return redirect('/shop/produk')->with('edit','Berhasil Merubah Data Produk!');
     }
 
 
@@ -272,10 +276,66 @@ class shopController extends Controller
 
         $id_product=$id;
 
+        $data=DB::table('product')->where('product.product_id',$id_product)
+        ->first();
 
 
-        return view('degreephoto',['id'=>$id_product]);
+
+        return view('degreephoto',['id'=>$id_product,'data'=>$data]);
 
      }
+
+     public function productDetail($id)
+     {
+         $product = productModel::where('product_id', $id)->first();
+         $toko = shopModel::where('shop_id', $product->shop_id)->first();
+         $category = categoryModel::where('category_id', $product->category_id)->first();
+         $degreephotos = degreephotoModel::where('360_photo.product_id',$id)->get();
+
+         return view('detail', compact('product', 'toko','category','degreephotos'));
+     }
+
+     public function viewAllShop(){
+
+        $shops = shopModel::all();
+
+        return view('allshop',['shops'=>$shops]);
+    }
+
+    public function add360photo(Request $request){
+
+        $validated = $request->validate([
+            'images' =>['required'],
+            'images.*' => ['file','image'],
+        ]);
+
+        foreach($request->file('images') as $imageFile){
+
+
+            $imageName = time().'_'.$imageFile->getClientOriginalName();
+            Storage::putFileAs('public/images',$imageFile, $imageName);
+            $imagePath = 'images/'.$imageName;
+
+            DB::table('360_photo')->insert([
+                'product_id'=>$request->product_id,
+                'photo360' =>$imagePath,
+            ]);
+
+        }
+
+        DB::table('product')->where('product.product_id',$request->product_id)->update([
+            'product_status' => 1,
+        ]);
+
+        return redirect('/shop/produk')->with('addfoto','Image Has Been Uploaded Successfully');
+    }
+
+
+    function viewfeedback($id){
+
+
+
+        return view('addfeedback');
+    }
 
 }

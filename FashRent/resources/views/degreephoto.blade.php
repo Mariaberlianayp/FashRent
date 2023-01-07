@@ -5,15 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="judul d-flex text-center">
-                <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i>  Back to Manage Catalog</a>
+                <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i>Back to Manage Catalog</a>
             </div>
             <div class="card">
                 <div class="card-header">{{ __('Tambah Produk') }}</div>
 
                 <div class="card-body">
+                    @if ($data->product_status ==0 ||$data->product_status ==3 )
                     <form method="POST" action="/add360photo" enctype="multipart/form-data">
                         @csrf
-
+                        <input type="text" hidden value="{{$id}}" name="product_id">
                         <div class="row mb-3">
                             <label for="iamges" class="col-md-4 col-form-label text-md-end">Enter 360&#176 Image</label>
                             <div class="col-md-6">
@@ -43,6 +44,12 @@
                             </div>
                         </div>
                     </form>
+                    @else
+                    <div class="alert alert-danger">
+                        Waiting for verification!
+                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>

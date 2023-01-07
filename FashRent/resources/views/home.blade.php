@@ -40,7 +40,7 @@
               @foreach($categories as $category)
               <div class="cardKategori">
                 <div class="image">
-                  <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
+                  <img src="{{Storage::url($category->category_image)}}" alt="">
                 </div>
                 <div class="title">
                   <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
@@ -141,7 +141,7 @@
           @foreach($categories as $category)
           <div class="cardKategori">
             <div class="image">
-              <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
+              <img src="{{Storage::url($category->category_image)}}" alt="">
             </div>
             <div class="title">
               <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
@@ -153,7 +153,7 @@
     <div class="toko">
       <div class="tokoJudul">
         <h4>TOKO</h4>
-        <a href=""><p>Lihat Semua</p></a>
+        <a href="/allshop"><p>Lihat Semua</p></a>
       </div>
       <div class="listToko">
         @foreach($shops->take(6) as $shop)
@@ -213,6 +213,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    @if (\Session::has('acc'))
+                    <div class="alert alert-success">
+                        {!! \Session::get('acc') !!}
+                    </div>
+                    @endif
                     <table class="table">
                         <thead>
                         <tr>
@@ -226,19 +231,24 @@
                         <tbody>
                             @foreach ($shops as $shop )
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{$counter}}</th>
                                 <td>{{$shop->shop_id}}</td>
                                 <td>{{$shop->shop_shopname}}</td>
-                                <td>@mdo</td>
-                                <td><a class="btn btn-primary" href="#" role="button">Accept</a> <a class="btn btn-danger" href="#" role="button">Reject</a></td>
+                                <td>
+                                    @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
+                                    <input type="text" hidden>
+                                    <img height="200px" src="{{Storage::url($d->photo360)}}" alt="">
+                                    @endforeach
+                                </td>
+                                <td><a class="btn btn-primary" href="/verif/acc/{{$shop->product_id}}" role="button">Accept</a> <a class="btn btn-danger" href="/verif/dec/{{$shop->product_id}}" role="button">Reject</a></td>
                             </tr>
+                            <h1 hidden>{{$counter=$counter+1}}</h1>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
+            {{ $shops->links() }}
         </div>
 
         @endif

@@ -15,40 +15,40 @@ class insert_data_to_category_table extends Seeder
     public function run()
     {
         DB::table('category')->insert([
-            ['category_name' => 'Baju Adat', 'category_image' => 'bajuAdat.png'],
+            ['category_name' => 'Baju Adat', 'category_image' => 'images/bajuAdat.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Jas Pria', 'category_image' => 'jas.png'],
+            ['category_name' => 'Jas Pria', 'category_image' => 'images/jas.png'],
 
         ]);
 
         DB::table('category')->insert([
-            ['category_name' => 'Aksesoris', 'category_image' => 'aksesoris.png'],
+            ['category_name' => 'Aksesoris', 'category_image' => 'images/aksesoris.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Kostum', 'category_image' => 'kostum.png'],
+            ['category_name' => 'Kostum', 'category_image' => 'images/kostum.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Dress', 'category_image' => 'dress.png'],
+            ['category_name' => 'Dress', 'category_image' => 'images/dress.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Sepatu Pria', 'category_image' => 'SepatuPria.png'],
+            ['category_name' => 'Sepatu Pria', 'category_image' => 'images/SepatuPria.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Sepatu Wanita', 'category_image' => 'SepatuWanita.png'],
+            ['category_name' => 'Sepatu Wanita', 'category_image' => 'images/SepatuWanita.png'],
 
         ]);
         DB::table('category')->insert([
-            ['category_name' => 'Rambut Palsu', 'category_image' => 'wig.png'],
+            ['category_name' => 'Rambut Palsu', 'category_image' => 'images/wig.png'],
 
         ]);
-        
-       
-        
+
+
+
     }
 }

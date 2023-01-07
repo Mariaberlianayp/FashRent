@@ -227,7 +227,7 @@
             <div class="row buttonEdit">
                 <div class="col">
                     @if(Auth::user()->User_Priority == 2)
-                        <a class="btn btn-primary manageProduct" href="/shop/produk/{{$d->shop_id}}" role="button">Manage Products</a>
+                        <a class="btn btn-primary manageProduct" href="/shop/produk" role="button">Manage Products</a>
                     @endif
                 </div>
                 <div class="col">
