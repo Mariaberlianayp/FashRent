@@ -181,7 +181,7 @@ class HomeController extends Controller
         }
 
 
-        return redirect('/profil/{id}')->with('update','Profil Berhasil Diupdate!');
+        return redirect('/profileDetail/{id}')->with('update','Profile Successfully Updated!');
     }
 
     public function editPassword(Request $request){
@@ -197,7 +197,7 @@ class HomeController extends Controller
             'password' => Hash::make($validated['password_baru']),
         ]);
 
-        return redirect('/profil/{id}')->with('update_password','Password Berhasil Berubah!');
+        return redirect('/profil/{id}')->with('update_password','Password Changed Successfully!');
     }
 
     public function productDetail($id)

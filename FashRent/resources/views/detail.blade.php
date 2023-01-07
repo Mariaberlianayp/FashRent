@@ -1,13 +1,19 @@
 @extends('layouts.app')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-
-<div class="judul d-flex text-center">
-    <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
-    <h3>Detail Produk</h3>
+<div class="container text-center">
+    <div class="judul row d-flex">
+        <div class="col-3">
+            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="col-sm-9  text-left">
+            <h3>PRODUCT DETAIL</h3>
+        </div>
+    </div>
 </div>
 <div class="360image d-flex justify-content-center">
 <div class="center">
+
         <div class="rotation">
             <img src="{{url('images/Product/img01.jpg')}}">
             <img src="{{url('images/Product/img02.jpg')}}">

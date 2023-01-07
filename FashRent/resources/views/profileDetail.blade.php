@@ -16,13 +16,13 @@
                     {!! \Session::get('update_password') !!}
                 </div>
             @endif
-            <div class="card profile">
-                @foreach ($data as $d)
 
+            <div class="card profile">
+
+                @foreach ($data as $d)
                 <div class="card-body">
                 <form method="POST" action="/profile/update" enctype="multipart/form-data">
                     <fieldset disabled>
-
                     @csrf
                         {{-- Renter --}}
                         @if(Auth::user()->User_Priority == 3)

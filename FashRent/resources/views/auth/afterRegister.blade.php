@@ -3,10 +3,10 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 
-<div class="container text-center">
+<div class="container text-center register">
     <div class="row">
       <div class="col-6">
-        <div class="p-3"><img src="{{url('images/Login register.png')}}" alt=""></div>
+        <img src="{{url('images/loginRegister.png')}}" alt="">
       </div>
       <div class="col-6">
         @if (\Session::has('complete'))

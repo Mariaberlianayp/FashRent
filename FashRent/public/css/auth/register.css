@@ -1,6 +1,10 @@
 .register
 {
-    margin: 20px;
+    margin: auto;
+}
+.register img{
+    max-width: 450px;
+
 }
 .cardRegister{
     background-color: #533d9e;

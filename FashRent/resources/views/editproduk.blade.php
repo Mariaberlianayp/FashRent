@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/editProduk.css') }}">
+<div class="container text-center">
+    <div class="judul row d-flex">
+        <div class="col-3">
+            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
+
+        </div>
+        <div class="col-sm-9  text-left">
+            <h3>PRODUCT EDIT</h3>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,23 +22,22 @@
             </div>
             @endif
             <div class="card">
-                <div class="card-header">{{ __('Edit Produk') }}</div>
-
                 <div class="card-body">
                         <form method="POST" action="/editproduk" enctype="multipart/form-data">
                         @csrf
 
                         <input type="text" name="product_id" value="{{$data->product_id}}" hidden>
                         <div class="row mb-3">
-                            <label for="images" class="col-md-4 col-form-label text-md-end">{{ __('Upload Foto') }}</label>
+                            <label for="images" class="col-md-4 col-form-label text-md-end">{{ __('Product Image:') }}</label>
                             <div class="col-md-6">
                             <input type="file" name="images[]" value="" class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" multiple>
 
                                 @foreach ($images as $img)
-                                <div class="d-flex flex-row">
+                                <div class="d-flex flex-rowv image">
                                     <img width="100px" height="100px" src="{{Storage::url($img->product_photo)}}" class="card-img-top-p2" alt="...">
-                                  </div>
-                                  <a class="btn btn-primary" href="/deletephoto/{{$img->photo_id}}" role="button">Hapus Gambar</a>
+                                    <a href="/deletephoto/{{$img->photo_id}}"><i class="fa-solid fa-circle-xmark"></i></a>
+                                </div>
+
                                 @endforeach
 
                                 @error('images')
@@ -41,7 +52,7 @@
                                 </span>
                                 @enderror
                             </div>
-                                <div class="col-md-6">
+                                <div class="col">
                                     @if (\Session::has('delfoto'))
                                     <div class="alert alert-success">
                                         {!! \Session::get('delfoto') !!}
@@ -56,9 +67,9 @@
                     </div>
 
                         <div class="row mb-3">
-                            <label for="namaproduk" class="col-md-4 col-form-label text-md-end">{{ __('Nama Produk') }}</label>
+                            <label for="namaproduk" class="col-md-4 col-form-label text-md-end">{{ __('Product Name:') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input id="namaproduk" type="text" class="form-control @error('namaproduk') is-invalid @enderror" value="{{$data->product_name}}" name="namaproduk">
 
                                 @error('namaproduk')
@@ -70,9 +81,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="sewahari" class="col-md-4 col-form-label text-md-end">{{ __('Harga Sewa per Hari') }}</label>
+                            <label for="sewahari" class="col-md-4 col-form-label text-md-end">{{ __('Rental Price Per Day:') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input id="sewahari" type="text" class="form-control @error('sewahari') is-invalid @enderror" value="{{$data->product_rentprice}}" name="sewahari">
 
                                 @error('sewahari')
@@ -84,9 +95,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="deposito" class="col-md-4 col-form-label text-md-end">{{ __('Harga Deposito (Uang Jaminan)') }}</label>
+                            <label for="deposito" class="col-md-4 col-form-label text-md-end">{{ __('Deposit Price (security deposit):') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input id="deposito" type="text" class="form-control @error('deposito') is-invalid @enderror" value="{{$data->product_deposito}}" name="deposito">
 
                                 @error('deposito')
@@ -98,9 +109,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="qty" class="col-md-4 col-form-label text-md-end">Jumlah Produk</label>
+                            <label for="qty" class="col-md-4 col-form-label text-md-end">Product Quantity:</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input type="number" id="qty" name="qty" min="1" @error('qty') is-invalid @enderror value="{{$data->product_stock}}" name="qty">
 
                                 @error('qty')
@@ -112,8 +123,8 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="kategori" class="col-md-4 col-form-label text-md-end">Kategori</label>
-                            <div class="col-md-6">
+                            <label for="kategori" class="col-md-4 col-form-label text-md-end">Category:</label>
+                            <div class="col">
                               <select id="kategori" name="kategori" class="custom-select" required="required">
                                 @foreach ($categories as $category)
                                 @if ($data->category_id == $category->category_id)
@@ -127,8 +138,8 @@
                           </div>
 
                           <div class="row mb-3">
-                            <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
-                            <div class="col-md-6">
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">Gender:</label>
+                            <div class="col">
                               <select id="gender" name="gender" class="custom-select" required="required">
                                 @if ($data->product_gender == 1)
                                 <option value="Pria" selected>Pria</option>
@@ -142,9 +153,9 @@
                           </div>
 
                           <div class="row mb-3">
-                            <label for="warna" class="col-md-4 col-form-label text-md-end">Warna</label>
+                            <label for="warna" class="col-md-4 col-form-label text-md-end">Color:</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input id="warna" type="text" class="form-control @error('warna') is-invalid @enderror" value="{{$data->product_color}}" name="warna">
 
                                 @error('warna')
@@ -156,8 +167,8 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="ukuran" class="col-md-4 col-form-label text-md-end">Ukuran</label>
-                            <div class="col-md-6">
+                            <label for="ukuran" class="col-md-4 col-form-label text-md-end">Size:</label>
+                            <div class="col">
                               <textarea id="ukuran" name="ukuran" cols="40" rows="5" class="form-control @error('ukuran') is-invalid @enderror" required>{{$data->product_size}}</textarea>
 
                               @error('ukuran')
@@ -169,8 +180,8 @@
                           </div>
 
                           <div class="row mb-3">
-                            <label for="deskripsi" class="col-md-4 col-form-label text-md-end">Deskripsi</label>
-                            <div class="col-md-6">
+                            <label for="deskripsi" class="col-md-4 col-form-label text-md-end">Description:</label>
+                            <div class="col">
                               <textarea id="deskripsi" name="deskripsi" cols="40" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required>{{$data->product_description}}</textarea>
 
                               @error('deskripsi')
@@ -181,10 +192,10 @@
                             </div>
                           </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="row">
+                            <div class="col button">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Edit Produk') }}
+                                    {{ __('Edit Prodct') }}
                                 </button>
                             </div>
                         </div>

@@ -114,7 +114,7 @@ class shopController extends Controller
         DB::table('product')->where('product.product_id',$id)->delete();
 
 
-        return redirect()->back()->with('deleteProduk','Produk Berhasil Dihapus!');
+        return redirect()->back()->with('deleteProduk','Product Deleted Successfully!');
 
     }
 
@@ -237,7 +237,7 @@ class shopController extends Controller
         }
 
 
-        return redirect()->back()->with('edit','Berhasil Merubah Data Produk!');
+        return redirect()->back()->with('edit','Successfully Edit Product!');
     }
 
 
@@ -253,7 +253,7 @@ class shopController extends Controller
 
 
 
-        return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
+        return redirect()->back()->with('delfoto','Photo Deleted Successfully!');
 
     }
 
@@ -268,6 +268,11 @@ class shopController extends Controller
 
         return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products]);
 
+     }
+
+     public function add360view($id){
+
+        return view('add360image');
      }
 
 }
