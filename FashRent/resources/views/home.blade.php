@@ -294,7 +294,7 @@
         </div>
 
         <div class="kategori">
-            <h4>KATEGORI</h4>
+            <h4>CATEGORY</h4>
             <div class="container text-center">
               @foreach($categories as $category)
               <div class="cardKategori">
@@ -310,8 +310,8 @@
         </div>
         <div class="toko">
           <div class="tokoJudul">
-            <h4>TOKO</h4>
-            <a href="/allshop"><p>Lihat Semua</p></a>
+            <h4>SHOP</h4>
+            <a href="/allshop"><p>View all</p></a>
           </div>
           <div class="listToko">
             @foreach($shops->take(6) as $shop)
@@ -326,7 +326,7 @@
                   <i data-star="4.5"></i>
                 </div>
                 <div class="button">
-                    <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
+                    <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
                 </div>
               </div>
               <div class="bawah">
@@ -343,7 +343,7 @@
         </div>
 
         <div class="produk">
-          <h4>PRODUK</h4>
+          <h4>PRODUCT</h4>
           <div class="listProduk row justify-content-center">
             @foreach($products as $product)
             <div class="col-md-3">
