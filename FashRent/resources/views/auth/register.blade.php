@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 
 <div class="container text-center  register">
-    <div class="row">
+    <div class="row align-content-center">
       <div class="col-6">
-        <img src="{{url('images/Login register.png')}}" alt="">
+        <img src="{{url('images/loginRegister.png')}}" alt="">
       </div>
       <div class="col-6">
         <div class="cardRegister">

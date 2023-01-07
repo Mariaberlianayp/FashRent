@@ -43,11 +43,17 @@ class afterRegisterController extends Controller
 
         }
 
+        $productfeedback = DB::table('product_feedback')->get();
+
+        $count=0;
+
+        $stars=0;
+
 
         $photos = productimageModel::all();
 
 
-        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter]);
+        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter,'productfeedback'=>$productfeedback,'count'=>$count,'stars'=>$stars]);
     }
 
     public function inputAfterRegister(Request $request)

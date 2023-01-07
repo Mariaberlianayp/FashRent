@@ -5,7 +5,7 @@
 <div class="container text-center login">
     <div class="row">
       <div class="col-6">
-        <img src="{{url('images/Login register.png')}}" alt="">
+        <img src="{{url('images/loginRegister.png')}}" alt="">
       </div>
       <div class="col-6">
         <div class="cardLogin">

@@ -1,13 +1,19 @@
 @extends('layouts.app')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-
-<div class="judul d-flex text-center">
-    <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
-    <h3>Detail Produk</h3>
+<div class="container text-center">
+    <div class="judul row d-flex">
+        <div class="col-3">
+            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="col-sm-9  text-left">
+            <h3>PRODUCT DETAIL</h3>
+        </div>
+    </div>
 </div>
 <div class="360image d-flex justify-content-center">
 <div class="center">
+
         <div class="rotation">
             @if ($product->product_status == 2)
             @foreach ($degreephotos as $dp)
@@ -70,7 +76,9 @@
 <div class="card detailProduk">
     <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button" style="width: 10%">Add Feedback</a>
     <h2>Product Rating</h2>
+    @if (count($productfeedback)>0)
     <span><i data-star="{{$stars_avg}}"></i> ({{$count}})</span>
+    @endif
     <div class="isibawah">
         @foreach ($productfeedback as $pf)
         <img class="rounded mx-auto d-block" src="{{Storage::url($pf->renter_photoprofile)}}">

@@ -12,9 +12,21 @@
             <div class="card">
                 <div class="card-header">{{ __('Lengkapi Profile') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="/inputAfterRegister" enctype="multipart/form-data">
-                        @csrf
+<div class="container text-center register">
+    <div class="row">
+      <div class="col-6">
+        <img src="{{url('images/loginRegister.png')}}" alt="">
+      </div>
+      <div class="col-6">
+        @if (\Session::has('complete'))
+        <div class="alert alert-danger">
+            {!! \Session::get('complete') !!}
+        </div>
+        @endif
+        <div class="cardRegister">
+            <div class="cardHeader">
+                <h2>Complete Profile</h2>
+            </div>
 
                         {{-- Renter --}}
                     @if(Auth::user()->User_Priority == 3)

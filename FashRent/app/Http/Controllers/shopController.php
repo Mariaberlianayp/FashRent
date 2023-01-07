@@ -288,7 +288,7 @@ class shopController extends Controller
 
 
 
-        return view('degreephoto',['id'=>$id_product,'data'=>$data]);
+        return view('add360Image',['id'=>$id_product,'data'=>$data]);
 
      }
 
@@ -305,13 +305,17 @@ class shopController extends Controller
 
          $stars=0;
 
-         foreach($productfeedback as $p){
-            $stars=$stars+$p->rating_stars;
-            $count++;
+         $stars_avg=0;
+         
+
+         if(count($productfeedback)>0){
+            foreach($productfeedback as $p){
+                $stars=$stars+$p->rating_stars;
+                $count++;
+             }
+
+             $stars_avg = $stars/$count;
          }
-
-         $stars_avg = $stars/$count;
-
 
          return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg'));
      }
