@@ -16,6 +16,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="judul d-flex text-center">
+                <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i>  Back to Manage Catalog</a>
+            </div>
             @if (\Session::has('add'))
                 <div class="alert alert-success">
                     {!! \Session::get('add') !!}
@@ -183,7 +186,5 @@
         </div>
     </div>
 
-
-        </script>
 </div>
 @endsection

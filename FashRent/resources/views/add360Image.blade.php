@@ -80,4 +80,41 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+
+<div class="SubmitImage">
+    <div class="card submitCard">
+        <form method="POST" action="/add360photo" enctype="multipart/form-data">
+            @csrf
+
+            <div class="row mb-3">
+                <label for="iamges" class="col-md-4 col-form-label text-md-end">Input 360&#176 Image:</label>
+                <div class="col">
+                    <input type="file" name="images[]" value="" class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" multiple onchange="image_select()">
+                    @error('images')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
+                    @error('images.*')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>The images must be an image.</strong>
+                    </span>
+                    @enderror
+
+            </div>
+        </div>
+
+            <div class="row ">
+                <div class="col button">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Submit Image') }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
 @endsection
