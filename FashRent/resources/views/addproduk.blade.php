@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="judul d-flex text-center">
+                <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i>  Back to Manage Catalog</a>
+            </div>
             @if (\Session::has('add'))
                 <div class="alert alert-success">
                     {!! \Session::get('add') !!}
@@ -172,26 +175,5 @@
         </div>
     </div>
 
-        {{-- <script type="text/javascript">
-            function image_select(){
-                var multiple_images = [];
-                var images = document.getElementById('images').files;
-                for(i =0 ;i<images.length:i++){
-                    multiple_images.push({
-                        "url" : URL.createObjectURL(images[i]),
-                        "file" : images[i],
-                    })
-                }
-                document.getElementById('container').innerHtml = image_show();
-            }
-
-            function image_show(){
-                var image = "";
-                multiple_images.forEach((i)=>{
-                    image+= '<img width="200px" height="300px" src="`+i.url+`" class="card-img-top" alt="...">'
-                })
-            } --}}
-
-        </script>
 </div>
 @endsection

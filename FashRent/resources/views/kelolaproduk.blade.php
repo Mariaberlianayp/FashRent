@@ -24,7 +24,7 @@
                                             <br>
                                             <a href="/productedit/{{$d->product_id}}" class="btn btn-primary mt-1">Ubah</a>
                                             @if($d->product_status == 0)
-                                            <a href="#" class="btn btn-primary mt-auto">Tambah 360</a>
+                                            <a href="/product/360photo/{{$d->product_id}}" class="btn btn-primary mt-auto">Tambah 360</a>
                                             @endif
                                     </div>
                             </div>

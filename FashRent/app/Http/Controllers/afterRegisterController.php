@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\categoryModel;
+use App\Models\degreephotoModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
 use App\Models\shopModel;
@@ -23,6 +24,19 @@ class afterRegisterController extends Controller
         $shops = shopModel::all();
 
         $products = productModel::all();
+
+        if(Auth::check()){
+            if(Auth::user()->User_Priority == 1){
+                $shops = degreephotoModel::join('product','360_photo.product_id','=','product.product_id')
+                ->join('shop','shop.shop_id','=','product.shop_id')
+                ->select('360_photo.photo_id','360_photo.product_id','360_photo.photo360','shop.shop_id','shop.shop_shopname')
+                ->get();
+
+                // dd($shops);
+            }
+
+        }
+
 
         $photos = productimageModel::all();
 

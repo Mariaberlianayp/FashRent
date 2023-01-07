@@ -196,4 +196,11 @@ class HomeController extends Controller
         $category = categoryModel::where('category_id', $product->category_id)->first();
         return view('detail', compact('product', 'toko','category'));
     }
+
+    public function viewAllShop(){
+
+        $shops = shopModel::all();
+
+        return view('allshop',['shops'=>$shops]);
+    }
 }

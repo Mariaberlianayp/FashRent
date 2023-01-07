@@ -17,9 +17,17 @@ class checkRegister
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->User_Status == 0){
-            return redirect('/afterRegister')->with('complete','Lengkapi Profil Anda Terlebih Dahulu!');
+        if(Auth::check()){
+
+            if(Auth::user()->User_Priority == 1){
+                return $next($request);
+            }
+
+            if(Auth::user()->User_Status == 0){
+                return redirect('/afterRegister')->with('complete','Lengkapi Profil Anda Terlebih Dahulu!');
+            }
         }
+
         return $next($request);
     }
 }

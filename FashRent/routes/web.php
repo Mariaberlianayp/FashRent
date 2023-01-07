@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [App\Http\Controllers\afterRegisterController::class, 'index']);
+Route::get('/', [App\Http\Controllers\afterRegisterController::class, 'index'])->middleware('cek');
 
 Auth::routes();
 
@@ -47,3 +47,7 @@ Route::get('/productDetail/{id}', [App\Http\Controllers\HomeController::class, '
 Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch']);
 
 Route::get('/detailtoko/{id}', [App\Http\Controllers\shopController::class, 'showDetailToko']);
+
+Route::get('/product/360photo/{id}',[App\Http\Controllers\shopController::class,'view360photo']);
+
+Route::get('/allshop',[App\Http\Controllers\HomeController::class,'viewAllShop']);
