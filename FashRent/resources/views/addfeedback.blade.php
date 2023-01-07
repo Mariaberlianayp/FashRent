@@ -6,8 +6,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (\Session::has('addcomment'))
+            <div class="alert alert-success">
+                {!! \Session::get('addcomment') !!}
+            </div>
+            @endif
             <div class="judul d-flex text-center">
-                <a href="{{url()->previous()}}"><i class="fa-solid fa-arrow-left"></i>Back to Detail Product</a>
+                <a href="/productDetail/{{$id}}"><i class="fa-solid fa-arrow-left"></i>Back to Detail Product</a>
             </div>
             <div class="card">
                 <div class="card-header">{{ __('Add Feedback') }}</div>
@@ -17,20 +22,20 @@
                     <form method="POST" action="/addfeedback" enctype="multipart/form-data">
                         @csrf
 
-
+                        <input type="text" hidden value="{{$id}}" name="product_id">
                         <div class="row mb-3">
                             <label for="stars">Rating</label>
                             <div class="col-md-6">
                                 <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <input type="radio" id="star5" name="stars" value="5" />
                                     <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <input type="radio" id="star4" name="stars" value="4" />
                                     <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <input type="radio" id="star3" name="stars" value="3" />
                                     <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <input type="radio" id="star2" name="stars" value="2" />
                                     <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <input type="radio" id="star1" name="stars" value="1" />
                                     <label for="star1" title="text">1 star</label>
                                   </div>
                             </div>
@@ -53,7 +58,7 @@
                             <label for="comment" class="col-md-4 col-form-label text-md-end">{{ __('Comment') }}</label>
 
                             <div class="col-md-6">
-                                <input id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment">
+                                <textarea id="comment" name="comment" cols="40" rows="5" class="form-control @error('comment') is-invalid @enderror" required></textarea>
 
                                 @error('comment')
                                     <span class="invalid-feedback" role="alert">

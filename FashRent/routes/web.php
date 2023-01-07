@@ -61,3 +61,7 @@ Route::get('/verif/acc/{id}',[App\Http\Controllers\adminController::class,'accep
 Route::get('/verif/dec/{id}',[App\Http\Controllers\adminController::class,'decline']);
 
 Route::get('/feedback/{id}',[App\Http\Controllers\shopController::class,'viewfeedback']);
+
+Route::post('/addfeedback', [App\Http\Controllers\shopController::class, 'addfeedback']);
+
+Route::get('/search',[App\Http\Controllers\searchController::class,'productSearch']);

@@ -19,6 +19,7 @@ class afterRegisterController extends Controller
     public function index()
     {
 
+
         $categories = categoryModel::all();
 
         $shops = shopModel::all();
@@ -112,4 +113,5 @@ class afterRegisterController extends Controller
 
         return redirect('/');
     }
+
 }

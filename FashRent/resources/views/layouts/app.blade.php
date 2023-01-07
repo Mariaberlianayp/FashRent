@@ -35,8 +35,8 @@
                         <li class="search">
                             @if (Auth::check())
                                 @if (!Auth::user()->User_Status == 0)
-                                    <form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search">
+                                    <form class="form-inline my-2 my-lg-0" action="/search">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search" name="search">
                                         <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                     <li class="chat"><i class="fa-solid fa-comment"></i></li>

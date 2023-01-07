@@ -24,4 +24,17 @@ class searchController extends Controller
         return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos]);
     }
 
+    public function productSearch(Request $request){
+
+        $data = DB::table('product')->where('product.product_name','like','%'.$request->search.'%')
+        ->paginate(6);
+
+        $shops = shopModel::all();
+
+        $photos = productimageModel::all();
+
+        return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos]);
+
+    }
+
 }

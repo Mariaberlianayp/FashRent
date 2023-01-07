@@ -69,9 +69,17 @@
 </div>
 <div class="card detailProduk">
     <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button" style="width: 10%">Add Feedback</a>
-    <h2>Penilaian Produk</h2>
+    <h2>Product Rating</h2>
+    <span><i data-star="{{$stars_avg}}"></i> ({{$count}})</span>
     <div class="isibawah">
-
+        @foreach ($productfeedback as $pf)
+        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->renter_photoprofile)}}">
+        <p>{{$pf->renter_name}}</p>
+        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->rating_photo)}}">
+        <i data-star="{{$pf->rating_stars}}"></i>
+        <p>{{$pf->rating_description}}</p>
+        <p>{{$pf->rating_date}}</p>
+        @endforeach
     </div>
 </div>
 

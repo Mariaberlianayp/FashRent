@@ -45,7 +45,11 @@
               <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
               <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
               <p class="city">{{$toko->shop_city}}</p>
-              <i data-star="4.5"></i>
+              @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+                <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+                <p hidden>{{$count=$count+1}}</p>
+              @endforeach
+              <i data-star="{{$stars/$count}}"></i>
             </div>
 
           </div>

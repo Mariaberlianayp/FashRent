@@ -267,7 +267,14 @@ class shopController extends Controller
 
         $products = DB::table('product')->where('product.shop_id',$id)->get();
 
-        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products]);
+        $productfeedback = DB::table('product_feedback')->get();
+
+        $count=0;
+
+        $stars=0;
+
+
+        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products,'count'=>$count,'stars'=>$stars,'productfeedback'=>$productfeedback]);
 
      }
 
@@ -291,8 +298,22 @@ class shopController extends Controller
          $toko = shopModel::where('shop_id', $product->shop_id)->first();
          $category = categoryModel::where('category_id', $product->category_id)->first();
          $degreephotos = degreephotoModel::where('360_photo.product_id',$id)->get();
+         $productfeedback = DB::table('product_feedback')->join('renter','renter.renter_id','=','product_feedback.renter_id')
+         ->where('product_feedback.product_id',$id)->get();
 
-         return view('detail', compact('product', 'toko','category','degreephotos'));
+         $count=0;
+
+         $stars=0;
+
+         foreach($productfeedback as $p){
+            $stars=$stars+$p->rating_stars;
+            $count++;
+         }
+
+         $stars_avg = $stars/$count;
+
+
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg'));
      }
 
      public function viewAllShop(){
@@ -333,9 +354,40 @@ class shopController extends Controller
 
     function viewfeedback($id){
 
+        $id_product=$id;
+
+        return view('addfeedback',['id'=>$id_product]);
+    }
+
+    function addfeedback(Request $request){
+
+        $validated = $request->validate([
+            'comment' => ['required','string'],
+            'image' =>['required','file','image'],
+            'stars' => ['required']
+        ]);
+
+        $file = $request->file('image');
+        $imageName = time().'_'.$file->getClientOriginalName();
+
+        Storage::putFileAs('public/images',$file, $imageName);
+        // $path = $validated['image']->storeAs('public/images', $imageName);
+        $imagePath = 'images/'.$imageName;
+        // dd($imagePath);
+
+        $renter_now = DB::table('renter')->where('renter.id',Auth::user()->id)->first();
+
+        DB::table('product_feedback')->insert([
+            'renter_id' => $renter_now->renter_id,
+            'product_id' => $request->product_id,
+            'rating_stars' => $validated['stars'],
+            'rating_date' => date("Y-m-d H:i:s"),
+            'rating_description' => $validated['comment'],
+            'rating_photo' => $imagePath
+        ]);
 
 
-        return view('addfeedback');
+        return redirect()->back()->with('addcomment','Feedback has been added!');
     }
 
 }
