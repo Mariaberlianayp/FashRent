@@ -261,6 +261,7 @@ class shopController extends Controller
 
 
         return redirect()->back()->with('delfoto','Photo Deleted Successfully!');
+<<<<<<< HEAD
         DB::table('product_image')->where('product_image.photo_id',$id)->delete();
 
         foreach($data_now as $img){
@@ -276,6 +277,8 @@ class shopController extends Controller
 
 
         return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
+=======
+>>>>>>> 908a190 (Profile & add 360 UI)
 
     }
 
@@ -292,12 +295,18 @@ class shopController extends Controller
 
      }
 
+<<<<<<< HEAD
      public function view360photo($id){
 
         $id_product=$id;
 
         return view('add360image',['id'=>$id_product]);
 
+=======
+     public function add360view($id){
+
+        return view('add360image');
+>>>>>>> 908a190 (Profile & add 360 UI)
      }
 
 }

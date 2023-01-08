@@ -5,7 +5,11 @@
 .judul i{
     font-size: xx-large;
 }
+<<<<<<< HEAD
 .carousel {
+=======
+.carousel{
+>>>>>>> 908a190 (Profile & add 360 UI)
     display: flex;
     justify-content: center;
 }
@@ -53,6 +57,7 @@
     max-width: 500px;
 
 }
+<<<<<<< HEAD
 .submitCard{
     background-color: #DFCEFB;
     width: 1195px;
@@ -79,3 +84,5 @@ label{
     background-color: #533D9E;
     border-color: #533D9E;
 }
+=======
+>>>>>>> 908a190 (Profile & add 360 UI)

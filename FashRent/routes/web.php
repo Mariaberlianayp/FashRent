@@ -39,6 +39,7 @@ Route::post('/addproduk', [App\Http\Controllers\shopController::class, 'addProdu
 Route::get('/productdelete/{id}', [App\Http\Controllers\shopController::class, 'deleteProduct'])->middleware('cek');
 
 Route::get('/productedit/{id}', [App\Http\Controllers\shopController::class, 'showeditProduct'])->middleware('cek');
+Route::get('/add360view/{id}', [App\Http\Controllers\shopController::class, 'add360view'])->middleware('cek');
 
 Route::get('/deletephoto/{id}', [App\Http\Controllers\shopController::class, 'deletePhoto'])->middleware('cek');
 

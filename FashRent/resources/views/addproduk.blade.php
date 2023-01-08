@@ -186,5 +186,10 @@
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+
+        </script>
+>>>>>>> 908a190 (Profile & add 360 UI)
 </div>
 @endsection

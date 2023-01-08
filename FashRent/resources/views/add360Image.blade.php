@@ -80,6 +80,7 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+<<<<<<< HEAD
 
 <div class="SubmitImage">
     <div class="card submitCard">
@@ -117,4 +118,6 @@
 
 </div>
 
+=======
+>>>>>>> 908a190 (Profile & add 360 UI)
 @endsection
