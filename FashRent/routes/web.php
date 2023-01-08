@@ -66,3 +66,7 @@ Route::get('/feedback/{id}',[App\Http\Controllers\shopController::class,'viewfee
 Route::post('/addfeedback', [App\Http\Controllers\shopController::class, 'addfeedback']);
 
 Route::get('/search',[App\Http\Controllers\searchController::class,'productSearch']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
