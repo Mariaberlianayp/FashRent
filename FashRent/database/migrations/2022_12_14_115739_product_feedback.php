@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        
+
         Schema::create('product_feedback',function(Blueprint $table){
             $table->bigIncrements('feedback_id');
             $table->foreignid('renter_id')->references('renter_id')->on('renter')->onUpdate('cascade')->onDelete('cascade');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamp('rating_date');
             $table->string('rating_description');
             $table->string('rating_photo');
+            
         });
     }
 

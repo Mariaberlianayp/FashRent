@@ -17,7 +17,7 @@ class insert_data_to_user_table extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            ['id' => '1','email' => 'admin@gmail.com', 'password' => Hash::make('admin123'), 'user_priority' => '1'],
+            ['name'=>'admin','id' => '1','email' => 'admin@gmail.com', 'password' => Hash::make('admin123'), 'user_priority' => '1'],
 
         ]);
     }

@@ -64,6 +64,7 @@ class HomeController extends Controller
         else{
             $data = shopModel::where('shop.id','=',Auth::user()->id)
             ->get();
+
         }
 
         return view('profileDetail',['data'=>$data]);
@@ -100,8 +101,7 @@ class HomeController extends Controller
         else if($role === 2){
             if($request['image']){
                 $validated = $request->validate([
-                    'namapemilik' => ['required','string','min:3'],
-                    'namatoko' => ['required','string'],
+                    'name' => ['required','string','min:3'],
                     'address' => ['required','string'],
                     'kota' => ['required','string'],
                     'deskripsi' => ['required','string','min:30'],
@@ -119,8 +119,7 @@ class HomeController extends Controller
             }
             else{
                 $validated = $request->validate([
-                    'namapemilik' => ['required','string','min:3'],
-                    'namatoko' => ['required','string'],
+                    'name' => ['required','string','min:3'],
                     'address' => ['required','string'],
                     'kota' => ['required','string'],
                     'deskripsi' => ['required','string','min:30'],
@@ -135,17 +134,23 @@ class HomeController extends Controller
                 DB::table('renter')->where('id',Auth::user()->id)
                 ->update([
                     'id' =>Auth::user()->id,
-                    'renter_name' => $validated['name'],
                     'renter_phonenumber' => $validated['NoTelepon'],
                     'renter_photoprofile' => $imagePath,
+                ]);
+
+                DB::table('users')->where('users.id',Auth::user()->id)->update([
+                    'name' => $validated['name'],
                 ]);
             }
             else{
                 DB::table('renter')->where('id',Auth::user()->id)
                 ->update([
                     'id' =>Auth::user()->id,
-                    'renter_name' => $validated['name'],
                     'renter_phonenumber' => $validated['NoTelepon'],
+                ]);
+
+                DB::table('users')->where('users.id',Auth::user()->id)->update([
+                    'name' => $validated['name'],
                 ]);
             }
 
@@ -157,23 +162,25 @@ class HomeController extends Controller
                 DB::table('shop')->where('id',Auth::user()->id)
                 ->update([
                     'id' =>Auth::user()->id,
-                    'shop_ownername' => $validated['namapemilik'],
-                    'shop_shopname' => $validated['namatoko'],
                     'shop_phonenumber' => $validated['NoTelepon'],
                     'shop_city' => $validated['kota'],
                     'shop_description' => $validated['deskripsi'],
                     'shop_photoprofile' => $imagePath,
+                ]);
+                DB::table('users')->where('users.id',Auth::user()->id)->update([
+                    'name' => $validated['name'],
                 ]);
             }
             else{
                 DB::table('shop')->where('id',Auth::user()->id)
                 ->update([
                     'id' =>Auth::user()->id,
-                    'shop_ownername' => $validated['namapemilik'],
-                    'shop_shopname' => $validated['namatoko'],
                     'shop_phonenumber' => $validated['NoTelepon'],
                     'shop_city' => $validated['kota'],
                     'shop_description' => $validated['deskripsi'],
+                ]);
+                DB::table('users')->where('users.id',Auth::user()->id)->update([
+                    'name' => $validated['name'],
                 ]);
             }
 

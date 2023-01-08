@@ -12,6 +12,9 @@
             <div class="card">
                 <div class="card-header">{{ __('Lengkapi Profile') }}</div>
 
+                <div class="card-body">
+                    <form method="POST" action="/inputAfterRegister" enctype="multipart/form-data">
+                        @csrf
 <div class="container text-center register">
     <div class="row">
       <div class="col-6">
@@ -90,12 +93,12 @@
                     @if(Auth::user()->User_Priority == 2)
 
                     <div class="row mb-3">
-                        <label for="namapemilik" class="col-md-4 col-form-label text-md-end">{{ __('Nama Pemilik') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="namapemilik" type="text" class="form-control @error('namapemilik') is-invalid @enderror" name="namapemilik" value="{{ old('namapemilik') }}" required autocomplete="namapemilik" autofocus>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                            @error('namapemilik')
+                            @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -118,19 +121,6 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <label for="namatoko" class="col-md-4 col-form-label text-md-end">{{ __('Nama Toko') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="namatoko" type="text" class="form-control @error('namatoko') is-invalid @enderror" name="namatoko" value="{{ old('namatoko') }}" required autocomplete="namatoko" autofocus>
-
-                            @error('namatoko')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="row mb-3">
                         <label for="address" class="col-md-4 col-form-label text-md-end">Alamat Toko</label>

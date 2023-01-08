@@ -39,13 +39,17 @@
     <div class="kontak">
         <div class="card">
             <img class="rounded mx-auto d-block" src="{{Storage::url($toko->shop_photoprofile)}}">
-            <h4>{{$toko->shop_shopname}}</h4>
+            @foreach ($users->where('id',$toko->id) as $u)
+            <h4>{{$u->name}}</h4>
+            @endforeach
             <div class="kota d-flex justify-content-center">
                 <i class="fa-solid fa-location-dot"></i>
                 <p>{{$toko->shop_city}}</p>
             </div>
             <div class="button mx-auto">
-                <button type="button" class="btn" ><a target="_blank" href="https://wa.me/0895334975428"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @foreach ($users->where('id',$toko->id) as $u)
+                <button type="button" class="btn" ><a target="_blank" href="/chatify/{{$u->id}}"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @endforeach
             </div>
         </div>
     </div>
@@ -74,7 +78,11 @@
     </div>
 </div>
 <div class="card detailProduk">
-    <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button" style="width: 10%">Add Feedback</a>
+    @if (Auth::check())
+        @if (Auth::user()->User_Priority == 3)
+        <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button" style="width: 10%">Add Feedback</a>
+        @endif
+    @endif
     <h2>Product Rating</h2>
     @if (count($productfeedback)>0)
     <span><i data-star="{{$stars_avg}}"></i> ({{$count}})</span>
@@ -82,7 +90,9 @@
     <div class="isibawah">
         @foreach ($productfeedback as $pf)
         <img class="rounded mx-auto d-block" src="{{Storage::url($pf->renter_photoprofile)}}">
-        <p>{{$pf->renter_name}}</p>
+        @foreach ($users->where('id',$pf->id) as $u)
+        <h4>{{$u->name}}</h4>
+        @endforeach
         <img class="rounded mx-auto d-block" src="{{Storage::url($pf->rating_photo)}}">
         <i data-star="{{$pf->rating_stars}}"></i>
         <p>{{$pf->rating_description}}</p>

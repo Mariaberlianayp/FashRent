@@ -62,7 +62,9 @@
                   <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
                 </div>
                 <div class="keterangan">
-                  <h6>{{$shop->shop_shopname}}</h6>
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <h6>{{$u->name}}</h6>
+                    @endforeach
                   <p>{{$shop->shop_city}}</p>
                   <i data-star="4.5"></i>
                 </div>
@@ -71,11 +73,7 @@
                 </div>
               </div>
               <div class="bawah">
-                @foreach($products->where('shop_id' , $shop->shop_id)->take(3) as $dataProducts)
-                  @foreach($photos->where('product_id' , $dataProducts->product_id)->take(1) as $photo)
-                    <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$dataProducts->product_name}}/{{$photo->photo360}}" alt="">
-                  @endforeach
-                @endforeach
+
               </div>
             </div>
             @endforeach
@@ -171,7 +169,9 @@
               <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
             </div>
             <div class="keterangan">
-              <h6>{{$shop->shop_shopname}}</h6>
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <h6>{{$u->name}}</h6>
+                    @endforeach
               <p>{{$shop->shop_city}}</p>
               <i data-star="4.5"></i>
             </div>
@@ -180,11 +180,7 @@
             </div>
           </div>
           <div class="bawah">
-            @foreach($products->where('shop_id' , $shop->shop_id)->take(3) as $dataProducts)
-              @foreach($photos->where('product_id' , $dataProducts->product_id)->take(1) as $photo)
-                <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$dataProducts->product_name}}/{{$photo->photo360}}" alt="">
-              @endforeach
-            @endforeach
+
           </div>
         </div>
         @endforeach
@@ -241,7 +237,9 @@
                             <tr>
                                 <th scope="row">{{$counter}}</th>
                                 <td>{{$shop->shop_id}}</td>
-                                <td>{{$shop->shop_shopname}}</td>
+                                <td>@foreach ($users->where('id',$shop->id) as $u)
+                                    {{$u->name}}
+                                    @endforeach</td>
                                 <td>
                                     @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
                                     <input type="text" hidden>

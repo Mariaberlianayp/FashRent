@@ -7,6 +7,7 @@ use App\Models\degreephotoModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
 use App\Models\shopModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,12 +35,15 @@ class afterRegisterController extends Controller
             if(Auth::user()->User_Priority == 1){
                 $shops = productModel::join('shop','shop.shop_id','=','product.shop_id')
                 ->where('product.product_status',1)
-                ->select('product.product_id','shop.shop_id','shop.shop_shopname')
+                ->select('shop.id','product.product_id','shop.shop_id')
                 ->paginate(6);
 
                 $degreephoto=degreephotoModel::all();
 
+                // dd($shops);
+
             }
+
 
         }
 
@@ -52,8 +56,10 @@ class afterRegisterController extends Controller
 
         $photos = productimageModel::all();
 
+        $users = User::all();
 
-        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter,'productfeedback'=>$productfeedback,'count'=>$count,'stars'=>$stars]);
+
+        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter,'productfeedback'=>$productfeedback,'count'=>$count,'stars'=>$stars,'users'=>$users]);
     }
 
     public function inputAfterRegister(Request $request)
@@ -69,8 +75,7 @@ class afterRegisterController extends Controller
         }
         else if($role === 2){
             $validated = $request->validate([
-                'namapemilik' => ['required','string','min:3'],
-                'namatoko' => ['required','string'],
+                'name' => ['required','string','min:3'],
                 'address' => ['required','string'],
                 'deskripsi' => ['required','string','min:30'],
                 'NoTelepon' => ['required','numeric','min:10'],
@@ -91,9 +96,12 @@ class afterRegisterController extends Controller
         if($role === 3){
             DB::table('renter')->insert([
                 'id' =>Auth::user()->id,
-                'renter_name' => $validated['name'],
                 'renter_phonenumber' => $validated['NoTelepon'],
                 'renter_photoprofile' => $imagePath,
+            ]);
+
+            DB::table('users')->where('users.id',Auth::user()->id)->update([
+                'name' => $validated['name'],
             ]);
 
         }
@@ -101,13 +109,15 @@ class afterRegisterController extends Controller
         if($role === 2){
             DB::table('shop')->insert([
                 'id' =>Auth::user()->id,
-                'shop_ownername' => $validated['namapemilik'],
                 'shop_address' => $validated['address'],
-                'shop_shopname' => $validated['namatoko'],
                 'shop_phonenumber' => $validated['NoTelepon'],
                 'shop_city' => $request['kota'],
                 'shop_description' => $validated['deskripsi'],
                 'shop_photoprofile' => $imagePath,
+            ]);
+
+            DB::table('users')->where('users.id',Auth::user()->id)->update([
+                'name' => $validated['name'],
             ]);
 
         }

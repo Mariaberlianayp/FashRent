@@ -44,7 +44,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name:') }}</label>
 
                             <div class="col">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$d->renter_name}}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{Auth::user()->name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -101,20 +101,20 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="row mb-3">
-                                <label for="namapemilik" class="col-md-4 col-form-label text-md-end">{{ __('Owner Name:') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name:') }}</label>
 
                                 <div class="col">
-                                    <input id="namapemilik" type="text" class="form-control @error('namapemilik') is-invalid @enderror" name="namapemilik" value="{{$d->shop_ownername}}" required autocomplete="namapemilik" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{Auth::user()->name}}" required autocomplete="name" autofocus>
 
-                                    @error('namapemilik')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                             </div>
-
 
                             <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email:') }}</label>
@@ -130,19 +130,6 @@
                             </div>
                             </div>
 
-                            <div class="row mb-3">
-                            <label for="namatoko" class="col-md-4 col-form-label text-md-end">{{ __('Shop Name:') }}</label>
-
-                            <div class="col">
-                                <input id="namatoko" type="text" class="form-control @error('namatoko') is-invalid @enderror" name="namatoko" value="{{$d->shop_shopname}}" required autocomplete="namatoko" autofocus>
-
-                                @error('namatoko')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            </div>
 
                             <div class="row mb-3">
                             <label for="address" class="col-md-4 col-form-label text-md-end">Address:</label>
@@ -174,40 +161,40 @@
                                 <label for="kota" class="col-md-4 col-form-label text-md-end">City:</label>
                                 <div class="col">
                                     <select id="kota" name="kota" class="custom-select @error('kota') is-invalid @enderror" required="required">
-                                        @if ($d->shop_city == 'timur')
-                                        <option value="timur" selected>Jakarta Timur</option>
-                                        <option value="pusat">Jakarta Pusat</option>
-                                        <option value="barat">Jakarta Barat</option>
-                                        <option value="selatan">Jakarta Selatan</option>
-                                        <option value="utara">Jakarta Utara</option>
+                                        @if ($d->shop_city == 'Jakarta Timur')
+                                        <option value="Jakarta Timur" selected>Jakarta Timur</option>
+                                        <option value="Jakarta Pusat">Jakarta Pusat</option>
+                                        <option value="Jakarta Barat">Jakarta Barat</option>
+                                        <option value="Jakarta Selatan">Jakarta Selatan</option>
+                                        <option value="Jakarta Utara">Jakarta Utara</option>
                                         @endif
-                                        @if ($d->shop_city == 'pusat')
-                                        <option value="timur">Jakarta Timur</option>
-                                        <option value="pusat" selected>Jakarta Pusat</option>
-                                        <option value="barat">Jakarta Barat</option>
-                                        <option value="selatan">Jakarta Selatan</option>
-                                        <option value="utara">Jakarta Utara</option>
+                                        @if ($d->shop_city == 'Jakarta Pusat')
+                                        <option value="Jakarta Timur">Jakarta Timur</option>
+                                        <option value="Jakarta Pusat" selected>Jakarta Pusat</option>
+                                        <option value="Jakarta Barat">Jakarta Barat</option>
+                                        <option value="Jakarta Selatan">Jakarta Selatan</option>
+                                        <option value="Jakarta Utara">Jakarta Utara</option>
                                         @endif
-                                        @if ($d->shop_city == 'barat')
-                                        <option value="timur">Jakarta Timur</option>
-                                        <option value="pusat">Jakarta Pusat</option>
-                                        <option value="barat"selected>Jakarta Barat</option>
-                                        <option value="selatan">Jakarta Selatan</option>
-                                        <option value="utara">Jakarta Utara</option>
+                                        @if ($d->shop_city == 'Jakarta Barat')
+                                        <option value="Jakarta Timur">Jakarta Timur</option>
+                                        <option value="Jakarta Pusat">Jakarta Pusat</option>
+                                        <option value="Jakarta Barat" selected>Jakarta Barat</option>
+                                        <option value="Jakarta Selatan">Jakarta Selatan</option>
+                                        <option value="Jakarta Utara">Jakarta Utara</option>
                                         @endif
-                                        @if ($d->shop_city == 'selatan')
-                                        <option value="timur">Jakarta Timur</option>
-                                        <option value="pusat">Jakarta Pusat</option>
-                                        <option value="barat">Jakarta Barat</option>
-                                        <option value="selatan" selected>Jakarta Selatan</option>
-                                        <option value="utara">Jakarta Utara</option>
+                                        @if ($d->shop_city == 'Jakarta Selatan')
+                                        <option value="Jakarta Timur">Jakarta Timur</option>
+                                        <option value="Jakarta Pusat">Jakarta Pusat</option>
+                                        <option value="Jakarta Barat">Jakarta Barat</option>
+                                        <option value="Jakarta Selatan" selected>Jakarta Selatan</option>
+                                        <option value="Jakarta Utara">Jakarta Utara</option>
                                         @endif
-                                        @if ($d->shop_city == 'utara')
-                                        <option value="timur">Jakarta Timur</option>
-                                        <option value="pusat">Jakarta Pusat</option>
-                                        <option value="barat">Jakarta Barat</option>
-                                        <option value="selatan">Jakarta Selatan</option>
-                                        <option value="utara"selected>Jakarta Utara</option>
+                                        @if ($d->shop_city == 'Jakarta Utara')
+                                        <option value="Jakarta Timur">Jakarta Timur</option>
+                                        <option value="Jakarta Pusat">Jakarta Pusat</option>
+                                        <option value="Jakarta Barat">Jakarta Barat</option>
+                                        <option value="Jakarta Selatan">Jakarta Selatan</option>
+                                        <option value="Jakarta Utara" selected>Jakarta Utara</option>
                                         @endif
 
 

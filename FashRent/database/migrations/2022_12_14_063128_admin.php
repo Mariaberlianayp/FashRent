@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('admin',function(Blueprint $table){
             $table->bigIncrements('admin_id');
             $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('admin_name');
-
         });
     }
 

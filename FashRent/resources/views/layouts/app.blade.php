@@ -39,7 +39,7 @@
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search" name="search">
                                         <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
-                                    <li class="chat"><i class="fa-solid fa-comment"></i></li>
+                                    <a href="/chatify"><li class="chat"><i class="fa-solid fa-comment"></i></li></a>
                                 @endif
                             @endif
                         </li>

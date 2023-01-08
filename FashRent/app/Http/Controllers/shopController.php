@@ -7,6 +7,7 @@ use App\Models\degreephotoModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
 use App\Models\shopModel;
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -273,8 +274,10 @@ class shopController extends Controller
 
         $stars=0;
 
+        $users=User::all();
 
-        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products,'count'=>$count,'stars'=>$stars,'productfeedback'=>$productfeedback]);
+
+        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products,'count'=>$count,'stars'=>$stars,'productfeedback'=>$productfeedback,'users'=>$users]);
 
      }
 
@@ -306,7 +309,9 @@ class shopController extends Controller
          $stars=0;
 
          $stars_avg=0;
-         
+
+         $users= User::all();
+
 
          if(count($productfeedback)>0){
             foreach($productfeedback as $p){
@@ -317,7 +322,7 @@ class shopController extends Controller
              $stars_avg = $stars/$count;
          }
 
-         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg'));
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
      }
 
      public function viewAllShop(){

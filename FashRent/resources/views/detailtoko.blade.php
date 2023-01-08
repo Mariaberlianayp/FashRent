@@ -10,13 +10,17 @@
     <div class="kontak d-flex justify-content-between" style="width: 80%">
         <div class="card">
             <img class="rounded mx-auto d-block" src="{{Storage::url($toko->shop_photoprofile)}}">
-            <h4>{{$toko->shop_shopname}}</h4>
+            @foreach ($users->where('id',$toko->id) as $u)
+            <h4>{{$u->name}}</h4>
+            @endforeach
             <div class="kota d-flex justify-content-center">
                 <i class="fa-solid fa-location-dot"></i>
                 <p>{{$toko->shop_city}}</p>
             </div>
             <div class="button mx-auto">
-                <button type="button" class="btn" ><a target="_blank" href="https://wa.me/0895334975428"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @foreach ($users->where('id',$toko->id) as $u)
+                <button type="button" class="btn" ><a target="_blank" href="/chatify/{{$u->id}}"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @endforeach
             </div>
         </div>
 

@@ -15,7 +15,7 @@ class insert_data_to_shop_table extends Seeder
     public function run()
     {
         DB::table('shop')->insert([
-            ['Shop_OwnerName' => 'Maria','id' => '1','Shop_ShopName' => 'KebayaRent', 'Shop_Address' => 'Jl. Raya Kb. Jeruk No.27, RT.1/RW.9', 'Shop_PhoneNumber' => '08123987456', 'Shop_City' => 'Jakarta Barat', 'Shop_Description' => 'Jual kebaya daerah','Shop_PhotoProfile' => 'kebayaRent.jpg', 'Shop_Status' => 'active'],
+            ['id' => '1', 'Shop_Address' => 'Jl. Raya Kb. Jeruk No.27, RT.1/RW.9', 'Shop_PhoneNumber' => '08123987456', 'Shop_City' => 'Jakarta Barat', 'Shop_Description' => 'Jual kebaya daerah','Shop_PhotoProfile' => 'kebayaRent.jpg', 'Shop_Status' => 'active'],
         ]);
 
         // DB::table('shop')->insert([
@@ -29,6 +29,6 @@ class insert_data_to_shop_table extends Seeder
         // ]);
 
 
-  
+
     }
 }

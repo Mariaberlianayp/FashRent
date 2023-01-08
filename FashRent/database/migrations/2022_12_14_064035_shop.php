@@ -17,8 +17,6 @@ return new class extends Migration
            // $table->id('shop_id');
             $table->bigIncrements('shop_id');
             $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('shop_ownername');
-            $table->string('shop_shopname');
             $table->string('shop_address');
             $table->string('shop_phonenumber');
             $table->string('shop_city');
