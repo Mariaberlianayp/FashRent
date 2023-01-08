@@ -299,7 +299,7 @@
               @foreach($categories as $category)
               <div class="cardKategori">
                 <div class="image">
-                  <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
+                  <img src="{{Storage::url($category->category_image)}}" alt="">
                 </div>
                 <div class="title">
                   <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
@@ -321,7 +321,9 @@
                   <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
                 </div>
                 <div class="keterangan">
-                  <h6>{{$shop->shop_shopname}}</h6>
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <h6>{{$u->name}}</h6>
+                    @endforeach
                   <p>{{$shop->shop_city}}</p>
                   <i data-star="4.5"></i>
                 </div>
@@ -330,11 +332,7 @@
                 </div>
               </div>
               <div class="bawah">
-                @foreach($products->where('shop_id' , $shop->shop_id)->take(3) as $dataProducts)
-                  @foreach($photos->where('product_id' , $dataProducts->product_id)->take(1) as $photo)
-                    <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$dataProducts->product_name}}/{{$photo->photo360}}" alt="">
-                  @endforeach
-                @endforeach
+
               </div>
             </div>
             @endforeach
@@ -354,7 +352,15 @@
                     <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
                     <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
                     <p class="city">{{$shop->shop_city}}</p>
-                    <i data-star="4.5"></i>
+                    @if (count($productfeedback->where('product_id',$product->product_id))>0)
+                    @foreach ($productfeedback->where('product_id',$product->product_id) as $p)
+                      <p hidden>{{$stars=$stars+$p->rating_stars}}</p>
+                      <p hidden>{{$count=$count+1}}</p>
+                    @endforeach
+                    <i data-star="{{$stars/$count}}"></i>
+                    @else
+                    <i data-star="0"></i>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -400,7 +406,7 @@
           @foreach($categories as $category)
           <div class="cardKategori">
             <div class="image">
-              <img src="{{url('images/category')}}/{{$category->category_image}}" alt="">
+              <img src="{{Storage::url($category->category_image)}}" alt="">
             </div>
             <div class="title">
               <a class="" href="/category/{{$category->category_id}}"><h6>{{$category->category_name}}</h6></a>
@@ -412,7 +418,7 @@
     <div class="toko">
       <div class="tokoJudul">
         <h4>TOKO</h4>
-        <a href=""><p>Lihat Semua</p></a>
+        <a href="/allshop"><p>Lihat Semua</p></a>
       </div>
       <div class="listToko">
         @foreach($shops->take(6) as $shop)
@@ -422,7 +428,9 @@
               <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
             </div>
             <div class="keterangan">
-              <h6>{{$shop->shop_shopname}}</h6>
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <h6>{{$u->name}}</h6>
+                    @endforeach
               <p>{{$shop->shop_city}}</p>
               <i data-star="4.5"></i>
             </div>
@@ -431,11 +439,7 @@
             </div>
           </div>
           <div class="bawah">
-            @foreach($products->where('shop_id' , $shop->shop_id)->take(3) as $dataProducts)
-              @foreach($photos->where('product_id' , $dataProducts->product_id)->take(1) as $photo)
-                <img src="{{url('images/toko')}}/{{$shop->shop_shopname}}/{{$dataProducts->product_name}}/{{$photo->photo360}}" alt="">
-              @endforeach
-            @endforeach
+
           </div>
         </div>
         @endforeach
@@ -473,6 +477,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    @if (\Session::has('acc'))
+                    <div class="alert alert-success">
+                        {!! \Session::get('acc') !!}
+                    </div>
+                    @endif
                     <table class="table">
                         <thead>
                         <tr>
@@ -486,19 +495,26 @@
                         <tbody>
                             @foreach ($shops as $shop )
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{$counter}}</th>
                                 <td>{{$shop->shop_id}}</td>
-                                <td>{{$shop->shop_shopname}}</td>
-                                <td>@mdo</td>
-                                <td><a class="btn btn-primary" href="#" role="button">Accept</a> <a class="btn btn-danger" href="#" role="button">Reject</a></td>
+                                <td>@foreach ($users->where('id',$shop->id) as $u)
+                                    {{$u->name}}
+                                    @endforeach</td>
+                                <td>
+                                    @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
+                                    <input type="text" hidden>
+                                    <img height="200px" src="{{Storage::url($d->photo360)}}" alt="">
+                                    @endforeach
+                                </td>
+                                <td><a class="btn btn-primary" href="/verif/acc/{{$shop->product_id}}" role="button">Accept</a> <a class="btn btn-danger" href="/verif/dec/{{$shop->product_id}}" role="button">Reject</a></td>
                             </tr>
+                            <h1 hidden>{{$counter=$counter+1}}</h1>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
+            {{ $shops->links() }}
         </div>
 
         @endif

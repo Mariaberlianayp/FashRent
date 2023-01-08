@@ -72,6 +72,7 @@ class RegisterController extends Controller
         if ($role == "2"){
             return User::create([
                 'email' => $data['email'],
+                'name' =>'',
                 'password' => Hash::make($data['password']),
                 'User_Priority' => 2,
             ]);
@@ -81,6 +82,7 @@ class RegisterController extends Controller
         else if ($role == "3"){
             return User::create([
                 'email' => $data['email'],
+                'name' =>'',
                 'password' => Hash::make($data['password']),
                 'User_Priority' => 3,
             ]);

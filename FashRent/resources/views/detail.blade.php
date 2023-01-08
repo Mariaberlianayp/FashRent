@@ -15,42 +15,14 @@
 <div class="center">
 
         <div class="rotation">
-            <img src="{{url('images/Product/img01.jpg')}}">
-            <img src="{{url('images/Product/img02.jpg')}}">
-            <img src="{{url('images/Product/img03.jpg')}}">
-            <img src="{{url('images/Product/img04.jpg')}}">
-            <img src="{{url('images/Product/img05.jpg')}}">
-            <img src="{{url('images/Product/img06.jpg')}}">
-            <img src="{{url('images/Product/img07.jpg')}}">
-            <img src="{{url('images/Product/img08.jpg')}}">
-            <img src="{{url('images/Product/img09.jpg')}}">
-            <img src="{{url('images/Product/img10.jpg')}}">
-            <img src="{{url('images/Product/img11.jpg')}}">
-            <img src="{{url('images/Product/img12.jpg')}}">
-            <img src="{{url('images/Product/img13.jpg')}}">
-            <img src="{{url('images/Product/img14.jpg')}}">
-            <img src="{{url('images/Product/img15.jpg')}}">
-            <img src="{{url('images/Product/img16.jpg')}}">
-            <img src="{{url('images/Product/img17.jpg')}}">
-            <img src="{{url('images/Product/img18.jpg')}}">
-            <img src="{{url('images/Product/img19.jpg')}}">
-            <img src="{{url('images/Product/img20.jpg')}}">
-            <img src="{{url('images/Product/img21.jpg')}}">
-            <img src="{{url('images/Product/img22.jpg')}}">
-            <img src="{{url('images/Product/img23.jpg')}}">
-            <img src="{{url('images/Product/img24.jpg')}}">
-            <img src="{{url('images/Product/img25.jpg')}}">
-            <img src="{{url('images/Product/img26.jpg')}}">
-            <img src="{{url('images/Product/img27.jpg')}}">
-            <img src="{{url('images/Product/img28.jpg')}}">
-            <img src="{{url('images/Product/img29.jpg')}}">
-            <img src="{{url('images/Product/img30.jpg')}}">
-            <img src="{{url('images/Product/img31.jpg')}}">
-            <img src="{{url('images/Product/img32.jpg')}}">
-            <img src="{{url('images/Product/img33.jpg')}}">
-            <img src="{{url('images/Product/img34.jpg')}}">
-            <img src="{{url('images/Product/img35.jpg')}}">
-            <img src="{{url('images/Product/img36.jpg')}}">
+            @if ($product->product_status == 2)
+            @foreach ($degreephotos as $dp)
+            <img src="{{Storage::url($dp->photo360)}}">
+            @endforeach
+            @else
+            <img src="{{Storage::url($product->product_thumbnail)}}">
+            360&#176 image is not available
+            @endif
         </div>
     </div>
 </div>
@@ -67,13 +39,17 @@
     <div class="kontak">
         <div class="card">
             <img class="rounded mx-auto d-block" src="{{Storage::url($toko->shop_photoprofile)}}">
-            <h4>{{$toko->shop_shopname}}</h4>
+            @foreach ($users->where('id',$toko->id) as $u)
+            <h4>{{$u->name}}</h4>
+            @endforeach
             <div class="kota d-flex justify-content-center">
                 <i class="fa-solid fa-location-dot"></i>
                 <p>{{$toko->shop_city}}</p>
             </div>
             <div class="button mx-auto">
-                <button type="button" class="btn" ><a target="_blank" href="https://wa.me/0895334975428"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @foreach ($users->where('id',$toko->id) as $u)
+                <button type="button" class="btn" ><a target="_blank" href="/chatify/{{$u->id}}"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                @endforeach
             </div>
         </div>
     </div>
@@ -102,9 +78,26 @@
     </div>
 </div>
 <div class="card detailProduk">
-    <h2>Penilaian Produk</h2>
+    @if (Auth::check())
+        @if (Auth::user()->User_Priority == 3)
+        <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button" style="width: 10%">Add Feedback</a>
+        @endif
+    @endif
+    <h2>Product Rating</h2>
+    @if (count($productfeedback)>0)
+    <span><i data-star="{{$stars_avg}}"></i> ({{$count}})</span>
+    @endif
     <div class="isibawah">
-
+        @foreach ($productfeedback as $pf)
+        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->renter_photoprofile)}}">
+        @foreach ($users->where('id',$pf->id) as $u)
+        <h4>{{$u->name}}</h4>
+        @endforeach
+        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->rating_photo)}}">
+        <i data-star="{{$pf->rating_stars}}"></i>
+        <p>{{$pf->rating_description}}</p>
+        <p>{{$pf->rating_date}}</p>
+        @endforeach
     </div>
 </div>
 

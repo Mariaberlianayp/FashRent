@@ -17,7 +17,6 @@ return new class extends Migration
 //          $table->id('renter_id');
             $table->bigIncrements('renter_id');
             $table->foreignid('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('renter_name');
             $table->string('renter_phonenumber');
             $table->string('renter_photoprofile');
         });

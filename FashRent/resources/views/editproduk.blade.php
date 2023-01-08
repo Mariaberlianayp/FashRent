@@ -16,11 +16,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (\Session::has('edit'))
-            <div class="alert alert-success">
-                {!! \Session::get('edit') !!}
+            <div class="judul d-flex text-center">
+                <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i>Back to Manage Catalog</a>
             </div>
-            @endif
             <div class="card">
                 <div class="card-body">
                         <form method="POST" action="/editproduk" enctype="multipart/form-data">

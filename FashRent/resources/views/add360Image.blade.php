@@ -87,6 +87,7 @@
         <form method="POST" action="/add360photo" enctype="multipart/form-data">
             @csrf
 
+            <input type="text" hidden name="product_id" value="{{$id}}">
             <div class="row mb-3">
                 <label for="iamges" class="col-md-4 col-form-label text-md-end">Input 360&#176 Image:</label>
                 <div class="col">

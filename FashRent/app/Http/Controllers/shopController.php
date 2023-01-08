@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\categoryModel;
+use App\Models\degreephotoModel;
 use App\Models\productimageModel;
 use App\Models\productModel;
+use App\Models\shopModel;
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -15,9 +18,11 @@ use Illuminate\Support\Facades\Storage;
 class shopController extends Controller
 {
 
-    public function showKelola($id)
+    public function showKelola()
     {
-            $data = productModel::where('product.shop_id','=',$id)
+        $shop_now = DB::table('shop')->where('shop.id',Auth::user()->id)->first();
+
+            $data = productModel::where('product.shop_id','=',$shop_now->shop_id)
             ->paginate(6);
 
         return view('kelolaproduk',['data'=>$data]);
@@ -104,7 +109,7 @@ class shopController extends Controller
 
 
 
-        return redirect('/addproduk')->with('add','Berhasil Menambahkan Produk!');
+        return redirect('/shop/produk')->with('add','Berhasil Menambahkan Produk!');
     }
 
 
@@ -114,7 +119,7 @@ class shopController extends Controller
         DB::table('product')->where('product.product_id',$id)->delete();
 
 
-        return redirect()->back()->with('deleteProduk','Product Deleted Successfully!');
+        return redirect()->back()->with('deleteProduk','Produk Berhasil Dihapus!');
 
     }
 
@@ -221,20 +226,17 @@ class shopController extends Controller
         }
 
 
-        return redirect()->back()->with('edit','Successfully Edit Product!');
+        return redirect('/shop/produk')->with('edit','Berhasil Merubah Data Produk!');
     }
 
 
     public function deletePhoto($id){
 
     $get_id = DB::table('product_image')->where('product_image.photo_id',$id)->first();
-<<<<<<< HEAD
-=======
 
     if(count(DB::table('product_image')->where('product_image.product_id',$get_id->product_id)->get())==1){
         return redirect()->back()->with('delfoto2','Minimal mempunyai satu foto product');
        }
->>>>>>> 76a1a0f (Commit)
 
     if(count(DB::table('product_image')->where('product_image.product_id',$get_id->product_id)->get())==1){
         return redirect()->back()->with('delfoto2','Minimal mempunyai satu foto product');
@@ -244,11 +246,7 @@ class shopController extends Controller
 
 
 
-<<<<<<< HEAD
         return redirect()->back()->with('delfoto','Photo Deleted Successfully!');
-<<<<<<< HEAD
-=======
->>>>>>> 444bb87 (Commit all changes)
         DB::table('product_image')->where('product_image.photo_id',$id)->delete();
 
         foreach($data_now as $img){
@@ -262,13 +260,8 @@ class shopController extends Controller
         'product_thumbnail' => $thumbnail,
     ]);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 444bb87 (Commit all changes)
         return redirect()->back()->with('delfoto','Foto Berhasil Dihapus!');
-=======
->>>>>>> 908a190 (Profile & add 360 UI)
+
 
     }
 
@@ -281,34 +274,135 @@ class shopController extends Controller
 
         $products = DB::table('product')->where('product.shop_id',$id)->get();
 
-        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products]);
+        $productfeedback = DB::table('product_feedback')->get();
+
+        $count=0;
+
+        $stars=0;
+
+        $users=User::all();
+
+
+        return view('detailtoko',['toko'=>$shop,'photos'=>$photos,'products'=>$products,'count'=>$count,'stars'=>$stars,'productfeedback'=>$productfeedback,'users'=>$users]);
 
      }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-     public function view360photo($id){
-
-        $id_product=$id;
-
-        return view('add360image',['id'=>$id_product]);
-
-=======
-     public function add360view($id){
-
-        return view('add360image');
->>>>>>> 908a190 (Profile & add 360 UI)
-=======
      public function view360photo($id){
 
 
         $id_product=$id;
 
+        $data=DB::table('product')->where('product.product_id',$id_product)
+        ->first();
 
 
-        return view('degreephoto',['id'=>$id_product]);
 
->>>>>>> 444bb87 (Commit all changes)
+        return view('add360Image',['id'=>$id_product,'data'=>$data]);
      }
+     
+
+     public function productDetail($id)
+     {
+         $product = productModel::where('product_id', $id)->first();
+         $toko = shopModel::where('shop_id', $product->shop_id)->first();
+         $category = categoryModel::where('category_id', $product->category_id)->first();
+         $degreephotos = degreephotoModel::where('360_photo.product_id',$id)->get();
+         $productfeedback = DB::table('product_feedback')->join('renter','renter.renter_id','=','product_feedback.renter_id')
+         ->where('product_feedback.product_id',$id)->get();
+
+         $count=0;
+
+         $stars=0;
+
+         $stars_avg=0;
+
+         $users= User::all();
+
+
+         if(count($productfeedback)>0){
+            foreach($productfeedback as $p){
+                $stars=$stars+$p->rating_stars;
+                $count++;
+             }
+
+             $stars_avg = $stars/$count;
+         }
+
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
+     }
+
+     public function viewAllShop(){
+
+        $shops = shopModel::all();
+
+        return view('allshop',['shops'=>$shops]);
+    }
+
+    public function add360photo(Request $request){
+
+        $validated = $request->validate([
+            'images' =>['required'],
+            'images.*' => ['file','image'],
+        ]);
+
+        foreach($request->file('images') as $imageFile){
+
+
+            $imageName = time().'_'.$imageFile->getClientOriginalName();
+            Storage::putFileAs('public/images',$imageFile, $imageName);
+            $imagePath = 'images/'.$imageName;
+
+            DB::table('360_photo')->insert([
+                'product_id'=>$request->product_id,
+                'photo360' =>$imagePath,
+            ]);
+
+        }
+
+        DB::table('product')->where('product.product_id',$request->product_id)->update([
+            'product_status' => 1,
+        ]);
+
+        return redirect('/shop/produk')->with('addfoto','Image Has Been Uploaded Successfully');
+    }
+
+
+    function viewfeedback($id){
+
+        $id_product=$id;
+
+        return view('addfeedback',['id'=>$id_product]);
+    }
+
+    function addfeedback(Request $request){
+
+        $validated = $request->validate([
+            'comment' => ['required','string'],
+            'image' =>['required','file','image'],
+            'stars' => ['required']
+        ]);
+
+        $file = $request->file('image');
+        $imageName = time().'_'.$file->getClientOriginalName();
+
+        Storage::putFileAs('public/images',$file, $imageName);
+        // $path = $validated['image']->storeAs('public/images', $imageName);
+        $imagePath = 'images/'.$imageName;
+        // dd($imagePath);
+
+        $renter_now = DB::table('renter')->where('renter.id',Auth::user()->id)->first();
+
+        DB::table('product_feedback')->insert([
+            'renter_id' => $renter_now->renter_id,
+            'product_id' => $request->product_id,
+            'rating_stars' => $validated['stars'],
+            'rating_date' => date("Y-m-d H:i:s"),
+            'rating_description' => $validated['comment'],
+            'rating_photo' => $imagePath
+        ]);
+
+
+        return redirect()->back()->with('addcomment','Feedback has been added!');
+    }
 
 }
