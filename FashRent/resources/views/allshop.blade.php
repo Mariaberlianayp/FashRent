@@ -47,7 +47,9 @@
             <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
           </div>
           <div class="keterangan">
-            <h6>{{$shop->shop_shopname}}</h6>
+                @foreach ($users->where('id',$shop->id) as $u)
+                <h6>{{$u->name}}</h6>
+                @endforeach
             <p>{{$shop->shop_city}}</p>
             <i data-star="4.5"></i>
           </div>

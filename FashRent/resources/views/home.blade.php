@@ -239,7 +239,8 @@
                                 <td>{{$shop->shop_id}}</td>
                                 <td>@foreach ($users->where('id',$shop->id) as $u)
                                     {{$u->name}}
-                                    @endforeach</td>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
                                     <input type="text" hidden>

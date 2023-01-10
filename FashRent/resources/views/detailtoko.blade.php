@@ -18,9 +18,11 @@
                 <p>{{$toko->shop_city}}</p>
             </div>
             <div class="button mx-auto">
-                @foreach ($users->where('id',$toko->id) as $u)
-                <button type="button" class="btn" ><a target="_blank" href="/chatify/{{$u->id}}"><i class="fa-solid fa-comment"></i> Chat</a></button>
-                @endforeach
+                @if(Auth::check())
+                    @if(Auth::user()->User_Priority == 3)
+                        <button type="button" class="btn" ><a target="_blank" href="/chatify/{{$u->id}}"><i class="fa-solid fa-comment"></i> Chat</a></button>
+                    @endif
+                @endif
             </div>
         </div>
 

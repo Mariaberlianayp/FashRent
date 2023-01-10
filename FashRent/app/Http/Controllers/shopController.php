@@ -328,8 +328,9 @@ class shopController extends Controller
      public function viewAllShop(){
 
         $shops = shopModel::all();
+        $users = User::all();
 
-        return view('allshop',['shops'=>$shops]);
+        return view('allshop',['shops'=>$shops,'users'=>$users]);
     }
 
     public function add360photo(Request $request){
