@@ -15,22 +15,20 @@
 
 
 <div class="toko">
-    <div class="tokoJudul">
-      <h4>SHOP</h4>
-    </div>
-    <div class="listToko">
-      @foreach($shops->take(6) as $shop)
-      <div class="cardToko">
-        <div class="atas">
-          <div class="image">
-            <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
-          </div>
-          <div class="keterangan">
-              @foreach ($users->where('id',$shop->id) as $u)
-              <h6>{{$u->name}}</h6>
-              @endforeach
-            <p>{{$shop->shop_city}}</p>
-              @php
+    <div class="row listToko">
+        @foreach($shops as $shop)
+        <div class="col">
+            <div class="cardToko">
+            <div class="atas">
+                <div class="image">
+                <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
+                </div>
+                <div class="keterangan">
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <h6>{{$u->name}}</h6>
+                    @endforeach
+                <p>{{$shop->shop_city}}</p>
+             @php
                   $count_avg=0;
                   $total_stars=0;
               @endphp
@@ -65,31 +63,6 @@
             @else
             <i data-star="{{$total_stars/$count_avg}}"></i>
             @endif
-
-          </div>
-          <div class="button">
-              <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">View Shop</a>
-          </div>
-        </div>
-        <div class="bawah">
-
-        </div>
-      </div>
-      @endforeach
-    <div class="row listToko">
-        @foreach($shops as $shop)
-        <div class="col">
-            <div class="cardToko">
-            <div class="atas">
-                <div class="image">
-                <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
-                </div>
-                <div class="keterangan">
-                    @foreach ($users->where('id',$shop->id) as $u)
-                    <h6>{{$u->name}}</h6>
-                    @endforeach
-                <p>{{$shop->shop_city}}</p>
-                <i data-star="4.5"></i>
                 </div>
                 <div class="button">
                     <a class="btn btn-primary" href="/detailtoko/{{$shop->shop_id}}" role="button">Lihat Toko</a>
