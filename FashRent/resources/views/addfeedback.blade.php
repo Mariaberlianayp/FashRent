@@ -2,6 +2,16 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/feedback.css') }}">
+<div class="container text-center">
+    <div class="judul row d-flex">
+        <div class="col-3">
+            <a href="/productDetail/{{$id}}"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="col-sm-9  text-left">
+            <h3>PRODUCT FEEDBACK</h3>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -11,12 +21,7 @@
                 {!! \Session::get('addcomment') !!}
             </div>
             @endif
-            <div class="judul d-flex text-center">
-                <a href="/productDetail/{{$id}}"><i class="fa-solid fa-arrow-left"></i>Back to Detail Product</a>
-            </div>
             <div class="card">
-                <div class="card-header">{{ __('Add Feedback') }}</div>
-
                 <div class="card-body">
 
                     <form method="POST" action="/addfeedback" enctype="multipart/form-data">

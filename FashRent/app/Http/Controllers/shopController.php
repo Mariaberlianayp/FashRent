@@ -289,8 +289,6 @@ class shopController extends Controller
         $data=DB::table('product')->where('product.product_id',$id_product)
         ->first();
 
-
-
         return view('add360Image',['id'=>$id_product,'data'=>$data]);
 
      }

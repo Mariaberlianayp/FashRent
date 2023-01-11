@@ -1,5 +1,5 @@
 .slideCard{
-    margin:auto; 
+    margin:auto;
     max-width: 1300px ;
     padding: 20px;
     background-color: #EFE6FD;
@@ -13,7 +13,7 @@
 .bannerSlide{
     max-height: 325px ;
     max-width: 1250px ;
-    margin:auto; 
+    margin:auto;
     width: 100%;
     height: auto;
 }
@@ -24,7 +24,7 @@
     border-radius: 0px 0px 50px 50px;
     width: 100%;
     height: auto;
-    
+
 }
 
 .kategori h4, .toko h4, .produk h4{
@@ -85,7 +85,7 @@
     border-radius: 20px;
 }
 
-.toko .atas, .toko .bawah{
+.toko .atas{
     display: flex;
     justify-content: center;
 }
@@ -107,7 +107,7 @@
     box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
 }
 .toko .image img{
-    width: 70px;
+    width: 90px;
 }
 .toko .image, .toko .keterangan, .toko .button{
     margin: 10px;
@@ -125,15 +125,8 @@
 }
 .toko .button button{
     font-size: 10px;
-    background-color: #533D9E !important; 
+    background-color: #533D9E !important;
     border-color: #533D9E;
-}
-.toko .bawah img{
-    margin: 2px;
-    width: 100px;
-}
-.toko .bawah{
-    margin: auto;
 }
 .listProduk{
     display: flex;
@@ -150,8 +143,10 @@
     height: 350px;
 }
 .cardProduk img{
-    max-width: 200px;
+    width: 200px;
+    height: 200px;
     border-radius: 20px 20px 0px 0px;
+    object-fit: cover;
 }
 .cardProduk .card-title{
     font-size: 14px;
@@ -163,17 +158,15 @@
 .cardProduk .city{
     font-size: 13px;
     color: #533D9E;
-}
-.cardProduk i{
-    margin-top: -20px;
+    margin-bottom: -5px;
 }
 
 @media (min-device-width: 500px) and (max-device-width: 900px) {
-    
+
     .cardKategori{
         width: 150px;
         height: 130px;
-        
+
         border-radius: 20px;
     }
     .cardKategori .image{
@@ -182,7 +175,7 @@
     }
     .cardKategori  img{
         max-width: 70px;
-    
+
     }
     .cardKategori h6{
         font-size: 10px;
@@ -205,7 +198,7 @@
     }
     .cardKategori  img{
         max-width: 60px;
-    
+
     }
     .cardKategori h6{
         font-size: 7px;

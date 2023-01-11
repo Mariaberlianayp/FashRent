@@ -11,7 +11,7 @@
     @endif
     <div class="judul row d-flex">
         <div class="col-3">
-            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="/profileDetail/{{Auth::user()->id}}"><i class="fa-solid fa-arrow-left"></i></a>
 
         </div>
         <div class="col-sm-9  text-left">
@@ -31,7 +31,7 @@
                         <a href="/productdelete/{{$d->product_id}}" class="btn btn-danger mt-auto">Delete</a>
                         <a href="/productedit/{{$d->product_id}}" class="btn btn-primary mt-1">Edit</a>
                     </div>
-                    @if($d->product_status == 0)
+                    @if($d->product_status != 2)
                     <a href="/product/360photo/{{$d->product_id}}" class="btn360 btn btn-primary mt-auto">Add 360° View</a>
                     @endif
             </div>

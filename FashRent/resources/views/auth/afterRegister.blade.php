@@ -1,37 +1,29 @@
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @if (\Session::has('complete'))
-                <div class="alert alert-danger">
-                    {!! \Session::get('complete') !!}
-                </div>
-            @endif
-            <div class="card">
-                <div class="card-header">{{ __('Lengkapi Profile') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="/inputAfterRegister" enctype="multipart/form-data">
-                        @csrf
-<div class="container text-center register">
-    <div class="row">
+<link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
+
+<div class="container text-center  register">
+    <div class="row align-content-center">
       <div class="col-6">
+        @if (\Session::has('complete'))
+            <div class="alert alert-danger">
+                {!! \Session::get('complete') !!}
+            </div>
+        @endif
         <img src="{{url('images/loginRegister.png')}}" alt="">
       </div>
       <div class="col-6">
-        @if (\Session::has('complete'))
-        <div class="alert alert-danger">
-            {!! \Session::get('complete') !!}
-        </div>
-        @endif
         <div class="cardRegister">
             <div class="cardHeader">
                 <h2>Complete Profile</h2>
             </div>
 
-                        {{-- Renter --}}
+            <div class="card-body">
+                <form method="POST" action="/inputAfterRegister" enctype="multipart/form-data">
+                    @csrf
                     @if(Auth::user()->User_Priority == 3)
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -188,18 +180,18 @@
                     </div>
                     @endif
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
-                                </button>
-                            </div>
+                    <div class="row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Submit') }}
+                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 @endsection
 

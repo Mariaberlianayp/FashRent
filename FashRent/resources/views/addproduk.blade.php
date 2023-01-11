@@ -5,8 +5,7 @@
 <div class="container text-center">
     <div class="judul row d-flex">
         <div class="col-3">
-            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i></a>
-
+            <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="col-sm-9  text-left">
             <h3>ADD PRODUCT</h3>
@@ -16,19 +15,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="judul d-flex text-center">
-                <a href="/shop/produk"><i class="fa-solid fa-arrow-left"></i>  Back to Manage Catalog</a>
-            </div>
             <div class="card">
-
                 <div class="card-body">
                     <form method="POST" action="/addproduk" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="iamges" class="col-md-4 col-form-label text-md-end">{{ __('Product Image:') }}</label>
+                            <label for="images" class="col-md-4 col-form-label text-md-end">{{ __('Product Image:') }}</label>
                             <div class="col">
                                 <input type="file" name="images[]" value="" class="form-control @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror" multiple onchange="image_select()">
+                                <p style="color: grey">Image ratio 1:1 for best visual</p>
                                 @error('images')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
