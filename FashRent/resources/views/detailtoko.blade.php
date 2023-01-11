@@ -42,11 +42,7 @@
       <div class="col-md-3">
         <div class="cardProduk">
           <div class="card" style="width: 18rem;">
-
-                @foreach($photos->where('product_id' , $product->product_id)->take(1) as $photo)
-                  <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
-                @endforeach
-
+            <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
             <div class="card-body">
               <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
               <h5 class="price">Rp. {{$product->product_rentprice}}</h5>

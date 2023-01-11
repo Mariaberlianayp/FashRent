@@ -221,23 +221,6 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                            <label for="deskripsi" class="col-md-4 col-form-label text-md-end">Shop Description:</label>
-                            <div class="col">
-                            <textarea id="deskripsi" name="deskripsi" cols="40" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required>{{$d->shop_description}}</textarea>
-
-                            @error('deskripsi')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                            </div>
-                            </div>
-
-
-
-
-
                         @endif
 
                 @endforeach
