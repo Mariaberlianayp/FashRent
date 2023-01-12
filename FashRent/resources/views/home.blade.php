@@ -9,19 +9,32 @@
             <div id="carouselExampleIndicators" class="carousel slide bannerSlide" data-bs-ride="true">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              @php
+                  $counter = 0;
+              @endphp
+              @foreach ($banners as $b)
+              @if ($counter ==0)
+
+              @else
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$counter}}" aria-label="Slide {{$counter}}"></button>
+              @endif
+              @php
+                $counter++;
+              @endphp
+              @endforeach
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="{{url('images/banner1.jpg')}}" class="d-block img-fluid" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="{{url('images/banner2.jpg')}}" class="d-block img-fluid" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="{{url('images/banner3.jpg')}}" class="d-block img-fluid" alt="...">
-              </div>
+                @php
+                    $key =0;
+                @endphp
+                @foreach($banners as $b)
+                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                    <a href=""><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+                </div>
+                @php
+                    $key++;
+                @endphp
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -156,19 +169,32 @@
         <div id="carouselExampleIndicators" class="carousel slide bannerSlide" data-bs-ride="true">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          @php
+              $counter = 0;
+          @endphp
+          @foreach ($banners as $b)
+          @if ($counter ==0)
+
+          @else
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$counter}}" aria-label="Slide {{$counter}}"></button>
+          @endif
+          @php
+            $counter++;
+          @endphp
+          @endforeach
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{url('images/banner1.jpg')}}" class="d-block img-fluid" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url('images/banner2.jpg')}}" class="d-block img-fluid" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url('images/banner3.jpg')}}" class="d-block img-fluid" alt="...">
-          </div>
+            @php
+                $key =0;
+            @endphp
+            @foreach($banners as $b)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                <a href=""><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+            </div>
+            @php
+                $key++;
+            @endphp
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -308,6 +334,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    <a class="btn btn-primary" href="/managebanner" role="button">Manage Banner</a>
                     @if (\Session::has('acc'))
                     <div class="alert alert-success">
                         {!! \Session::get('acc') !!}

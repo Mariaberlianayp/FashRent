@@ -65,3 +65,9 @@ Route::get('/feedback/{id}',[App\Http\Controllers\shopController::class,'viewfee
 Route::post('/addfeedback', [App\Http\Controllers\shopController::class, 'addfeedback']);
 
 Route::get('/search',[App\Http\Controllers\searchController::class,'productSearch']);
+
+Route::get('/managebanner',[App\Http\Controllers\adminController::class,'showBanner']);
+
+Route::post('/addbanner',[App\Http\Controllers\adminController::class,'addBanner']);
+
+Route::get('/bannerdelete/{id}',[App\Http\Controllers\adminController::class,'deleteBanner']);

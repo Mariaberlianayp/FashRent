@@ -49,7 +49,7 @@ class shopController extends Controller
             'kategori' => ['required'],
             'gender' => ['required'],
             'warna' => ['required','string'],
-            'ukuran' => ['required','string'],
+            'ukuran' => ['required','string','min:10'],
             'deskripsi' => ['required','string','min:30'],
             'images' =>['required'],
             'images.*' => ['file','image'],
@@ -151,7 +151,7 @@ class shopController extends Controller
                 'kategori' => ['required'],
                 'gender' => ['required'],
                 'warna' => ['required','string'],
-                'ukuran' => ['required','string'],
+                'ukuran' => ['required','string','min:10'],
                 'deskripsi' => ['required','string','min:30'],
                 'images' =>['required'],
                 'images.*' => ['file','image'],
@@ -167,7 +167,7 @@ class shopController extends Controller
                 'kategori' => ['required'],
                 'gender' => ['required'],
                 'warna' => ['required','string'],
-                'ukuran' => ['required','string'],
+                'ukuran' => ['required','string','min:10'],
                 'deskripsi' => ['required','string','min:30'],
             ]);
         }
