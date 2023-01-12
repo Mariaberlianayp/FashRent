@@ -52,8 +52,8 @@
             @else
             @php
               $stars_now = 0;
-              $total_stars = $stars_now+$total_stars;
-              $count_avg++;
+            //   $total_stars = $stars_now+$total_stars;
+            //   $count_avg++;
            @endphp
           @endif
 
