@@ -29,7 +29,7 @@
                 @endphp
                 @foreach($banners as $b)
                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                    <a href=""><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+                    <a href="/detailtoko/{{$b->shop_id}}"><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
                 </div>
                 @php
                     $key++;
@@ -189,7 +189,7 @@
             @endphp
             @foreach($banners as $b)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <a href=""><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+                <a href="/detailtoko/{{$b->shop_id}}"><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
             </div>
             @php
                 $key++;
