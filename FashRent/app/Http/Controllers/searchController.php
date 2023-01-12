@@ -34,7 +34,7 @@ class searchController extends Controller
 
         $productfeedback = productfeedbackModel::all();
 
-        return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos,'productfeedback'=>$productfeedback, ]);
+        return view ('search',['products'=>$data,'shops'=>$shops,'photos'=>$photos,'productfeedback'=>$productfeedback]);
 
     }
 

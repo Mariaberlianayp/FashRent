@@ -19,6 +19,10 @@ class productModel extends Model
         return $this->belongsTo(categoryModel::class);
     }
 
+    public function admin(){
+        return $this->belongsTo(adminModel::class);
+    }
+
     public function productfeedback(){
         return $this->hasMany(productfeedbackModel::class);
     }

@@ -18,5 +18,9 @@ class adminModel extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    
+
+    public function banner(){
+        return $this->hasMany(bannerModel::class);
+    }
+
 }
