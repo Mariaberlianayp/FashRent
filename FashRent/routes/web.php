@@ -45,6 +45,7 @@ Route::get('/deletephoto/{id}', [App\Http\Controllers\shopController::class, 'de
 Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editProduct'])->middleware('cek');
 
 Route::get('/productDetail/{id}', [App\Http\Controllers\shopController::class, 'productDetail']);
+Route::get('/productDetails/{id}', [App\Http\Controllers\shopController::class, 'seestatis'])->name('seestatis');
 
 Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch'])->name('allCategory');
 

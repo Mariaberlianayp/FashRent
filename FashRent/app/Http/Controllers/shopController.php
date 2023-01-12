@@ -323,6 +323,35 @@ class shopController extends Controller
 
          return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
      }
+     public function seestatis($id)
+     {
+         $product = productModel::where('product_id', $id)->first();
+         $toko = shopModel::where('shop_id', $product->shop_id)->first();
+         $category = categoryModel::where('category_id', $product->category_id)->first();
+         $degreephotos = degreephotoModel::where('360_photo.product_id',$id)->get();
+         $productfeedback = DB::table('product_feedback')->join('renter','renter.renter_id','=','product_feedback.renter_id')
+         ->where('product_feedback.product_id',$id)->get();
+
+         $count=0;
+
+         $stars=0;
+
+         $stars_avg=0;
+
+         $users= User::all();
+
+
+         if(count($productfeedback)>0){
+            foreach($productfeedback as $p){
+                $stars=$stars+$p->rating_stars;
+                $count++;
+             }
+
+             $stars_avg = $stars/$count;
+         }
+
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
+     }
 
      public function viewAllShop(){
 

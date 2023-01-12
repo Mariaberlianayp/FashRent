@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('banner_id');
             $table->foreignid('admin_id')->nullable()->references('admin_id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('shop_id');
-            $table->string('banner_id');
+            $table->string('bannerPhoto');
         });
     }
 

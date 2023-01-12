@@ -14,7 +14,7 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     {{-- font --}}
-    <link href='https://fonts.googleapis.com/css?family=Poppins:wght@400,700,800&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:wght@400,600,700,800&display=swap' rel='stylesheet'>
 
     <title>Fashrent</title>
 
