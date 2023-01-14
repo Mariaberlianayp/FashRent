@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bannerModel;
+use App\Models\shopModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class adminController extends Controller
 {
@@ -28,4 +31,44 @@ class adminController extends Controller
 
         return redirect()->back()->with('dec','Image Has Been Declined');
     }
+
+    public function showBanner(){
+        $data = bannerModel::paginate(3);
+
+        return view('addbanner',['data'=>$data]);
+    }
+
+    public function addBanner(Request $request){
+        $allshop = shopModel::all();
+
+        $validated = $request->validate([
+            'shop_id' => ['required','string','in:'.$allshop->implode('shop_id',',')],
+            'image' =>['required','file','image'],
+        ]);
+        $file = $request->file('image');
+        $imageName = time().'_'.$file->getClientOriginalName();
+
+        Storage::putFileAs('public/images',$file, $imageName);
+        // $path = $validated['image']->storeAs('public/images', $imageName);
+        $imagePath = 'images/'.$imageName;
+        // dd($imagePath);
+
+        DB::table('banner')->insert([
+            'admin_id' => Auth::user()->id,
+            'shop_id' => $validated['shop_id'],
+            'banner_image' =>$imagePath,
+        ]);
+
+
+        return redirect()->back()->with('suc','Banner Image Has Been Added!');
+    }
+
+    public function deleteBanner($id){
+
+        DB::table('banner')->where('banner.shop_id',$id)->delete();
+
+
+        return redirect()->back()->with('del','Banner Image Has Been Deleted!');
+    }
+
 }

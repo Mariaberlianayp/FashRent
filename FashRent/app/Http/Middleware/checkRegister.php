@@ -24,7 +24,7 @@ class checkRegister
             }
 
             if(Auth::user()->User_Status == 0){
-                return redirect('/afterRegister')->with('complete','Lengkapi Profil Anda Terlebih Dahulu!');
+                return redirect('/afterRegister')->with('complete','Please Complete Your Profile Detail First!');
             }
         }
 

@@ -33,14 +33,20 @@
                             <a href="/"><img src="{{url('images/logo_fashrent.png')}}" alt="Image" style="height: 50px;"></a>
                         </li>
                         <li class="search">
+
+                            @if (Auth::check())
+                                @if (!Auth::user()->User_Status == 0)
                                 <form class="form-inline my-2 my-lg-0" action="/search">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search" name="search">
                                     <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </form>
-                            @if (Auth::check())
-                                @if (!Auth::user()->User_Status == 0)
                                     <a href="/chatify"><li class="chat"><i class="fa-solid fa-comment"></i></li></a>
                                 @endif
+                            @else
+                            <form class="form-inline my-2 my-lg-0" action="/search">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search Product..." aria-label="Search" name="search">
+                                <button class="btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
                             @endif
                         </li>
                         @guest

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bannerModel;
 use App\Models\categoryModel;
 use App\Models\degreephotoModel;
 use App\Models\productimageModel;
@@ -28,6 +29,8 @@ class afterRegisterController extends Controller
         $products = productModel::all();
 
         $degreephoto=null;
+
+        $banners = bannerModel::all();
 
         $counter =1;
 
@@ -59,7 +62,7 @@ class afterRegisterController extends Controller
         $users = User::all();
 
 
-        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter,'productfeedback'=>$productfeedback,'count'=>$count,'stars'=>$stars,'users'=>$users]);
+        return view('home',['categories'=>$categories,'shops'=>$shops,'products'=>$products,'photos'=>$photos,'degreephotos'=>$degreephoto,'counter'=>$counter,'productfeedback'=>$productfeedback,'count'=>$count,'stars'=>$stars,'users'=>$users,'banners'=>$banners]);
     }
 
     public function inputAfterRegister(Request $request)
