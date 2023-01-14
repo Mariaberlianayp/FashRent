@@ -37,6 +37,6 @@ class MactchOldPassword implements Rule
      */
     public function message()
     {
-        return 'Password Tidak Sesuai!';
+        return 'Password Invalid!';
     }
 }

@@ -24,6 +24,7 @@ Route::post('/inputAfterRegister', [App\Http\Controllers\afterRegisterController
 
 
 Route::get('/profileDetail/{id}', [App\Http\Controllers\HomeController::class, 'profileDetail'])->middleware('cek');
+
 Route::get('/profil/{id}', [App\Http\Controllers\HomeController::class, 'editProfile'])->middleware('cek');
 
 Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->middleware('cek');
@@ -46,6 +47,7 @@ Route::post('/editproduk', [App\Http\Controllers\shopController::class, 'editPro
 
 Route::get('/productDetail/{id}', [App\Http\Controllers\shopController::class, 'productDetail']);
 Route::get('/productDetails/{id}', [App\Http\Controllers\shopController::class, 'seestatis'])->name('seestatis');
+Route::get('/degreeDetail/{id}', [App\Http\Controllers\shopController::class, 'degreeDetail']);
 
 Route::get('/category/{id}', [App\Http\Controllers\searchController::class, 'categorySearch'])->name('allCategory');
 

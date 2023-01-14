@@ -352,6 +352,11 @@ class shopController extends Controller
 
          return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
      }
+     public function degreeDetail($id){
+        $product = productModel::where('product_id', $id)->first();
+        $degreephotos = degreephotoModel::where('360_photo.product_id',$id)->get();
+        return view('360detail', compact('product', 'degreephotos'));
+     }
 
      public function viewAllShop(){
 

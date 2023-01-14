@@ -60,6 +60,9 @@
     font-size: 30px;
     transform: scale(1, .6);
 }
+.zoomImage img:hover{
+    max-width: 500px;
+}
 .fotoToko{
     padding: 20px 160px;
     display: flex;
@@ -236,9 +239,52 @@
     border: 5px solid white;
     box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
 }
-
-
-
-.feedback img{
+.feedback h2{
+    font-weight: 700;
+    color: #533D9E;
+}
+.feedback a{
+    background-image: linear-gradient(to right, #FBB80F , #FB640F);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+.feedback h4{
+    color: #533D9E;
+    font-weight: 600;
+}
+.feedback i{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.isifeedback .rate{
+    background-color: #533D9E;
+    border-radius: 30px;
+    border: 3px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    color: white;
+    margin: 10px;
+    padding: 20px;
+}
+.isifeedback .col-3 img{
+    max-width: 80px;
+    border-radius: 5px;
+}
+.isifeedback img{
     max-width: 100px;
+    border-radius: 2px;
+}
+.isifeedback .col-4{
+    margin-left: -10px;
+}
+.isifeedback i{
+    font-size: larger;
+}
+.isifeedback h5{
+    font-weight: 600;
+}
+.isifeedback h6{
+    color: gray;
+}
+.isirate{
+    margin-left: 30px;
 }
