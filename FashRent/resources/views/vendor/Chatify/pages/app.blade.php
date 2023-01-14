@@ -20,7 +20,10 @@
            <div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll" data-view="users">
 
                {{-- Favorites --}}
-
+               <div class="favorites-section">
+                <p class="messenger-title">Favorites</p>
+                <div class="messenger-favorites app-scroll-thin"></div>
+               </div>
 
                {{-- Contact --}}
                <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);position: relative;"></div>
