@@ -331,52 +331,54 @@
     @if (Auth::check())
         @if (Auth::user()->User_Priority == 1)
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <a class="btn btn-primary" href="/managebanner" role="button">Manage Banner</a>
-                    @if (\Session::has('acc'))
-                    <div class="alert alert-success">
-                        {!! \Session::get('acc') !!}
-                    </div>
-                    @endif
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">ID Shop</th>
-                            <th scope="col">Shop Name</th>
-                            <th scope="col">Inputted Image</th>
-                            <th scope="col">Verification</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($shops as $shop )
-                            <tr>
-                                <th scope="row">{{$counter}}</th>
-                                <td>{{$shop->shop_id}}</td>
-                                <td>@foreach ($users->where('id',$shop->id) as $u)
-                                    {{$u->name}}
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
-                                    <input type="text" hidden>
-                                    <img height="200px" src="{{Storage::url($d->photo360)}}" alt="">
-                                    @endforeach
-                                </td>
-                                <td><a class="btn btn-primary" href="/verif/acc/{{$shop->product_id}}" role="button">Accept</a> <a class="btn btn-danger" href="/verif/dec/{{$shop->product_id}}" role="button">Reject</a></td>
-                            </tr>
-                            <h1 hidden>{{$counter=$counter+1}}</h1>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+        <div class="container admin">
+            <a class="btn btn-primary" href="/managebanner" role="button">Manage Banner</a>
+            <a class="btn btn-primary disabled" href="/" role="button">Verification 360° Image</a>
+            @if (\Session::has('acc'))
+            <div class="alert alert-success">
+                {!! \Session::get('acc') !!}
             </div>
+            @endif
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">ID Shop</th>
+                    <th scope="col">Shop Name</th>
+                    <th scope="col">Inputted Image</th>
+                    <th scope="col">Verification</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach ($shops as $shop )
+                    <tr>
+                        <th scope="row">{{$counter}}</th>
+                        <td>{{$shop->shop_id}}</td>
+                        <td>@foreach ($users->where('id',$shop->id) as $u)
+                            {{$u->name}}
+                            @endforeach
+                        </td>
+                        <td>
+                            @foreach ($degreephotos->where('product_id',$shop->product_id) as $d)
+                            <input type="text" hidden>
+                            <img height="200px" src="{{Storage::url($d->photo360)}}" alt="">
+                            @endforeach
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="/verif/acc/{{$shop->product_id}}" role="button">Accept</a>
+                            <a class="btn btn-danger" href="/verif/dec/{{$shop->product_id}}" role="button">Reject</a>
+                        </td>
+                    </tr>
+                    <h1 hidden>{{$counter=$counter+1}}</h1>
+                    @endforeach
+                </tbody>
+            </table>
             {{ $shops->links() }}
         </div>
 
         @endif
+
+
 
     @endif
 
