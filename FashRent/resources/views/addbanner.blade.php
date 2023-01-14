@@ -1,11 +1,9 @@
 @extends('layouts.app')
-
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/addbanner.css') }}">
+<div class="container admin">
+    <a class="btn btn-primary disabled" href="/managebanner" role="button">Manage Banner</a>
     <a class="btn btn-primary" href="/" role="button">Verification 360° Image</a>
-
-
-<div class="card-body">
     @if (\Session::has('suc'))
     <div class="alert alert-success">
         {!! \Session::get('suc') !!}
@@ -48,41 +46,37 @@
         </div>
 </div>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @if (\Session::has('del'))
-            <div class="alert alert-success">
-                {!! \Session::get('del') !!}
-            </div>
-            @endif
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">ID Shop</th>
-                    <th scope="col">Banner Image</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $counter=1;
-                    @endphp
-                    @foreach ($data as $d)
-                    <tr>
-                        <th scope="row">{{$counter}}</th>
-                        <td>{{$d->shop_id}}</td>
-                        <td>
-                            <img height="200px" src="{{Storage::url($d->banner_image)}}" alt="">
-                        </td>
-                        <td><a class="btn btn-danger" href="/bannerdelete/{{$d->shop_id}}" role="button">Delete</a></td>
-                    </tr>
-                    <h1 hidden>{{$counter=$counter+1}}</h1>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    @if (\Session::has('del'))
+    <div class="alert alert-success">
+        {!! \Session::get('del') !!}
     </div>
+    @endif
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">ID Shop</th>
+            <th scope="col">Banner Image</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            @php
+                $counter=1;
+            @endphp
+            @foreach ($data as $d)
+            <tr>
+                <th scope="row">{{$counter}}</th>
+                <td>{{$d->shop_id}}</td>
+                <td>
+                    <img height="200px" src="{{Storage::url($d->banner_image)}}" alt="">
+                </td>
+                <td><a class="btn btn-danger" href="/bannerdelete/{{$d->shop_id}}" role="button">Delete</a></td>
+            </tr>
+            <h1 hidden>{{$counter=$counter+1}}</h1>
+            @endforeach
+        </tbody>
+    </table>
     {{ $data->links() }}
 </div>
 

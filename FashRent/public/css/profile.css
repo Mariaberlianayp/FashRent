@@ -17,6 +17,9 @@
     width: 200px;
     height: fit-content;
 }
+.imageShop img{
+    width: 200px;
+}
 .buttonEdit button
 {
     background-color: #533D9E;

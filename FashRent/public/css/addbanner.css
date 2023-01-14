@@ -1,0 +1,12 @@
+
+.admin .disabled{
+    background-color: #DFCEFB;
+    border: #DFCEFB;
+    color: gray;
+}
+.admin{
+    margin-bottom: 20px;
+}
+.admin form{
+    margin-top: 20px;
+}

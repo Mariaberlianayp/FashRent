@@ -217,3 +217,17 @@
         width: 330px;
     }
 }
+
+
+.admin img{
+    max-width: 200px;
+    height: auto;
+}
+.admin .disabled{
+    background-color: #DFCEFB;
+    border: #DFCEFB;
+    color: gray;
+}
+.admin a{
+    margin: 10px;
+}
