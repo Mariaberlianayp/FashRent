@@ -208,7 +208,7 @@
     </div>
 
     <div class="kategori">
-        <h4>KATEGORI</h4>
+        <h4>CATEGORY</h4>
         <div class="container text-center">
           @foreach($categories as $category)
           <div class="cardKategori">
