@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        @else
+    @else
         <div class="row image ">
             <div class="col buttonImage align-self-center">
                 @if ($product->product_status == 2)
@@ -52,7 +52,9 @@
                     <div class="rotation">
                         @if ($product->product_status == 2)
                             @foreach ($degreephotos as $dp)
+                            <a class="zoomImage" href="{{url('degreeDetail')}}/{{$product->product_id}}">
                                 <img src="{{Storage::url($dp->photo360)}}">
+                            </a>
                             @endforeach
                         @else
                             <img src="{{Storage::url($product->product_thumbnail)}}">
@@ -173,26 +175,50 @@
 
 <div class="feedback">
     <div class="card">
-        @if (Auth::check())
-        @if (Auth::user()->User_Priority == 3)
-        <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button">Add Feedback</a>
-        @endif
-    @endif
-    <h2>Product Rating</h2>
-    @if (count($productfeedback)>0)
-    <span><i data-star="{{$stars_avg}}"></i> ({{$count}})</span>
-    @endif
-    <div class="isibawah">
-        @foreach ($productfeedback as $pf)
-        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->renter_photoprofile)}}">
-        @foreach ($users->where('id',$pf->id) as $u)
-        <h4>{{$u->name}}</h4>
-        @endforeach
-        <img class="rounded mx-auto d-block" src="{{Storage::url($pf->rating_photo)}}">
-        <i data-star="{{$pf->rating_stars}}"></i>
-        <p>{{$pf->rating_description}}</p>
-        <p>{{$pf->rating_date}}</p>
-        @endforeach
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-md-4 text-left">
+            <h2>Product Rating</h2>
+            @if (count($productfeedback)>0)
+                <h4><i data-star="{{$stars_avg}}"></i> ({{$count}})</h4>
+            @endif
+          </div>
+          <div class="col-md-4 offset-md-4">
+            @if (Auth::check())
+                @if (Auth::user()->User_Priority == 3)
+                <a class="btn btn-primary" href="/feedback/{{$product->product_id}}" role="button">Add Feedback</a>
+                @endif
+            @endif
+          </div>
+        </div>
+      </div>
+    <div class="isifeedback">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                @foreach ($productfeedback as $pf)
+                    <div class="col-5 rate">
+                        <div class="container">
+                            <div class="row">
+                              <div class="col-3">
+                                  <img src="{{Storage::url($pf->renter_photoprofile)}}">
+                              </div>
+                              <div class="col-4">
+                                  @foreach ($users->where('id',$pf->id) as $u)
+                                    <h5>{{$u->name}}</h5>
+                                  @endforeach
+                                  <i data-star="{{$pf->rating_stars}}"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="isirate">
+                            <img src="{{Storage::url($pf->rating_photo)}}">
+                            <p>{{$pf->rating_description}}</p>
+                            <h6>{{$pf->rating_date}}</h6>
+                          </div>
+                    </div>
+                @endforeach
+            </div>
+          </div>
     </div>
     </div>
 </div>

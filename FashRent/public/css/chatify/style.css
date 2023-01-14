@@ -971,3 +971,13 @@ div.loadingPlaceholder-date {
 .message-card:hover .chatify-hover-delete-btn {
   display: block;
 }
+
+.messenger
+{
+    margin-top: 100px;
+    border-radius: 20px;
+}
+.footer
+{
+    margin: 50px;
+}

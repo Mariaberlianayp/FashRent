@@ -28,13 +28,13 @@
     white-space:nowrap;
     cursor:pointer;
     font-size:30px;
-    color:#ccc;
+    color:#8E8E8E;
 }
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;
+    color: #F3AE00;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
@@ -46,4 +46,28 @@
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+.rate{
+    margin-top: -10px;
+    margin-left: 50px;
+}
+
+.card
+{
+    background-color: #DFCEFB;
+    border-radius: 30px;
+    border: 3px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+}
+.card .text-md-start, .card p{
+    font-weight: 700;
+    font-size: small;
+}
+.card button{
+    font-weight: 700;
+    border-radius: 10px;
 }

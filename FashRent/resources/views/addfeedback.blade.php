@@ -28,9 +28,9 @@
                         @csrf
 
                         <input type="text" hidden value="{{$id}}" name="product_id">
-                        <div class="row mb-3">
-                            <label for="stars">Rating</label>
-                            <div class="col-md-6">
+                        <div class="row mb-3 ">
+                            <div class="col-md-6 d-flex ">
+                                <p for="stars">Rating:</p>
                                 <div class="rate">
                                     <input type="radio" id="star5" name="stars" value="5" />
                                     <label for="star5" title="text">5 stars</label>
@@ -42,13 +42,13 @@
                                     <label for="star2" title="text">2 stars</label>
                                     <input type="radio" id="star1" name="stars" value="1" />
                                     <label for="star1" title="text">1 star</label>
-                                  </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
-                            <div class="col-md-6">
+                            <label for="name" class="col-md-2 col-form-label text-md-start">{{ __('Image:') }}</label>
+                            <div class="col">
                                 <input type="file" name="image" value="" class="form-control @error('image') is-invalid @enderror" autofocus>
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -60,9 +60,8 @@
 
 
                         <div class="row mb-3">
-                            <label for="comment" class="col-md-4 col-form-label text-md-end">{{ __('Comment') }}</label>
-
-                            <div class="col-md-6">
+                            <label for="comment" class="col-md-2 col-form-label text-md-start">{{ __('Comment:') }}</label>
+                            <div class="col">
                                 <textarea id="comment" name="comment" cols="40" rows="5" class="form-control @error('comment') is-invalid @enderror" required></textarea>
 
                                 @error('comment')
