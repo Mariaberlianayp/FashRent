@@ -202,7 +202,9 @@
                         <div class="container">
                             <div class="row">
                               <div class="col-3">
-                                  <img src="{{Storage::url($pf->renter_photoprofile)}}">
+                                @foreach ($users->where('id',$pf->id) as $u)
+                                <img src="{{Storage::url($u->avatar)}}">
+                                @endforeach
                               </div>
                               <div class="col-4">
                                   @foreach ($users->where('id',$pf->id) as $u)
