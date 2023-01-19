@@ -148,7 +148,9 @@
     <div class="row">
         <div class="col-sm-3 mx-auto fotoToko">
             <div class="back">
-                <img src="{{Storage::url($toko->shop_photoprofile)}}">
+                @foreach ($users->where('id',$toko->id) as $u)
+                <img src="{{Storage::url($u->avatar)}}">
+                @endforeach
                 @foreach ($users->where('id',$toko->id) as $u)
                 <h4>{{$u->name}}</h4>
                 @endforeach

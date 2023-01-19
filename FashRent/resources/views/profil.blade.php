@@ -27,7 +27,7 @@
                         {{-- Renter --}}
                         @if(Auth::user()->User_Priority == 3)
                         <div class="imageProfile">
-                            <img src="{{Storage::url($d->renter_photoprofile)}}" class="card-img-top" alt="...">
+                            <img src="{{Storage::url(Auth::user()->avatar)}}" class="card-img-top" alt="...">
                         </div>
                         <div class="row mb-3 ">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Change Photo:') }}</label>
@@ -87,7 +87,7 @@
                         {{-- toko --}}
                         @if(Auth::user()->User_Priority == 2)
                             <div class="imageProfile">
-                                <img src="{{Storage::url($d->shop_photoprofile)}}" class="card-img-top" alt="...">
+                                <img src="{{Storage::url(Auth::user()->avatar)}}" class="card-img-top" alt="...">
                             </div>
                             <div class="row mb-3">
 

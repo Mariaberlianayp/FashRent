@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('shop_phonenumber');
             $table->string('shop_city');
             $table->longText('shop_description');
-            $table->string('shop_photoprofile');
         });
     }
 

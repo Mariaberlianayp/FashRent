@@ -28,7 +28,7 @@
                         @if(Auth::user()->User_Priority == 3)
                         <div class="dataProfile">
                             <div class="row mb-3 justify-content-center align-self-center" >
-                                <img src="{{Storage::url($d->renter_photoprofile)}}" class="card-img-top" alt="...">
+                                <img src="{{Storage::url(Auth::user()->avatar)}}" class="card-img-top" alt="...">
                             </div>
                             <div class="Form">
                                 <div class="row mb-3">
@@ -79,7 +79,7 @@
                         {{-- toko --}}
                         @if(Auth::user()->User_Priority == 2)
                             <div class=" imageShop">
-                                <img src="{{Storage::url($d->shop_photoprofile)}}" class="card-img-top" alt="...">
+                                <img src="{{Storage::url(Auth::user()->avatar)}}" class="card-img-top" alt="...">
                             </div>
 
                             <div class="row mb-3">

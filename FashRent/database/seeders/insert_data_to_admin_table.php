@@ -18,7 +18,6 @@ class insert_data_to_admin_table extends Seeder
 
         DB::table('admin')->insert([
             ['id' => '1'],
-
         ]);
     }
 }

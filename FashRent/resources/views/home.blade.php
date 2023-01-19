@@ -72,7 +72,9 @@
             <div class="cardToko">
               <div class="atas">
                 <div class="image">
-                  <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
+                    @foreach ($users->where('id',$shop->id) as $u)
+                    <img src="{{Storage::url($u->avatar)}}" alt="">
+                    @endforeach
                 </div>
                 <div class="keterangan">
                     @foreach ($users->where('id',$shop->id) as $u)
@@ -232,7 +234,9 @@
           <div class="cardToko">
             <div class="atas">
               <div class="image">
-                <img src="{{Storage::url($shop->shop_photoprofile)}}" alt="">
+                @foreach ($users->where('id',$shop->id) as $u)
+                <img src="{{Storage::url($u->avatar)}}" alt="">
+                @endforeach
               </div>
               <div class="keterangan">
                   @foreach ($users->where('id',$shop->id) as $u)

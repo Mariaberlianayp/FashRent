@@ -85,6 +85,7 @@ class HomeController extends Controller
                 $file = $request->file('image');
                 $imageName = time().'_'.$file->getClientOriginalName();
 
+                Storage::putFileAs('public/users-avatar/images',$file, $imageName);
                 Storage::putFileAs('public/images',$file, $imageName);
                 // $path = $validated['image']->storeAs('public/images', $imageName);
                 $imagePath = 'images/'.$imageName;
@@ -112,6 +113,7 @@ class HomeController extends Controller
                 $file = $request->file('image');
                 $imageName = time().'_'.$file->getClientOriginalName();
 
+                Storage::putFileAs('public/users-avatar/images',$file, $imageName);
                 Storage::putFileAs('public/images',$file, $imageName);
                 // $path = $validated['image']->storeAs('public/images', $imageName);
                 $imagePath = 'images/'.$imageName;
@@ -135,11 +137,11 @@ class HomeController extends Controller
                 ->update([
                     'id' =>Auth::user()->id,
                     'renter_phonenumber' => $validated['NoTelepon'],
-                    'renter_photoprofile' => $imagePath,
                 ]);
 
                 DB::table('users')->where('users.id',Auth::user()->id)->update([
                     'name' => $validated['name'],
+                    'avatar' =>$imagePath,
                 ]);
             }
             else{
@@ -165,10 +167,10 @@ class HomeController extends Controller
                     'shop_phonenumber' => $validated['NoTelepon'],
                     'shop_city' => $validated['kota'],
                     'shop_description' => $validated['deskripsi'],
-                    'shop_photoprofile' => $imagePath,
                 ]);
                 DB::table('users')->where('users.id',Auth::user()->id)->update([
                     'name' => $validated['name'],
+                    'avatar' =>$imagePath,
                 ]);
             }
             else{
