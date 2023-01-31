@@ -29,8 +29,45 @@
             <div class="col imgdgr">
                 <div class="degreeimage">
                     <div class="rotation">
-                        <img src="{{Storage::url($product->product_thumbnail)}}">
-
+                        <div class="slideCard align-middle">
+                            <div id="carouselExampleIndicators" class="carousel slide bannerSlide" data-bs-ride="true">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              @php
+                                  $counter = 0;
+                              @endphp
+                              @foreach ($productImage as $statis)
+                                @if ($counter !=0)
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$counter}}" aria-label="Slide {{$counter}}"></button>
+                                @endif
+                                @php
+                                    $counter++;
+                                @endphp
+                              @endforeach
+                            </div>
+                            <div class="carousel-inner">
+                                @php
+                                    $key =0;
+                                @endphp
+                                @foreach($productImage as $statis)
+                                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                        <img src="{{Storage::url($statis->product_photo)}}" class="d-block w-100"  alt="...">
+                                    </div>
+                                    @php
+                                        $key++;
+                                    @endphp
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +94,45 @@
                             </a>
                             @endforeach
                         @else
-                            <img src="{{Storage::url($product->product_thumbnail)}}">
+                            <div class="slideCard align-middle">
+                                <div id="carouselExampleIndicators" class="carousel slide bannerSlide" data-bs-ride="true">
+                                <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                @php
+                                    $counter = 0;
+                                @endphp
+                                @foreach ($productImage as $statis)
+                                    @if ($counter !=0)
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$counter}}" aria-label="Slide {{$counter}}"></button>
+                                    @endif
+                                    @php
+                                        $counter++;
+                                    @endphp
+                                @endforeach
+                                </div>
+                                <div class="carousel-inner">
+                                    @php
+                                        $key =0;
+                                    @endphp
+                                    @foreach($productImage as $statis)
+                                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                            <img src="{{Storage::url($statis->product_photo)}}" class="d-block w-100"  alt="...">
+                                        </div>
+                                        @php
+                                            $key++;
+                                        @endphp
+                                    @endforeach
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            </div>
                         @endif
                     </div>
 

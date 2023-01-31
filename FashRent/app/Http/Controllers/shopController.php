@@ -311,6 +311,7 @@ class shopController extends Controller
 
          $users= User::all();
 
+         $productImage = productimageModel::where('product_id', $id)->get();
 
          if(count($productfeedback)>0){
             foreach($productfeedback as $p){
@@ -321,7 +322,7 @@ class shopController extends Controller
              $stars_avg = $stars/$count;
          }
 
-         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users', 'productImage'));
      }
      public function seestatis($id)
      {
@@ -340,6 +341,7 @@ class shopController extends Controller
 
          $users= User::all();
 
+         $productImage = productimageModel::where('product_id', $id)->get();
 
          if(count($productfeedback)>0){
             foreach($productfeedback as $p){
@@ -350,7 +352,7 @@ class shopController extends Controller
              $stars_avg = $stars/$count;
          }
 
-         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users'));
+         return view('detail', compact('product', 'toko','category','degreephotos','productfeedback','count','stars_avg','users', 'productImage'));
      }
      public function degreeDetail($id){
         $product = productModel::where('product_id', $id)->first();

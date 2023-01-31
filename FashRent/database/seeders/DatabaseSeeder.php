@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
                 insert_data_to_product_table::class,
                 insert_data_to_360_photo_table::class,
                 insert_data_to_admin_table::class,
+                insert_data_to_product_image_table::class,
             ]);
 
     }

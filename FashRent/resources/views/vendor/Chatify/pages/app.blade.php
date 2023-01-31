@@ -93,12 +93,16 @@
     </div>
 </div>
 
-<div class="footer shadow-sm ">
+<div class="footer shadow-sm">
     <div class="container ">
         <div class="row g-0">
             <div class="col-sm-6 col-md-8 about">
                 <img src="{{url('images/LogoDark.png')}}" alt="">
                 <p class="text">Fashion product rental platform and helps stores display catalogs in an attractive way</p>
+                <div class="contact d-flex">
+                    <i class="m-2 fa-solid fa-envelope" style="color: #533D9E"></i>
+                    <p class="m-1">fashrent@gmail.com</p>
+                </div>
             </div>
             <div class="col-6 col-md-4">
                 <img src="{{url('images/footerIllustration.png')}}" alt="">

@@ -60,6 +60,12 @@
     font-size: 30px;
     transform: scale(1, .6);
 }
+.carousel button {
+    filter: invert(100%);
+}
+.carousel img{
+    max-width: 400px;
+}
 .zoomImage img:hover{
     max-width: 500px;
 }
