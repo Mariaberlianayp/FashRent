@@ -82,7 +82,7 @@ class adminController extends Controller
 
     public function deleteBanner($id){
 
-        DB::table('banner')->where('banner.shop_id',$id)->delete();
+        DB::table('banner')->where('banner.banner_id',$id)->delete();
 
 
         return redirect()->back()->with('del','Banner Image Has Been Deleted!');
