@@ -29,7 +29,11 @@
                 @endphp
                 @foreach($banners as $b)
                 <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                    @if($b->shop_id == null)
+                    <img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="...">
+                    @else
                     <a href="/detailtoko/{{$b->shop_id}}"><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+                    @endif
                 </div>
                 @php
                     $key++;
@@ -138,7 +142,7 @@
                         <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
                   <div class="card-body">
                     <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
-                    <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
+                    <h5 class="price">@currency($product->product_rentprice)</h5>
                     <p class="city">{{$shop->shop_city}}</p>
                     @if (count($productfeedback->where('product_id',$product->product_id))>0)
                     @php
@@ -191,7 +195,11 @@
             @endphp
             @foreach($banners as $b)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                @if($b->shop_id == null)
+                <img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="...">
+                @else
                 <a href="/detailtoko/{{$b->shop_id}}"><img src="{{Storage::url($b->banner_image)}}" class="d-block w-100"  alt="..."></a>
+                @endif
             </div>
             @php
                 $key++;
@@ -303,7 +311,7 @@
                       <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
                 <div class="card-body">
                   <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
-                  <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
+                  <h5 class="price">@currency($product->product_rentprice)</h5>
                   <p class="city">{{$shop->shop_city}}</p>
                   @if (count($productfeedback->where('product_id',$product->product_id))>0)
                   @php

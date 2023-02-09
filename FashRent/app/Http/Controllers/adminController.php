@@ -41,10 +41,18 @@ class adminController extends Controller
     public function addBanner(Request $request){
         $allshop = shopModel::all();
 
-        $validated = $request->validate([
-            'shop_id' => ['required','string','in:'.$allshop->implode('shop_id',',')],
-            'image' =>['required','file','image'],
-        ]);
+        if($request['shop_id']){
+            $validated = $request->validate([
+                'shop_id' => ['required','string','in:'.$allshop->implode('shop_id',',')],
+                'image' =>['required','file','image'],
+            ]);
+        }
+        else{
+            $validated = $request->validate([
+                'image' =>['required','file','image'],
+            ]);
+        }
+
         $file = $request->file('image');
         $imageName = time().'_'.$file->getClientOriginalName();
 
@@ -53,11 +61,20 @@ class adminController extends Controller
         $imagePath = 'images/'.$imageName;
         // dd($imagePath);
 
-        DB::table('banner')->insert([
-            'admin_id' => Auth::user()->id,
-            'shop_id' => $validated['shop_id'],
-            'banner_image' =>$imagePath,
-        ]);
+        if($request['shop_id']){
+            DB::table('banner')->insert([
+                'admin_id' => Auth::user()->id,
+                'shop_id' => $validated['shop_id'],
+                'banner_image' =>$imagePath,
+            ]);
+        }
+        else{
+            DB::table('banner')->insert([
+                'admin_id' => Auth::user()->id,
+                'banner_image' =>$imagePath,
+            ]);
+        }
+
 
 
         return redirect()->back()->with('suc','Banner Image Has Been Added!');

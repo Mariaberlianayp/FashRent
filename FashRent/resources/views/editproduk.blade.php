@@ -30,7 +30,27 @@
                                 @foreach ($images as $img)
                                 <div class="d-flex flex-rowv image">
                                     <img width="100px" height="100px" src="{{Storage::url($img->product_photo)}}" class="card-img-top-p2" alt="...">
-                                    <a href="/deletephoto/{{$img->photo_id}}"><i class="fa-solid fa-circle-xmark"></i></a>
+                                    <a href="#"><i class="fa-solid fa-circle-xmark" data-toggle="modal" data-target="#exampleModal"></i></a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            Are you sure want to delete this item?
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a class="btn btn-danger mt-auto" href="/deletephoto/{{$img->photo_id}}" role="button">Delete</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
 
                                 @endforeach
@@ -190,7 +210,7 @@
                         <div class="row">
                             <div class="col button">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Edit Prodct') }}
+                                    {{ __('Edit Product') }}
                                 </button>
                             </div>
                         </div>

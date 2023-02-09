@@ -120,7 +120,7 @@ class shopController extends Controller
         DB::table('product')->where('product.product_id',$id)->delete();
 
 
-        return redirect()->back()->with('deleteProduk','Produk Berhasil Dihapus!');
+        return redirect()->back()->with('deleteProduk','Product Has Been Deleted!');
 
     }
 

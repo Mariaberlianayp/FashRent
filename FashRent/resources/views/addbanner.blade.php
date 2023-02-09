@@ -67,7 +67,11 @@
             @foreach ($data as $d)
             <tr>
                 <th scope="row">{{$counter}}</th>
+                @if ($d->shop_id == null)
+                <td>Admin</td>
+                @else
                 <td>{{$d->shop_id}}</td>
+                @endif
                 <td>
                     <img height="200px" src="{{Storage::url($d->banner_image)}}" alt="">
                 </td>

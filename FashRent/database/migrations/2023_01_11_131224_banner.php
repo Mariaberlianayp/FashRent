@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('banner',function(Blueprint $table){
             $table->bigIncrements('banner_id');
             $table->foreignid('admin_id')->nullable()->references('admin_id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
-            $table->bigInteger('shop_id');
+            $table->bigInteger('shop_id')->nullable();
             $table->string('banner_image');
         });
     }

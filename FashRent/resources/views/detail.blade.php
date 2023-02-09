@@ -177,14 +177,14 @@
                         <i class="fa-solid fa-sack-dollar"></i>
                         <div class="hargaSewa">
                             <p>Rental price per day:</p>
-                            <h5 class="data">{{$product->product_rentprice}}</h5 >
+                            <h5 class="data">@currency($product->product_rentprice)</h5 >
                         </div>
                     </div>
                     <div class="deposito">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <div class="hargaDeposito">
                             <p>Deposito price:</p>
-                            <h5  class="data">{{$product->product_deposito}}</h5 >
+                            <h5  class="data">@currency($product->product_deposito)</h5 >
                         </div>
                     </div>
                 </div>

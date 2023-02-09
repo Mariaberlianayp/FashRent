@@ -40,7 +40,7 @@
                             <img src="{{Storage::url($product->product_thumbnail)}}" alt="">
                         <div class="card-body">
                         <a class="card-title" href="{{url('productDetail')}}/{{$product->product_id}}">{{Str::limit($product->product_name, 35)}}</a>
-                        <h5 class="price">Rp. {{$product->product_rentprice}}</h5>
+                        <h5 class="price">@currency($product->product_rentprice)</h5>
                         <p class="city">{{$shop->shop_city}}</p>
                         @if (count($productfeedback->where('product_id',$product->product_id))>0)
                         @php
