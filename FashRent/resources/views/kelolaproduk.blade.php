@@ -9,6 +9,11 @@
             {!! \Session::get('deleteProduk') !!}
         </div>
     @endif
+    @if (\Session::has('edit'))
+    <div class="alert alert-success">
+        {!! \Session::get('edit') !!}
+    </div>
+    @endif
     <div class="judul row d-flex">
         <div class="col-3">
             <a href="/profileDetail/{{Auth::user()->id}}"><i class="fa-solid fa-arrow-left"></i></a>

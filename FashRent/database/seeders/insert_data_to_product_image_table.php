@@ -21,8 +21,8 @@ class insert_data_to_product_image_table extends Seeder
             ['photo_id' => 4, 'product_id' => 4, 'product_photo' => 'images/img04.jpg'],
             ['photo_id' => 5, 'product_id' => 4, 'product_photo' => 'images/img05.jpg'],
             ['photo_id' => 6, 'product_id' => 1, 'product_photo' => 'images/kebaya1.jpg'],
-            ['photo_id' => 7, 'product_id' => 2, 'product_photo' => 'images/kebaya2.jpg'],
-            ['photo_id' => 8, 'product_id' => 3, 'product_photo' => 'images/kebaya3.jpg'],
+            ['photo_id' => 7, 'product_id' => 2, 'product_photo' => 'images/kebaya3.jpg'],
+            ['photo_id' => 8, 'product_id' => 3, 'product_photo' => 'images/kebaya2.jpg'],
 
         ]);
     }

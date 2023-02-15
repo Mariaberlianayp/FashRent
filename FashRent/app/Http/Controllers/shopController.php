@@ -142,6 +142,9 @@ class shopController extends Controller
 
         // dd($request);
 
+        $shop_id_now=DB::table('shop')->where('shop.id',Auth::user()->id)
+        ->first();
+
         if($request->file('images')){
             $validated = $request->validate([
                 'namaproduk' => ['required','string'],
@@ -156,28 +159,6 @@ class shopController extends Controller
                 'images' =>['required'],
                 'images.*' => ['file','image'],
             ]);
-
-        }
-        else{
-            $validated = $request->validate([
-                'namaproduk' => ['required','string'],
-                'sewahari' => ['required','numeric','gte:0'],
-                'deposito' => ['required','numeric','gte:0'],
-                'qty' => ['required'],
-                'kategori' => ['required'],
-                'gender' => ['required'],
-                'warna' => ['required','string'],
-                'ukuran' => ['required','string','min:10'],
-                'deskripsi' => ['required','string','min:30'],
-            ]);
-        }
-
-
-
-        $shop_id_now=DB::table('shop')->where('shop.id',Auth::user()->id)
-        ->first();
-
-
 
             foreach($request->file('images') as $imageFile){
 
@@ -204,6 +185,38 @@ class shopController extends Controller
                 'product_stock' => $validated['qty'],
                 'product_thumbnail' => $thumbnail,
             ]);
+
+        }
+        else{
+            $validated = $request->validate([
+                'namaproduk' => ['required','string'],
+                'sewahari' => ['required','numeric','gte:0'],
+                'deposito' => ['required','numeric','gte:0'],
+                'qty' => ['required'],
+                'kategori' => ['required'],
+                'gender' => ['required'],
+                'warna' => ['required','string'],
+                'ukuran' => ['required','string','min:10'],
+                'deskripsi' => ['required','string','min:30'],
+            ]);
+
+
+            DB::table('product')->where('product.product_id',$request['product_id'])->update([
+                'shop_id' => $shop_id_now->shop_id,
+                'category_id' => $validated['kategori'],
+                'product_name' => $validated['namaproduk'],
+                'product_description' => $validated['deskripsi'],
+                'product_rentprice' => $validated['sewahari'],
+                'product_deposito' => $validated['deposito'],
+                'product_gender' => $validated['gender'],
+                'product_color' => $validated['warna'],
+                'product_size' => $validated['ukuran'],
+                'product_stock' => $validated['qty'],
+            ]);
+        }
+
+
+
 
 
 
