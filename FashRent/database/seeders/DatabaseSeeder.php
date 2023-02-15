@@ -20,5 +20,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+            $this->call([
+                insert_data_to_category_table::class,
+                insert_data_to_user_table::class,
+                insert_data_to_shop_table::class,
+                insert_data_to_product_table::class,
+                insert_data_to_360_photo_table::class,
+                insert_data_to_admin_table::class,
+                insert_data_to_product_image_table::class,
+            ]);
+
     }
 }

@@ -1,0 +1,35 @@
+.card, .changePasswordForm{
+    background-color: #EFE6FD;
+    border: 2px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.changePassword h3, .editProfile h3{
+    text-align: left;
+    color: #533D9E;
+    font-weight: 700;
+}
+.buttonPassword, .buttonEdit{
+    display: flex;
+    justify-content: right;
+}
+.changePassword button, .buttonEdit button{
+    background-color: #533D9E;
+    border-color: #533D9E;
+}
+label{
+    font-weight: 700;
+    text-align: left;
+}
+img{
+    max-width: 200px;
+    height: auto;
+
+}
+.imageProfile{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

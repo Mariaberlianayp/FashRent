@@ -1,0 +1,48 @@
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+}
+.judul i{
+    font-size: xx-large;
+}
+.addProduct i{
+    font-size: 100px;
+    color: #533D9E;
+}
+.addProduct a{
+    background-color: #FCFBFF;
+    border: #FCFBFF;
+}
+.addProduct{
+    margin: auto;
+}
+.addProduct h3{
+    font-weight: 700;
+}
+.addProduct a:hover{
+    background-color: #FCFBFF;
+}
+.addProduct i:hover{
+    font-size: 110px;
+}
+.product .card{
+    max-width: 270px;
+    margin: 10px;
+}
+.card-body h5, .card-body p{
+    text-align: left;
+}
+.card-text{
+    font-weight: 700;
+}
+.button a{
+
+    margin: 10px 15px;
+}
+.btn-danger{
+    background-color: #D82F02;
+}
+.btn-primary{
+    background-color: #533D9E;
+    border: #533D9E;
+}

@@ -1,0 +1,48 @@
+.profile{
+    background-color: #EFE6FD;
+    border: 2px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.profile label{
+    font-weight: 700;
+}
+.dataProfile{
+    display: flex;
+    justify-content: space-evenly;
+}
+.dataProfile img{
+    width: 200px;
+    height: fit-content;
+}
+.imageShop img{
+    width: 200px;
+}
+.buttonEdit button
+{
+    background-color: #533D9E;
+    border-color: #533D9E;
+    max-height: 40px;
+}
+.buttonEdit .col
+{
+    margin-top: -40px;
+    margin-right: 70px;
+    display: flex;
+    justify-content: right;
+}
+.buttonEdit a{
+    color: white;
+}
+.imageShop{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.manageProduct
+{
+    background-color: #B534CF;
+    border: #B534CF;
+}

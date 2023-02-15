@@ -1,0 +1,30 @@
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+    margin-bottom: 50px;
+}
+.judul i{
+    margin-left: 20px;
+    font-size: xx-large;
+}
+.rotation img{
+    max-width: 700px;
+    height: auto;
+}
+.icon i{
+    font-size: 30px;
+    transform: scale(1, .6);
+    color: #FBB80F;
+    text-align: center;
+}
+.image{
+    align-items: center;
+}
+.image i{
+    color: #533D9E;
+    font-size: 60px;
+    margin: 20px;
+}
+.image .left{
+    transform: rotate(180deg);
+}

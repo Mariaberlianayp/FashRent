@@ -1,0 +1,54 @@
+ .login
+{
+    margin: auto;
+}
+
+.login img{
+    max-width: 400px;
+}
+.cardLogin{
+    background-color: #533d9e;
+    color: white;
+    border-radius: 40px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.cardLogin .cardHeader{
+    text-align: left;
+    padding: 10px 50px;
+    font-size: smaller;
+}
+.cardLogin .cardHeader a{
+    color: white;
+    text-decoration: underline;
+}
+.cardLogin .cardHeader a:hover{
+    color: #3BAFDA;
+}
+.cardLogin .cardHeader h2{
+    font-weight: 800;
+}
+.cardLogin .cardBody{
+    text-align: left;
+    padding: 0px 50px;
+}
+.input-group-text
+{
+    color: black;
+    font-size: larger;
+    background-color: white;
+}
+.form-control
+{
+    color: black;
+    background-color: white;
+    border: opx solid white;
+}
+.cardLogin button{
+    margin-left: 20px;
+    background-image: linear-gradient(to right, #FBB80F , #FB640F);
+    border: 0.5px solid white;
+    color: #251769;
+    font-weight: 700;
+}
+

@@ -1,0 +1,117 @@
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+    margin-bottom: 30px;
+}
+.judul i{
+    font-size: xx-large;
+}
+.fotoToko{
+    padding: 20px 160px;
+    display: flex;
+    justify-content: center;
+}
+.back{
+    background-color: #F7F4FF;
+    border-radius: 150px 150px 20px 20px;
+    border: 5px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    padding: 20px;
+}
+.back img{
+    max-width: 200px;
+    margin: 10px;
+    border-radius: 150px 150px 20px 20px;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.1);
+}
+.back h4{
+    color: #533D9E;
+    font-weight: 700;
+}
+
+.back .kota{
+    margin-bottom: -10px;
+}
+
+.back button{
+    background-image: linear-gradient(to right, #FBB80F , #FB640F);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+.back button i,  .back button a{
+    color: white;
+}
+.back button a, .kota p{
+    font-weight: 600;
+}
+
+.desc{
+    background-color: #533D9E;
+    border-radius: 50px;
+    border: 5px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    padding: 20px;
+    color: white;
+    text-align: left;
+    margin-top: 30px;
+}
+.desc h3{
+    margin-left: 30px;
+    font-weight: 700;
+
+}
+.desc span{
+    color: #FBB80F;
+}
+.desc p, .kota{
+    margin-left: 40px;
+}
+.kota i{
+    color: #FBB80F;
+}
+.kota p{
+    color: white;
+}
+.alamat{
+    margin-left: 50px;
+    margin-top: -20px;
+}
+
+.produk h4{
+    color: #533D9E;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+}
+.listProduk{
+    display: flex;
+    margin-left: 45px;
+}
+.cardProduk .card{
+    background-color: #EFE6FD;
+    border-radius: 20px;
+    border-color: white;
+    border-style: solid;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    margin: 10px;
+    max-width: 200px;
+    height: 350px;
+}
+.cardProduk img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px 20px 0px 0px;
+    object-fit: cover;
+}
+.cardProduk .card-title{
+    font-size: 14px;
+}
+.cardProduk .price{
+    font-weight: 600;
+    font-size: 16px;
+}
+.cardProduk .city{
+    font-size: 13px;
+    color: #533D9E;
+    margin-bottom: -5px;
+}

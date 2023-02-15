@@ -1,0 +1,35 @@
+
+.judul h3{
+    font-weight: 700;
+    color: #533D9E;
+}
+.judul i{
+    font-size: xx-large;
+}
+.card{
+    background-color: #EFE6FD;
+    border: 2px solid white;
+    box-shadow: 0px 10px 20px rgba(83, 61, 158, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.image{
+    margin: 10px;
+}
+.image a{
+    margin-left: -10px;
+    margin-top: -10px;
+}
+label{
+    font-weight: 700;
+    text-align: left;
+}
+.button button{
+    background-color: #533D9E;
+    border-color: #533D9E;
+}
+.button{
+    display: flex;
+    justify-content: right;
+}
